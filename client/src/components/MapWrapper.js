@@ -1,9 +1,4 @@
-// adapted from: https://github.com/tcallsen/react-func-openlayers
-// blog entry: https://taylor.callsen.me/using-openlayers-with-react-functional-components/
-// react
 import React, { useState, useEffect, useRef } from 'react';
-
-// openlayers
 import Map from 'ol/Map'
 import View from 'ol/View'
 import TileLayer from 'ol/layer/Tile'
@@ -17,136 +12,215 @@ import { toStringXY } from 'ol/coordinate';
 import { Fill, Stroke, Circle, Style } from 'ol/style.js';
 import { DragRotateAndZoom, defaults as defaultInteractions } from 'ol/interaction.js';
 import { FullScreen, ScaleLine, defaults as defaultControls } from 'ol/control.js';
+import './MapWrapper.css';
+import LayersIcon from '@mui/icons-material/Layers';
 
 function MapWrapper(props) {
-  // set intial state
-  const [map, setMap] = useState()
-  const [featuresLayer, setFeaturesLayer] = useState()
-  const [selectedCoord, setSelectedCoord] = useState()
+  const [map, setMap] = useState();
+  const [featuresLayer, setFeaturesLayer] = useState();
+  const [selectedCoord, setSelectedCoord] = useState();
+  const [backgroundMap, setBackgroundMap] = useState('Landeskarte farbe'); // Impostazione predefinita della mappa
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [currentView, setCurrentView] = useState(null);
+  const desktopMinZoom = 8.3;
+  const mobileMinZoom = 7.5;
 
-  // pull refs
-  const mapElement = useRef()
+  const mapElement = useRef();
 
-  // create state ref that can be accessed in OpenLayers onclick callback function
-  //  https://stackoverflow.com/a/60643670
-  const mapRef = useRef()
-  mapRef.current = map
+  const mapRef = useRef();
+  mapRef.current = map;
 
-
-  // Tile Layers
-  var osmsource = new OSM();
-  var osmlayer = new TileLayer({
-    source: osmsource
-  })
-  // Google Maps Terrain
-  var tileLayerGoogle = new TileLayer({
-    source: new XYZ({ url: 'http://mt0.google.com/vt/lyrs=p&hl=en&x={x}&y={y}&z={z}', })
-  })
-  //Laden des WMTS von geo.admin.ch > Hintergrungkarte in der Applikation
-  var swisstopoWMTSLayer = 'ch.swisstopo.pixelkarte-grau'; // Swisstopo WMTS Layername
-
-  var wmtsLayer = new TileLayer({
-    //extent: extent,
-    source: new TileWMS({
-      url: 'https://wms.geo.admin.ch/',
-      crossOrigin: 'anonymous',
-      attributions: '© <a href="http://www.geo.admin.ch/internet/geoportal/' +
-        'en/home.html">SWISSIMAGE / geo.admin.ch</a>',
-      projection: 'EPSG:3857',
-      params: {
-        'LAYERS': swisstopoWMTSLayer,
-        'FORMAT': 'image/jpeg'
-      },
-      // serverType: 'mapserver'
-    })
-  });
-
-  // Style Definitionen
-  const bluePointStyle = new Style({
-    image: new Circle({
-      radius: 5,
-      fill: new Fill({
-        color: '#3b8cd6'
-      }),
-      stroke: new Stroke({
-        color: 'white',
-        width: 2
-      })
-    })
-  });
-
-  // initialize map on first render - logic formerly put into componentDidMount
   useEffect(() => {
-    // create and add vector source layer
-    const initalFeaturesLayer = new VectorLayer({
+    const initialFeaturesLayer = new VectorLayer({
       source: new VectorSource(),
-      style: bluePointStyle,
-    })
-    // create map
+    });
+
     const initialMap = new Map({
       target: mapElement.current,
-      layers: [wmtsLayer, initalFeaturesLayer],
+      layers: [getBackgroundLayer(), initialFeaturesLayer],
       view: new View({
         projection: 'EPSG:3857',
-        center: [8, 47],
-        zoom: 8
+        center: [2600000, 1200000],
+        zoom: 16,
+        maxZoom: 16,
+        minZoom: getMinZoom(),
+        extent: getBackgroundExtent(),
       }),
       controls: defaultControls({
         attributionOptions: { collapsible: false },
       }).extend([new FullScreen(), new ScaleLine({ units: 'metric' })]),
       interactions: defaultInteractions().extend([new DragRotateAndZoom()])
-    })
+    });
 
-    // set map onclick handler
-    initialMap.on('click', handleMapClick)
+    initialMap.on('click', handleMapClick);
 
-    // save map and vector layer references to state
-    //initialMap.setTarget(mapRef.current || "")
-    setMap(initialMap)
-    setFeaturesLayer(initalFeaturesLayer)
-    // required otherwise the map div is rendered twice
-    return () => initialMap.setTarget("")
-  }, [])
+    setMap(initialMap);
+    setFeaturesLayer(initialFeaturesLayer);
 
-  // update map if features prop changes - logic formerly put into componentDidUpdate
+    // Salva la vista corrente
+    setCurrentView(initialMap.getView().getCenter(), initialMap.getView().getZoom());
+
+    return () => initialMap.setTarget("");
+  }, []);
+
+  const getMinZoom = () => {
+    // Imposta il livello di zoom minimo in base al dispositivo
+    if (window.matchMedia('(max-width: 768px)').matches) {
+      return mobileMinZoom;
+    } else {
+      return desktopMinZoom;
+    }
+  };
+
   useEffect(() => {
-    if (props.features.length) { // may be null on first render
-      // set features to map
+    if (props.features.length) {
       featuresLayer.setSource(
         new VectorSource({
-          features: props.features // make sure features is an array
+          features: props.features
         })
-      )
-      // fit map to feature extent (with 100px of padding)
+      );
       map.getView().fit(featuresLayer.getSource().getExtent(), {
         padding: [100, 100, 100, 100]
-      })
+      });
     }
-  }, [props.features])
+  }, [props.features]);
 
-  // map click handler
   const handleMapClick = (event) => {
-    // get clicked coordinate using mapRef to access current React state inside OpenLayers callback
-    //  https://stackoverflow.com/a/60643670
     const clickedCoord = mapRef.current.getCoordinateFromPixel(event.pixel);
-    // transform coord to EPSG 4326 standard Lat Long
-    const transormedCoord = transform(clickedCoord, 'EPSG:3857', 'EPSG:4326')
-    // set React state
-    setSelectedCoord(transormedCoord)
-    console.log(transormedCoord)
-  }
+    //const transormedCoord = transform(clickedCoord, 'EPSG:4326', 'EPSG:3857');
+    //setSelectedCoord(transormedCoord);
+    //console.log(transormedCoord);
+    setSelectedCoord(clickedCoord);
+    console.log(clickedCoord);
+  };
 
-  // render component
+  const getBackgroundLayer = () => {
+    if (backgroundMap === 'osm') {
+      return new TileLayer({
+        source: new OSM()
+      });
+    } else if (backgroundMap === 'Landeskarte farbe') {
+      return new TileLayer({
+        source: new TileWMS({
+          url: 'https://wms.geo.admin.ch/',
+          crossOrigin: 'anonymous',
+          attributions: '© <a href="http://www.geo.admin.ch/internet/geoportal/' +
+            'en/home.html">SWISSIMAGE / geo.admin.ch</a>',
+          projection: 'EPSG:3857',
+          params: {
+            'LAYERS': 'ch.swisstopo.pixelkarte-farbe',
+            'FORMAT': 'image/jpeg'
+          },
+          // serverType: 'mapserver'
+        })
+      });
+    //Laden des WMTS von geo.admin.ch > Hintergrungkarte in der Applikation
+    } else if (backgroundMap === 'Landeskarte-grau') {
+      return new TileLayer({
+        source: new TileWMS({
+          url: 'https://wms.geo.admin.ch/',
+          crossOrigin: 'anonymous',
+          attributions: '© <a href="http://www.geo.admin.ch/internet/geoportal/' +
+            'en/home.html">SWISSIMAGE / geo.admin.ch</a>',
+          projection: 'EPSG:3857',
+          params: {
+            'LAYERS': 'ch.swisstopo.pixelkarte-grau',
+            'FORMAT': 'image/jpeg'
+          },
+          // serverType: 'mapserver'
+        })
+      });
+    } else if (backgroundMap === 'Luftbild') {
+      return new TileLayer({
+        source: new TileWMS({
+          url: 'https://wms.geo.admin.ch/',
+          crossOrigin: 'anonymous',
+          attributions: '© <a href="http://www.geo.admin.ch/internet/geoportal/' +
+            'en/home.html">SWISSIMAGE / geo.admin.ch</a>',
+          projection: 'EPSG:3857',
+          params: {
+            'LAYERS': 'ch.swisstopo.images-swissimage',
+            'FORMAT': 'image/jpeg'
+          },
+          // serverType: 'mapserver'
+        })
+      });
+    }
+  };
+
+  const getBackgroundExtent = () => {
+    // Define the extent based on the background map
+    if (backgroundMap === 'osm') {
+      return [506943.5, 5652213.5, 1301728.5, 6191092]; // boundigbox for EPSG:3857 (Web Mercator)
+    } else if (backgroundMap === 'Landeskarte farbe') {
+      return [506943.5, 5652213.5, 1301728.5, 6191092];
+    } else if (backgroundMap === 'Landeskarte-grau') {
+      return [506943.5, 5652213.5, 1301728.5, 6191092];
+    } else if (backgroundMap === 'Luftbild') {
+      return [506943.5, 5652213.5, 1301728.5, 6191092]; 
+    }
+  };
+
+  const handleBackgroundChange = (event) => {
+    // Salva la vista corrente prima del cambio dello sfondo
+    const currentCenter = map.getView().getCenter();
+    const currentZoom = map.getView().getZoom();
+    setCurrentView({ center: currentCenter, zoom: currentZoom });
+
+    const selectedValue = event.target.value;
+    setBackgroundMap(selectedValue);
+    const extent = getBackgroundExtent();
+    if (map) {
+      map.getView().fit(extent, map.getSize());
+    };
+
+    // Ripristina la vista corrente dopo il cambio dello sfondo
+    if (currentView) {
+      map.getView().setCenter(currentView.center);
+      map.getView().setZoom(currentView.zoom);
+    }
+  };
+
+  const toggleMenu = () => {
+    setMenuOpen(!menuOpen);
+  };
+
   return (
     <div>
-
+    <div className="map-fullscreen-container">
       <div ref={mapElement} className="map-container"></div>
-
       <div className="clicked-coord-label">
-        <p>{(selectedCoord) ? toStringXY(selectedCoord, 5) : ''}</p>
+        <p>{selectedCoord ? toStringXY(selectedCoord, 5) : ''}</p>
       </div>
-
     </div>
-  )
+    <div className="background-container" onClick={toggleMenu}>
+      <LayersIcon />
+    </div>
+    {menuOpen && (
+    <div className="background-select">
+      <label htmlFor="background-map">Background Map:</label>
+      <div>
+        <div onClick={() => handleBackgroundChange({ target: { value: 'Landeskarte-farbe' } })}>
+          <p>Landeskarte farben</p>
+          <img src="../Image/Landeskarte_farbe.png" width="50" height="50" />
+        </div>
+        <div onClick={() => handleBackgroundChange({ target: { value: 'Landeskarte-grau' } })}>
+          <p>Landeskarte grau</p>
+          <img src="../Image/Landeskarte_grau.png" width="50" height="50" />
+        </div>
+        <div onClick={() => handleBackgroundChange({ target: { value: 'Luftbild' } })}>
+          <p>Luftbild</p>
+          <img src="../Image/Luftbild.png" width="50" height="50" />
+        </div>
+        <div onClick={() => handleBackgroundChange({ target: { value: 'osm' } })}>
+          <p>OpenStreetMap</p>
+          <img src="../Image/osm.png" width="50" height="50" />
+        </div>
+      </div>
+    </div>
+    )}
+  </div>
+);
 }
-export default MapWrapper
+
+export default MapWrapper;

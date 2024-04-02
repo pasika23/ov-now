@@ -10,6 +10,9 @@
 .map-container{
   height: 100vh;
   width: 100%;
+  position: absolute;
+  top: 0;
+  bottom: 0;
 }
 
 .map{
@@ -34,21 +37,33 @@ html, body {
   margin: 0;
   height: 100%;
 }
-.map-container {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 100%;
-}
+
 
 .map-container:-webkit-full-screen {
   height: 100%;
   margin: 0;
 }
-.map-container:fullscreen {
-  height: 100%;
-}
+
 /* position the rotate control lower than usual */
 .map-container .ol-rotate {
   top: 3em;
+}
+
+.container {
+  position: relative;
+}
+
+.map-fullscreen-container {
+  position: relative;
+}
+
+.background-container {
+  position: relative;
+  z-index: 999;
+}
+
+.background-select img {
+  width: 20px;
+  height: 20px;
+  margin-left: 5px;
 }
