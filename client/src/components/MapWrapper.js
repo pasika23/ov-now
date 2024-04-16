@@ -209,40 +209,40 @@ function MapWrapper(props) {
 
   return (
     <div>
-    <div className="map-fullscreen-container">
-      <div ref={mapElement} className="map-container"></div>
-      <div className="clicked-coord-label">
-        <p>{selectedCoord ? toStringXY(selectedCoord, 5) : ''}</p>
-      </div>
-    </div>
-    <div className="background-container" onClick={toggleMenu}>
-      <img src={backgroundImageSrc} width="50" height="50" onClick={toggleMenu} />
-    </div>
-    {menuOpen && (
-    <div className="background-select">
-      <label htmlFor="background-map">Background Map:</label>
-      <div>
-        <div onClick={() => handleBackgroundChange({ target: { value: 'Landeskarte-farbe' } })}>
-          <p>Landeskarte farben</p>
-          <img src={Landeskarte_farbe} width="50" height="50" />
-        </div>
-        <div onClick={() => handleBackgroundChange({ target: { value: 'Landeskarte-grau' } })}>
-          <p>Landeskarte grau</p>
-          <img src={Landeskarte_grau} width="50" height="50" />
-        </div>
-        <div onClick={() => handleBackgroundChange({ target: { value: 'Luftbild' } })}>
-          <p>Luftbild</p>
-          <img src={Bild_Luftbild} width="50" height="50" />
-        </div>
-        <div onClick={() => handleBackgroundChange({ target: { value: 'osm' } })}>
-          <p>OpenStreetMap</p>
-          <img src={Bild_osm} width="50" height="50" />
+      <div className="map-fullscreen-container">
+        <div ref={mapElement} className="map-container"></div>
+        <div className="clicked-coord-label">
+          <p>{selectedCoord ? toStringXY(selectedCoord, 5) : ''}</p>
         </div>
       </div>
+      <div className="background-container" onClick={toggleMenu}>
+        <img src={backgroundImageSrc} width="50" height="50" onClick={toggleMenu} />
+      </div>
+      {menuOpen && (
+        <div className="background-select">
+          <label htmlFor="background-map">Background Map:</label>
+          <div>
+            <div onClick={() => handleBackgroundChange({ target: { value: 'Landeskarte-farbe' } })}>
+              <p>Landeskarte farben</p>
+              <img src={Landeskarte_farbe} width="50" height="50" />
+            </div>
+            <div onClick={() => handleBackgroundChange({ target: { value: 'Landeskarte-grau' } })}>
+              <p>Landeskarte grau</p>
+              <img src={Landeskarte_grau} width="50" height="50" />
+            </div>
+            <div onClick={() => handleBackgroundChange({ target: { value: 'Luftbild' } })}>
+              <p>Luftbild</p>
+              <img src={Bild_Luftbild} width="50" height="50" />
+            </div>
+            <div onClick={() => handleBackgroundChange({ target: { value: 'osm' } })}>
+              <p>OpenStreetMap</p>
+              <img src={Bild_osm} width="50" height="50" />
+            </div>
+          </div>
+        </div>
+      )}
     </div>
-    )}
-  </div>
-);
+  );
 }
 
 export default MapWrapper;

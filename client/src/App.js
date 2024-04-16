@@ -10,6 +10,8 @@ import GeoJSON from 'ol/format/GeoJSON'
 // components
 import MapWrapper from './components/MapWrapper';
 
+import Header from './components/Header';
+
 function App() {
   
   // set intial state
@@ -43,9 +45,7 @@ function App() {
   // <MapWrapper features={features} />
   return (
     <div className="App">      
-      <div className="app-label">
-        <p>GDI Projekt Template</p>        
-      </div>      
+      <Header />    
       <MapWrapper features={features} />
     </div>
   )
