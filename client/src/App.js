@@ -11,6 +11,9 @@ import GeoJSON from 'ol/format/GeoJSON'
 import MapWrapper from './components/MapWrapper';
 
 import Header from './components/Header';
+import InfoLinien from './components/InfoLinien';
+
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 function App() {
   
@@ -45,7 +48,8 @@ function App() {
   // <MapWrapper features={features} />
   return (
     <div className="App">      
-      <Header />  
+      <Header />
+      <InfoLinien /> 
       <MapWrapper features={features} />
     </div>
   )

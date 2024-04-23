@@ -19,7 +19,7 @@
   width: 100%;
 }*/
 
-.clicked-coord-label{
+/*.clicked-coord-label{
   position: absolute;
   right: 0;
   bottom: 0;
@@ -29,13 +29,13 @@
 
 .clicked-coord-label p {
   margin: 10px;
-}
+}*/
 
 
-html, body {
+/*html, body {
   margin: 0;
   height: 100%;
-}
+}*/
 
 
 /*.map-container:-webkit-full-screen {
@@ -83,4 +83,28 @@ html, body {
   font-weight: bold;
   color: rgb(0, 0, 0);
   margin: 0;
+}
+
+.change-window {
+  top: 50%;
+  left: 50%;
+  position: absolute;
+}
+
+.info-Linien {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  border: 1px solid #ccc;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  display: none;
+}
+
+.info-Linien button {
+  margin-top: 25vh;
+  z-index: 9999;
 }
