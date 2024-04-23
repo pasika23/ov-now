@@ -1,14 +1,8 @@
 import './App.css';
-
-// react
-import React, { useState, useEffect } from 'react';
-
-// openlayers
-import GeoJSON from 'ol/format/GeoJSON'
-//import Feature from 'ol/Feature';
-
-// components
-import MapWrapper from './components/MapWrapper';
+import React from 'react'
+import { useState } from 'react'
+import MapWrapper from './components/MapWrapper.jsx'
+import FeatureTable from './components/FeatureTable.jsx'
 
 import Header from './components/Header';
 import InfoLinien from './components/InfoLinien';
