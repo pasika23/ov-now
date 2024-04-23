@@ -52,8 +52,8 @@ function MapWrapper(props) {
       }),
       controls: defaultControls({
         attributionOptions: { collapsible: false },
-      }).extend([new FullScreen(), new ScaleLine({ units: 'metric' })]),
-      interactions: defaultInteractions().extend([new DragRotateAndZoom()])
+      }).extend([]),
+      //interactions: defaultInteractions().extend([new DragRotateAndZoom()])
     });
 
     initialMap.on('click', handleMapClick);

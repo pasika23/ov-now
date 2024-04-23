@@ -8,16 +8,16 @@
 
 .map-container {
   position: absolute;
-  top: 50px;
+  top: calc(7vh + 2vh);
   left: 0;
   right: 0;
   bottom: 0;
 }
 
-.map{
+/*.map{
   height: calc(100vh - 50px);
   width: 100%;
-}
+}*/
 
 .clicked-coord-label{
   position: absolute;
@@ -38,16 +38,16 @@ html, body {
 }
 
 
-.map-container:-webkit-full-screen {
+/*.map-container:-webkit-full-screen {
   height: 100%;
   margin: 0;
   z-index: 999;
-}
+}*/
 
 /* position the rotate control lower than usual */
-.map-container .ol-rotate {
+/*.map-container .ol-rotate {
   z-index: 999;
-}
+}*/
 
 .container {
   position: relative;
@@ -61,10 +61,26 @@ html, body {
   right: 0;
   margin-right: 10px;
   border: 2px solid black;
+  bottom: 3vh;
 }
 
 .background-select img {
   width: 20px;
   height: 20px;
   margin-left: 5px;
+}
+
+.app-label {
+  text-align: center;
+  flex: 1;
+  background-color: #fd7e78;
+  padding: 2vh;
+  height: 7vh;
+}
+
+.app-label p {
+  font-size: 32px;
+  font-weight: bold;
+  color: rgb(0, 0, 0);
+  margin: 0;
 }

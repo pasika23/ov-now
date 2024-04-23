@@ -1,11 +1,11 @@
 import React from 'react';
-import './Header.css';
+import '../App.css';
 
 function Header() {
   return (
     <div className="header">
       <div className="app-label">
-        <p>App-name</p>
+        <p>ÖV-Now</p>
       </div>
     </div>
   );

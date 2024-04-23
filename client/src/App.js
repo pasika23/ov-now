@@ -45,7 +45,7 @@ function App() {
   // <MapWrapper features={features} />
   return (
     <div className="App">      
-      <Header />    
+      <Header />  
       <MapWrapper features={features} />
     </div>
   )
