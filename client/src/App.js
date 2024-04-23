@@ -19,7 +19,7 @@ function App() {
   // GeoJson API (read from flat .json file in public directory)
   useEffect(() => {
     // Folgende URL nutzen, falls das Server Backend läuft (FastAPI)
-    // fetch('http://localhost:8000/points/')
+    // fetch('http://localhost:8000/points/')cd
     // Test Geojson Datei, falls das Server Backend nicht läuft (FastAPI)
     fetch('/geojson_points.json')
       .then(response => response.json())
