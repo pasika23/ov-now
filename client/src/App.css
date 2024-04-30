@@ -8,11 +8,10 @@
 
 .container {
   position: relative;
-  
 }
 
 .map-container {
-  position: absolute;
+  position: relative;
   height: 90vh;
   left: 0;
   right: 0;
@@ -38,10 +37,10 @@
 
 .header {
   display: flex;
-  align-items: center; /* Centra verticalmente */
+  align-items: center;
   justify-content: center;
   background-color: #fd7e78;
-  height: 10vh;
+  height: 20vh;
 }
 
 .app-label p {

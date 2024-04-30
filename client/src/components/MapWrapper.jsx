@@ -209,7 +209,7 @@ function MapWrapper(props) {
 
   return (
     <div>
-      <div className="map-fullscreen-container">
+      <div className="container">
         <div ref={mapElement} className="map-container"></div>
         <div className="clicked-coord-label">
           <p>{selectedCoord ? toStringXY(selectedCoord, 5) : ''}</p>
