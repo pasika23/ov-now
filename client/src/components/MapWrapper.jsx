@@ -18,7 +18,6 @@ import Landeskarte_farbe from '../Image/Landeskarte_farbe.png';
 import Landeskarte_grau from '../Image/Landeskarte_grau.png';
 import Bild_Luftbild from '../Image/Bild_Luftbild.png';
 import Bild_osm from '../Image/Bild_osm.png'
-import InfoLinien from './InfoLinien';
 
 
 function MapWrapper(props) {
@@ -36,16 +35,6 @@ function MapWrapper(props) {
   const mapRef = useRef();
   mapRef.current = map;
 
-  const [InfoLinienOpen, setInfoLinienOpen] = useState(false);
-
-  const openInfoLinien = () => {
-    setInfoLinienOpen(true);
-  };
-
-  const closeInfoLinien = () => {
-    setInfoLinienOpen(false);
-  };
-
   useEffect(() => {
     const initialFeaturesLayer = new VectorLayer({
       source: new VectorSource(),
@@ -56,8 +45,8 @@ function MapWrapper(props) {
       layers: [getBackgroundLayer(), initialFeaturesLayer],
       view: new View({
         projection: 'EPSG:3857',
-        center: [2600000, 1200000],
-        zoom: 16,
+        center: [919705.97978, 5923388.48616],
+        zoom: 1,
         maxZoom: 16,
         minZoom: getMinZoom(),
         extent: getBackgroundExtent(),
@@ -253,10 +242,6 @@ function MapWrapper(props) {
           </div>
         </div>
       )}
-      <div className='change-window'>
-        <button onClick={openInfoLinien}>Apri Seconda Finestra</button>
-        <InfoLinien isOpen={InfoLinienOpen} onClose={closeInfoLinien} />
-      </div>
     </div>
   );
 }

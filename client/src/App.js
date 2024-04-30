@@ -5,9 +5,9 @@ import { useState } from 'react';
 import MapWrapper from './components/MapWrapper.jsx'
 import { DataGrid } from '@mui/x-data-grid';
 import Header from './components/Header';
-import InfoLinien from './components/InfoLinien';
-
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import InfoPage from './components/InfoPage';
+import GeoJSON from 'ol/format/GeoJSON';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
   
@@ -39,12 +39,16 @@ function App() {
       })
 
   },[])
-  // <MapWrapper features={features} />
+
   return (
-    <div className="App">      
-      <Header />
-      <InfoLinien /> 
-      <MapWrapper features={features} />
+    <div className="App">
+      <Router>
+        <Header />
+        <Routes>
+          <Route path="/" element={<MapWrapper features={features} />} />
+          <Route path="/info-page" element={<InfoPage />} /> 
+        </Routes>
+      </Router>
     </div>
   )
 }
