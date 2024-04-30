@@ -12,7 +12,6 @@ import { toStringXY } from 'ol/coordinate';
 import { Fill, Stroke, Circle, Style } from 'ol/style.js';
 import { DragRotateAndZoom, defaults as defaultInteractions } from 'ol/interaction.js';
 import { FullScreen, ScaleLine, defaults as defaultControls } from 'ol/control.js';
-import './MapWrapper.css';
 import LayersIcon from '@mui/icons-material/Layers';
 import Landeskarte_farbe from '../Image/Landeskarte_farbe.png';
 import Landeskarte_grau from '../Image/Landeskarte_grau.png';
