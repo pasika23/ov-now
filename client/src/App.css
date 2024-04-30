@@ -14,41 +14,6 @@
   bottom: 0;
 }
 
-/*.map{
-  height: calc(100vh - 50px);
-  width: 100%;
-}*/
-
-/*.clicked-coord-label{
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  background: white;
-  border-radius: 5px;
-}
-
-.clicked-coord-label p {
-  margin: 10px;
-}*/
-
-
-/*html, body {
-  margin: 0;
-  height: 100%;
-}*/
-
-
-/*.map-container:-webkit-full-screen {
-  height: 100%;
-  margin: 0;
-  z-index: 999;
-}*/
-
-/* position the rotate control lower than usual */
-/*.map-container .ol-rotate {
-  z-index: 999;
-}*/
-
 .container {
   position: relative;
 }
@@ -70,9 +35,10 @@
   margin-left: 5px;
 }
 
-.app-label {
-  text-align: center;
-  flex: 1;
+.header {
+  display: flex;
+  align-items: center; /* Centra verticalmente */
+  justify-content: center;
   background-color: #fd7e78;
   padding: 2vh;
   height: 7vh;
@@ -83,4 +49,24 @@
   font-weight: bold;
   color: rgb(0, 0, 0);
   margin: 0;
+}
+
+.header nav ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.header nav ul li {
+  display: inline;
+  margin-right: 20px;
+}
+
+.header nav ul li a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.header nav ul li a:hover {
+  text-decoration: underline;
 }
