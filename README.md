@@ -18,10 +18,22 @@
    ```
 
 ## Konfiguration
-1. 
+löschen vor Abgabe wenn nichts reinkommt.
 
 ## Backend
 
+### Datenabfrage
+#### Datenherkunft
+#### Limitationen
+-> Tabellen
+
+### Datenverarbeitung
+
+#### Slicing
+Pascal
+
+#### Weiterverarbeitung
+Pascal
 
 ## Frontend
 1. Navigiere in das Verzeichnis `client`:
