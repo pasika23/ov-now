@@ -25,7 +25,7 @@ löschen vor Abgabe wenn nichts reinkommt.
 ### Datenabfrage
 
 ### Datenherkunft
-Zuerst wollten wir intuitiv die Daten von der SBB oder OpenData.ch beziehen. Leider sind alle diese API's etwas anderes als wir benötigen oder / und sie sind nicht zugänglich für nichts zahlende Studenten. 
+Zuerst wollten wir intuitiv die Daten von der SBB oder OpenData.ch beziehen. Leider sind alle diese API's etwas anderes als wir benötigen oder / und sie sind nicht zugänglich für nichts zahlende Studenten. So endeten wir bei GeoOps. 
 
 ### Limitationen
 #### Genauigkeit
