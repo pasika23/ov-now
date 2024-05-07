@@ -10,7 +10,7 @@
    ```
 2. Navigiere in das Hauptverzeichnis des Projekts:
    ```
-   cd ov-now
+   cd ..\ov-now\client
    ```
 3. Installiere die Abhängigkeiten:
    ```
@@ -18,26 +18,15 @@
    ```
 
 ## Konfiguration
-1. Erstelle eine Datei `.env` im Hauptverzeichnis des Projekts.
-2. Füge die erforderlichen API-Schlüssel (z. B. Google Maps API-Schlüssel) in die `.env`-Datei ein.
-   ```
-   API_KEY=dein_api_schlüssel_hier
-   ```
+1. 
 
 ## Backend
-1. Navigiere in das Verzeichnis `backend`:
-   ```
-   cd backend
-   ```
-2. Starte den Backend-Server:
-   ```
-   npm start
-   ```
+
 
 ## Frontend
-1. Navigiere in das Verzeichnis `frontend`:
+1. Navigiere in das Verzeichnis `client`:
    ```
-   cd frontend
+   cd ..\ov-now\client
    ```
 2. Starte den Frontend-Server:
    ```
@@ -46,26 +35,9 @@
 
 ## Verwendung
 1. Öffne deinen Browser und gehe zu `http://localhost:3000`.
-2. Gib deinen aktuellen Standort oder die Startadresse ein.
-3. Wähle das gewünschte Ziel aus.
-4. Zeige die Echtzeitankunftszeiten der öffentlichen Verkehrsmittel an.
-
-## Mitwirken
-Wenn du zu ÖV-Now beitragen möchtest, befolge diese Schritte:
-1. Erstelle eine Fork dieses Repositories.
-2. Erstelle einen Branch für deine Änderungen:
-   ```
-   git checkout -b feature/neues_feature
-   ```
-3. Mache deine Änderungen und commite sie:
-   ```
-   git commit -m "Füge neues Feature hinzu"
-   ```
-4. Pushe deinen Branch in dein Remote-Repository:
-   ```
-   git push origin feature/neues_feature
-   ```
-5. Erstelle eine Pull-Request im Hauptrepository.
+2. 
+3. 
+4. 
 
 ## Kontakt
 Für Fragen oder Anregungen kontaktiere uns unter team@ov-now.com.
