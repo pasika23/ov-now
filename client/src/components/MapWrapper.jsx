@@ -18,6 +18,7 @@ import Landeskarte_grau from '../Image/Landeskarte_grau.png';
 import Bild_Luftbild from '../Image/Bild_Luftbild.png';
 import Bild_osm from '../Image/Bild_osm.png'
 import CheckBoxLayers from './Layers'; 
+import BackgroundButton from './backgroundButton';
 
 function MapWrapper(props) {
   const [map, setMap] = useState();
@@ -160,83 +161,20 @@ function MapWrapper(props) {
     }
   };
 
-  const handleBackgroundChange = (event) => {
-    // Salva la vista corrente prima del cambio dello sfondo
-    const currentCenter = map.getView().getCenter();
-    const currentZoom = map.getView().getZoom();
-    setCurrentView({ center: currentCenter, zoom: currentZoom });
-
-    const selectedValue = event.target.value;
-    setBackgroundMap(selectedValue);
-    const extent = getBackgroundExtent();
-    if (map) {
-      map.getView().fit(extent, map.getSize());
-    };
-
-    toggleMenu();
-
-    // Ripristina la vista corrente dopo il cambio dello sfondo
-    if (currentView) {
-      map.getView().setCenter(currentView.center);
-      map.getView().setZoom(currentView.zoom);
-    }
-  };
-
-  const toggleMenu = () => {
-    setMenuOpen(!menuOpen);
-  };
-
-  
-  const backgroundImageSrc = (() => {
-    switch (backgroundMap) {
-      case 'Landeskarte-farbe':
-        return Landeskarte_farbe;
-      case 'Landeskarte-grau':
-        return Landeskarte_grau;
-      case 'Luftbild':
-        return Bild_Luftbild;
-      case 'osm':
-        return Bild_osm;
-      default:
-        return Landeskarte_farbe;
-    }
-  })();
-
   return (
     <div>
       <CheckBoxLayers />
       <div className="container">
         <div ref={mapElement} className="map-container"></div>
+        <div className="white-overlay"></div>
         <div className="clicked-coord-label">
           <p>{selectedCoord ? toStringXY(selectedCoord, 5) : ''}</p>
         </div>
       </div>
-      <div className="background-container" onClick={toggleMenu}>
-        <img src={backgroundImageSrc} width="50" height="50" onClick={toggleMenu} />
-      </div>
-      {menuOpen && (
-        <div className="background-select">
-          <label htmlFor="background-map">Background Map:</label>
-          <div>
-            <div onClick={() => handleBackgroundChange({ target: { value: 'Landeskarte-farbe' } })}>
-              <p>Landeskarte farben</p>
-              <img src={Landeskarte_farbe} width="50" height="50" />
-            </div>
-            <div onClick={() => handleBackgroundChange({ target: { value: 'Landeskarte-grau' } })}>
-              <p>Landeskarte grau</p>
-              <img src={Landeskarte_grau} width="50" height="50" />
-            </div>
-            <div onClick={() => handleBackgroundChange({ target: { value: 'Luftbild' } })}>
-              <p>Luftbild</p>
-              <img src={Bild_Luftbild} width="50" height="50" />
-            </div>
-            <div onClick={() => handleBackgroundChange({ target: { value: 'osm' } })}>
-              <p>OpenStreetMap</p>
-              <img src={Bild_osm} width="50" height="50" />
-            </div>
-          </div>
-        </div>
-      )}
+      <BackgroundButton
+        backgroundMap={backgroundMap}
+        handleBackgroundChange={(value) => setBackgroundMap(value)}
+      />
     </div>
   );
 }

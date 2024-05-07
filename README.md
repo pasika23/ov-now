@@ -39,5 +39,3 @@
 3. 
 4. 
 
-## Kontakt
-Für Fragen oder Anregungen kontaktiere uns unter team@ov-now.com.

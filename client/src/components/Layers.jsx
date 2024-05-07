@@ -11,47 +11,87 @@ function CheckBoxLayers() {
 
   return (
     <div className="checkbox-list-container">
-      <h2>Seleziona le opzioni desiderate:</h2>
+      <h2>Layers</h2>
       <form>
         <input
           type="checkbox"
-          id="opzione1"
-          name="opzione1"
-          value="opzione1"
-          checked={checkedItems.opzione1 || false}
+          id="zuglinien"
+          name="zuglinien"
+          value="zuglinien"
+          checked={checkedItems.zuglinien || false}
           onChange={handleChange}
         />
-        <label htmlFor="opzione1">Opzione 1</label><br />
+        <label htmlFor="zuglinien">Zuglinien</label><br />
 
         <input
           type="checkbox"
-          id="opzione2"
-          name="opzione2"
-          value="opzione2"
-          checked={checkedItems.opzione2 || false}
+          id="buslinien"
+          name="buslinien"
+          value="buslinien"
+          checked={checkedItems.buslinien || false}
           onChange={handleChange}
         />
-        <label htmlFor="opzione2">Opzione 2</label><br />
+        <label htmlFor="buslinien">Buslinien</label><br />
 
         <input
           type="checkbox"
-          id="opzione3"
-          name="opzione3"
-          value="opzione3"
-          checked={checkedItems.opzione3 || false}
+          id="tramlinien"
+          name="tramlinien"
+          value="tramlinien"
+          checked={checkedItems.tramlinien || false}
           onChange={handleChange}
         />
-        <label htmlFor="opzione3">Opzione 3</label><br />
+        <label htmlFor="tramlinien">Tramlinien</label><br />
 
         <input
           type="checkbox"
-          id="opzione4"
-          name="opzione4"
-          value="opzione4"
-          checked={checkedItems.opzione4 || false}
+          id="schiffelinien"
+          name="schiffelinien"
+          value="schiffelinien"
+          checked={checkedItems.schiffelinien || false}
           onChange={handleChange}
         />
-        <label htmlFor="opzione4">Opzione 4</label><br />
+        <label htmlFor="schiffelinien">Schiffelinien</label><br />
+
+        <input
+          type="checkbox"
+          id="zug"
+          name="zug"
+          value="zug"
+          checked={checkedItems.zug || false}
+          onChange={handleChange}
+        />
+        <label htmlFor="zug">Zug</label><br />
+
+        <input
+          type="checkbox"
+          id="bus"
+          name="bus"
+          value="bus"
+          checked={checkedItems.bus || false}
+          onChange={handleChange}
+        />
+        <label htmlFor="bus">Bus</label><br />
+
+        <input
+          type="checkbox"
+          id="tram"
+          name="tram"
+          value="tram"
+          checked={checkedItems.tram || false}
+          onChange={handleChange}
+        />
+        <label htmlFor="tram">Tram</label><br />
+
+        <input
+          type="checkbox"
+          id="schiffe"
+          name="schiffe"
+          value="schiffe"
+          checked={checkedItems.schiffe || false}
+          onChange={handleChange}
+        />
+        <label htmlFor="schiffe">Schiffe</label><br />
       </form>
     </div>
   );

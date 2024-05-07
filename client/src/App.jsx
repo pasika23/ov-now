@@ -3,8 +3,8 @@ import React, { useEffect } from 'react';
 import { useState } from 'react';
 import MapWrapper from './components/MapWrapper.jsx'
 import { DataGrid } from '@mui/x-data-grid';
-import Header from './components/Header';
-import InfoPage from './components/InfoPage';
+import Header from './components/Header.jsx';
+import InfoPage from './components/InfoPage.jsx';
 import GeoJSON from 'ol/format/GeoJSON';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 

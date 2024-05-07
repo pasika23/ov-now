@@ -3,11 +3,12 @@
     position: absolute;
     top: 10vh;
     left: 0;
-    z-index: 999; /* Assicura che il componente si sovrapponga ad altri elementi */
+    z-index: 999;
     padding: 20px;
     background-color: #f9f9f9;
     border: 1px solid #ddd;
     border-radius: 5px;
+    text-align: left;
   }
   
   .checkbox-list-container h2 {
