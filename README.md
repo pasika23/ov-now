@@ -6,7 +6,7 @@
 ## Installation
 1. Klone das Repository auf deinen Computer:
    ```
-   git clone https://github.com/deinbenutzername/ov-now.git
+   git clone git@github.com:benutzername/ov-now.git
    ```
 2. Navigiere in das Hauptverzeichnis des Projekts:
    ```
