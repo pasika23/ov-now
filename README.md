@@ -1,7 +1,7 @@
 # ÖV-Now
 
 ## Beschreibung
-ÖV-Now ist eine Webanwendung zur Echtzeitabfrage von öffentlichen Verkehrsmitteln.
+ÖV-Now ist eine App, die Sie über den Verkehr auf dem Laufenden hält, so dass Sie immer die beste Route wählen können.
 
 ## Installation
 1. Klone das Repository auf deinen Computer:
