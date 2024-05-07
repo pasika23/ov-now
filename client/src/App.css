@@ -12,7 +12,9 @@
 
 .map-container {
   position: relative;
+  /*height: calc(100%-10vh);*/
   height: 90vh;
+  top:0;
   left: 0;
   right: 0;
   bottom: 0;
@@ -40,7 +42,7 @@
   align-items: center;
   justify-content: center;
   background-color: #fd7e78;
-  height: 20vh;
+  height: 10vh;
 }
 
 .app-label p {

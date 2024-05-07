@@ -1,0 +1,28 @@
+/* Stili per il componente CheckboxList */
+.checkbox-list-container {
+    position: absolute;
+    top: 10vh;
+    left: 0;
+    z-index: 999; /* Assicura che il componente si sovrapponga ad altri elementi */
+    padding: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+  }
+  
+  .checkbox-list-container h2 {
+    margin-bottom: 10px;
+  }
+  
+  .checkbox-list-container form {
+    margin-top: 10px;
+  }
+  
+  .checkbox-list-container input[type="checkbox"] {
+    margin-right: 5px;
+  }
+  
+  .checkbox-list-container label {
+    margin-right: 10px;
+  }
+  

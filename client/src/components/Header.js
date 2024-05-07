@@ -13,7 +13,7 @@ function Header() {
                 <Link to="/">Karte</Link>
               </li>
               <li>
-                <Link to="/info-page">Info Page</Link>
+                <Link to="/InfoPage">Info Page</Link>
               </li>
             </ul>
           </nav>

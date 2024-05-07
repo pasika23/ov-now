@@ -17,7 +17,7 @@ import Landeskarte_farbe from '../Image/Landeskarte_farbe.png';
 import Landeskarte_grau from '../Image/Landeskarte_grau.png';
 import Bild_Luftbild from '../Image/Bild_Luftbild.png';
 import Bild_osm from '../Image/Bild_osm.png'
-
+import CheckBoxLayers from './Layers'; 
 
 function MapWrapper(props) {
   const [map, setMap] = useState();
@@ -77,7 +77,7 @@ function MapWrapper(props) {
   };
 
   useEffect(() => {
-    if (props.features.length) {
+    if (featuresLayer && props.features.length) {
       featuresLayer.setSource(
         new VectorSource({
           features: props.features
@@ -87,15 +87,11 @@ function MapWrapper(props) {
         padding: [100, 100, 100, 100]
       });
     }
-  }, [props.features]);
+  }, [props.features, featuresLayer, map]);
 
   const handleMapClick = (event) => {
     const clickedCoord = mapRef.current.getCoordinateFromPixel(event.pixel);
-    //const transformedCoord = transform(clickedCoord, 'EPSG:4326', 'EPSG:3857');
-    //setSelectedCoord(transormedCoord);
-    //console.log(transormedCoord);
     setSelectedCoord(clickedCoord);
-    console.log(clickedCoord);
   };
 
   const getBackgroundLayer = () => {
@@ -118,7 +114,6 @@ function MapWrapper(props) {
           // serverType: 'mapserver'
         })
       });
-    //Laden des WMTS von geo.admin.ch > Hintergrungkarte in der Applikation
     } else if (backgroundMap === 'Landeskarte-grau') {
       return new TileLayer({
         source: new TileWMS({
@@ -209,6 +204,7 @@ function MapWrapper(props) {
 
   return (
     <div>
+      <CheckBoxLayers />
       <div className="container">
         <div ref={mapElement} className="map-container"></div>
         <div className="clicked-coord-label">

@@ -1,4 +1,3 @@
-/* global GeoJSON */
 import './App.css';
 import React, { useEffect } from 'react';
 import { useState } from 'react';
@@ -46,7 +45,7 @@ function App() {
         <Header />
         <Routes>
           <Route path="/" element={<MapWrapper features={features} />} />
-          <Route path="/info-page" element={<InfoPage />} /> 
+          <Route path="/InfoPage" element={<InfoPage />} /> 
         </Routes>
       </Router>
     </div>
