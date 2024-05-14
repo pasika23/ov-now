@@ -134,10 +134,12 @@ The final element.
 #### Mainpage
 ##### GUI
 ![GUI_Desktop_Main](assets/img/GUI_Desktop_Main.png)
+![GUI_Mobile_Main](assets/img/GUI_Mobile_Main.png)
 ##### Farben
 #### Infopage
 ##### GUI
-
+![GUI_Desktop_Infopage](assets/img/GUI_Desktop_Infopage.png)
+![GUI_Mobile_Infopage](assets/img/GUI_Mobile_Infopage.png)
 ##### Farben
 
 ## Backend
