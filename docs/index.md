@@ -133,13 +133,25 @@ The final element.
 ### Website Konzept
 #### Mainpage
 ##### GUI
+<center>
 ![GUI_Desktop_Main](assets/img/GUI_Desktop_Main.png)
+</center>
+<center>
 ![GUI_Mobile_Main](assets/img/GUI_Mobile_Main.png)
+</center>
+
 ##### Farben
+
 #### Infopage
+
 ##### GUI
+<center>
 ![GUI_Desktop_Infopage](assets/img/GUI_Desktop_Infopage.png)
+</center>
+<center>
 ![GUI_Mobile_infopage](assets/img/GUI_Mobile_infopage.png)
+</center>
+
 ##### Farben
 
 ## Backend
