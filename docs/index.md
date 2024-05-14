@@ -1,13 +1,3 @@
-<head>
-    <style>
-        img {
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
-        }
-    </style>
-</head>
-
 ---
 layout: default
 ---
@@ -24,7 +14,7 @@ There should be whitespace between paragraphs. We recommend including a README, 
 
 This is a normal paragraph following a header. GitHub is a code hosting platform for version control and collaboration. It lets you and others work together on projects from anywhere.
 
-## Motivation
+## Motivation {#motivation}
 
 > This is a blockquote following a header.
 >
@@ -132,35 +122,38 @@ Long, single-line code blocks should not wrap. They should horizontally scroll i
 The final element.
 ```
 
-## Ziel
+## Ziel {#ziel}
 
-## App
-### Wichtige features
-### Anwendung
+## App {#app}
+### Wichtige features {#wichtige-features}
+### Anwendung {#anwendung}
 
-## Frontend
-### Programmier sprache
-### Website Konzept
-#### Mainpage
-##### GUI
+## Frontend {#frontend}
+
+### Programmier sprache {#programmier-sprache}
+### Website Konzept {#website-konzept}
+#### Mainpage {#mainpage}
+##### GUI {#GUI_main}
 ![GUI_Desktop_Main](assets/img/GUI_Desktop_Main.png)
 
 ![GUI_Mobile_Main](assets/img/GUI_Mobile_Main.png)
 
-##### Farben
+##### Farben {#farben_main}
 
-#### Infopage
+#### Infopage {#infopage}
 
-##### GUI
+##### GUI {#GUI_info}
 ![GUI_Desktop_Infopage](assets/img/GUI_Desktop_Infopage.png)
 
 ![GUI_Mobile_infopage](assets/img/GUI_Mobile_infopage.png)
 
-##### Farben
+##### Farben {#farben_info}
 
-## Backend
-### API
-### Server
+## Backend {#backend}
 
-## Daten
-### Quellen
+### API {#API}
+### Server {#server}
+
+## Daten {#daten}
+### Bezugssystem {#bezugssystem}
+### Quellen {#quellen}
