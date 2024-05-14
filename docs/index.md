@@ -1,13 +1,3 @@
-<head>
-    <style>
-        img {
-            display: block;
-            margin-left: auto;
-            margin-right: 0;
-        }
-    </style>
-</head>
-
 ---
 layout: default
 ---
