@@ -34,6 +34,10 @@
             display: none;
         }
 
+        .selected {
+            display: block;
+        }
+
         footer {
             margin-top: 20px; /* Aggiunto margine superiore */
         }
@@ -88,13 +92,15 @@
                       <ul class="sub-chapters" id="frontend-sub">
                           <li><a href="#Programmier-sprache">Programmier sprache</a></li>
                           <li><a href="#Website-Konzept">Website Konzept</a></li>
-                          <li><a href="#Mainpage">Mainpage</a>
+                          <li class="main-chapter" data-target="mainpage">
+                              <a href="#Mainpage">Mainpage</a>
                               <ul class="sub-sub-chapters">
                                   <li><a href="#GUI">GUI</a></li>
                                   <li><a href="#Farben">Farben</a></li>
                               </ul>
                           </li>
-                          <li><a href="#Infopage">Infopage</a>
+                          <li class="main-chapter" data-target="infopage">
+                              <a href="#Infopage">Infopage</a>
                               <ul class="sub-sub-chapters">
                                   <li><a href="#GUI">GUI</a></li>
                                   <li><a href="#Farben">Farben</a></li>
@@ -143,12 +149,12 @@
                 chapter.addEventListener("mouseenter", function() {
                     const targetId = chapter.getAttribute("data-target");
                     const subChapter = document.getElementById(targetId + "-sub");
-                    subChapter.style.display = "block";
+                    subChapter.classList.add("selected"); // Aggiunto la classe "selected"
                 });
                 chapter.addEventListener("mouseleave", function() {
                     const targetId = chapter.getAttribute("data-target");
                     const subChapter = document.getElementById(targetId + "-sub");
-                    subChapter.style.display = "none";
+                    subChapter.classList.remove("selected"); // Rimossa la classe "selected"
                 });
             });
         });
