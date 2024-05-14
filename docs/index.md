@@ -122,38 +122,38 @@ Long, single-line code blocks should not wrap. They should horizontally scroll i
 The final element.
 ```
 
-## Ziel
+## Ziel {#ziel}
 
-## App
-### Wichtige features
-### Anwendung
+## App {#app}
+### Wichtige features {#wichtige-features}
+### Anwendung {#anwendung}
 
-## Frontend
+## Frontend {#frontend}
 
-### Programmier sprache
-### Website Konzept
-#### Mainpage
-##### GUI
+### Programmier sprache {#programmier-sprache}
+### Website Konzept {#website-konzept}
+#### Mainpage {#mainpage}
+##### GUI {#GUI_main}
 ![GUI_Desktop_Main](assets/img/GUI_Desktop_Main.png)
 
 ![GUI_Mobile_Main](assets/img/GUI_Mobile_Main.png)
 
-##### Farben
+##### Farben {#farben_main}
 
-#### Infopage
+#### Infopage {#infopage}
 
-##### GUI
+##### GUI {#GUI_info}
 ![GUI_Desktop_Infopage](assets/img/GUI_Desktop_Infopage.png)
 
 ![GUI_Mobile_infopage](assets/img/GUI_Mobile_infopage.png)
 
-##### Farben
+##### Farben {#farben_info}
 
-## Backend
+## Backend {#backend}
 
-### API
-### Server
+### API {#API}
+### Server {#server}
 
-## Daten
-### Bezugssystem
-### Quellen
+## Daten {#daten}
+### Bezugssystem {#bezugssystem}
+### Quellen {#quellen}
