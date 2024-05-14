@@ -129,6 +129,7 @@ The final element.
 ### Anwendung
 
 ## Frontend
+
 ### Programmier sprache
 ### Website Konzept
 #### Mainpage
@@ -149,8 +150,10 @@ The final element.
 ##### Farben
 
 ## Backend
+
 ### API
 ### Server
 
 ## Daten
+### Bezugssystem
 ### Quellen
