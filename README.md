@@ -1,8 +1,21 @@
+# ToDo
+GutHub Pages: Konzept, Roadmap, Capabilities & Limitations, Screenshots Funktionalität, 
+Readme: wie startet man es, 
+
+
+Backend - Frontend FastAPI:
+2 Abfragen:
+1.) get_all_journey(bbox) #aufgerufen beim laden -> gibt was geops bei get_trajectories gibt + für jeden sichtbaren zug die get_journey
+2.) get_info(trainID) #aufgerufen beim clicken -> gibt weiter was im get_calls bekommt
+
+
 # ÖV-Now
 
 ## Beschreibung
 ÖV-Now ist eine App, die Sie über den Verkehr auf dem Laufenden hält, so dass Sie immer die beste Route wählen können.
 Die Details entnehmen sie unserer GitHub [Page](Mattia-V01.github.io/ov-now/)
+
+
 
 ## Installation
 1. Klone das Repository auf deinen Computer:
