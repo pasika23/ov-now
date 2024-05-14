@@ -2,6 +2,7 @@
 
 ## Beschreibung
 ÖV-Now ist eine App, die Sie über den Verkehr auf dem Laufenden hält, so dass Sie immer die beste Route wählen können.
+Die Details entnehmen sie unserer GitHub [Page](Mattia-V01.github.io/ov-now/)
 
 ## Installation
 1. Klone das Repository auf deinen Computer:
