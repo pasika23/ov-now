@@ -139,7 +139,7 @@ The final element.
 #### Infopage
 ##### GUI
 ![GUI_Desktop_Infopage](assets/img/GUI_Desktop_Infopage.png)
-![GUI_Mobile_Infopage](assets/img/GUI_Mobile_Infopage.png)
+![GUI_Mobile_infopage](assets/img/GUI_Mobile_infopage.png)
 ##### Farben
 
 ## Backend
