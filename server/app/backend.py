@@ -1,37 +1,14 @@
-from fastapi import FastAPI, HTTPException, Response, File
-from fastapi.responses import JSONResponse
-from starlette.responses import FileResponse
-import os
-import uvicorn
-#import  #to call geoOps API / just do it with FastAPI???
-
-
 ##### this is a proxy with caching
+# you need to (pip / conda) install fastAPI, fastapi-cache, pydantic, requests, uvicorn
 
-#defining username and key
+#definine key, can be swaped if credits are used up
+key="5cc87b12d7c5370001c1d65576ce5bd4be5a4a349ca401cdd7cac1ff"
 
-
-
-#call get_trajectories
-
-
-
-#call get_journey for specific trainID
-
-
-### calling geoOps API get_trajectories and for each train call get_journey
-# maybe filter vehicle type so that only journey of trains are loaded
-
-
-# call get_calls for specific trainID
-
-
-
-#caching the results of the calls
-
-
-
-# return the results of the calls to Frontend-calls:
+from fastapi import FastAPI, Query, HTTPException
+from pydantic import BaseModel
+import requests
+from functools import lru_cache
+from fastapi import Body
 
 app = FastAPI()
 
@@ -44,31 +21,54 @@ class BBox(BaseModel):
 class TrainID(BaseModel):
     train_id: str
 
-# Endpoint to give trajectories and journey based on bounding box
+# Function to fetch GeoJSON data from the provided API link
+@lru_cache(maxsize=128)
+def fetch_geojson_from_external_api(api_url, api_key):
+    response = requests.get(api_url)
+    if response.status_code == 200:
+        return response.json()
+    else:
+        raise HTTPException(status_code=response.status_code, detail="Failed to fetch GeoJSON data")
+
+# Function to fetch Journeys data for a given train ID
+@lru_cache(maxsize=128)
+def fetch_journeys_for_train_id(train_id, key):
+    api_url = f"https://api.geops.io/tracker-http/v1/journeys/{train_id}/?key={key}"
+    return fetch_geojson_from_external_api(api_url, key)
+
+# Endpoint to get trajectories and journey based on bounding box
 @app.get("/get_all_journey/")
-async def get_all_journey(bbox: BBox):
+async def get_all_journey(bbox: BBox = Body(..., description="Bounding box coordinates"), key: str = Query(..., description="API key")):
+    # Extract bounding box coordinates
+    bbox_str = f"{bbox.min_lon},{bbox.min_lat},{bbox.max_lon},{bbox.max_lat}"
+    
+    # Construct API URL with dynamic bounding box and provided API key
+    api_url = f"https://api.geops.io/tracker-http/v1/trajectories/sbb/?bbox={bbox_str}&key={key}"  # Adjust if necessary
 
-    # Simulate processing or fetching GeoJSON files
-    trajectories_geojson = "get_trajectories.json"
-    journey_geojson = "get_journey.json"
+    # Call external API to fetch GeoJSON data
+    trajectories_geojson = fetch_geojson_from_external_api(api_url, key)
 
-    # Return paths to GeoJSON files
-    return {
-        "trajectories": f"/geojson/{trajectories_geojson}",
-        "journey": f"/geojson/{journey_geojson}"
-    }
+    # Get Journeys for each train ID in trajectories_geojson
+    for feature in trajectories_geojson["features"]:
+        train_id = feature["properties"]["train_id"]
+        journeys_geojson = fetch_journeys_for_train_id(train_id, key)
+        # Merge journeys_geojson into trajectories_geojson
+        feature["properties"]["journeys"] = journeys_geojson["features"]
 
-# Endpoint to give calls based on train ID
+    # Return fetched GeoJSON data
+    return trajectories_geojson
+
+# Endpoint to get calls based on train ID
 @app.get("/get_info/")
-async def get_info(train_id: str):
+async def get_info(train_id: str = Query(..., description="Train ID"), key: str = Query(..., description="API key")):
+    # Construct API URL with provided train ID and API key
+    api_url = f"https://api.geops.io/tracker-http/v1/calls/{train_id}/?key={key}"  # Adjust if necessary
 
-    # Simulate processing or fetching GeoJSON file
-    calls_geojson = "get_calls.json"
+    # Call external API to fetch GeoJSON data
+    calls_geojson = fetch_geojson_from_external_api(api_url, key)
 
-    # Return path to GeoJSON file
-    return {
-        "calls": f"/geojson/{calls_geojson}"
-    }
+    # Return fetched GeoJSON data
+    return calls_geojson
 
 if __name__ == "__main__":
     import uvicorn
