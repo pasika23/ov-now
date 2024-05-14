@@ -133,7 +133,7 @@ The final element.
 ### Website Konzept
 #### Mainpage
 ##### GUI
-![GUI_Desktop_Main](assets/img/GUI_Desktop_Main.png)
+[GUI_Desktop_Main](assets/img/GUI_Desktop_Main.png)
 ##### Farben
 #### Infopage
 ##### GUI
