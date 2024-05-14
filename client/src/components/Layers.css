@@ -1,29 +1,38 @@
-/* Stili per il componente CheckboxList */
-.checkbox-list-container {
-    position: absolute;
-    top: 10vh;
-    left: 0;
-    z-index: 999;
-    padding: 20px;
-    background-color: #f9f9f9;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    text-align: left;
-  }
-  
-  .checkbox-list-container h2 {
-    margin-bottom: 10px;
-  }
-  
-  .checkbox-list-container form {
-    margin-top: 10px;
-  }
-  
-  .checkbox-list-container input[type="checkbox"] {
-    margin-right: 5px;
-  }
-  
-  .checkbox-list-container label {
-    margin-right: 10px;
-  }
-  
+/* Stili per il componente DropdownChecklist */
+.dropdown-checklist-container {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-toggle {
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.dropdown-content {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 999;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 10px;
+  width: 200px;
+}
+
+.dropdown-content div {
+  margin-bottom: 5px;
+}
+
+.dropdown-content input[type="checkbox"] {
+  margin-right: 5px;
+}
+
+.dropdown-content label {
+  margin-right: 10px;
+}
+

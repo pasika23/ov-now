@@ -162,7 +162,7 @@ function MapWrapper(props) {
   };
 
   return (
-    <div>
+    <div style={{flex: "100 0 0"}}>
       <CheckBoxLayers />
       <div className="container">
         <div ref={mapElement} className="map-container"></div>
