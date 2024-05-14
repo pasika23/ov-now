@@ -27,12 +27,12 @@ app.add_middleware(
 )
 
 # Simple Hello World example
-@app.get("/") 
-async def root(): 
+@app.get("/")
+async def root():
 	return {"message": "Hello GDI Project"}
-	
-    
-# Erstellt eine About Seite mit HTML Output 
+
+
+# Erstellt eine About Seite mit HTML Output
 # import HTMLResponse benötigt
 @app.get("/about/")
 def about():
@@ -105,7 +105,7 @@ async def read_points():
   ]
 })
 
-   
+
 # Post Query - test on the OPENAPI Docs Page
 @app.post("/square")
 def square(some_number: int) -> dict:
