@@ -34,6 +34,10 @@
             display: inline;
             margin-right: 10px;
         }
+
+        .sub-chapters {
+            display: none;
+        }
     </style>
 </head>
 <body>
@@ -66,32 +70,34 @@
             <!-- Indice dei capitoli -->
             <nav>
                 <ul>
-                    <li><a href="#Header-1">Header 1</a></li>
-                    <li><a href="#Motivation">Motivation</a></li>
-                    <li><a href="#Header-3">Header 3</a></li>
-                    <li><a href="#Header-4">Header 4</a></li>
-                    <li><a href="#Header-5">Header 5</a></li>
-                    <li><a href="#Header-6">Header 6</a></li>
-                    <li><a href="#There's-a-horizontal-rule-below-this">Horizontal Rule</a></li>
-                    <li><a href="#Here-is-an-unordered-list">Unordered List</a></li>
-                    <li><a href="#And-an-ordered-list">Ordered List</a></li>
-                    <li><a href="#And-a-nested-list">Nested List</a></li>
-                    <li><a href="#Small-image">Small Image</a></li>
-                    <li><a href="#Large-image">Large Image</a></li>
-                    <li><a href="#Definition-lists-can-be-used-with-HTML-syntax">Definition Lists</a></li>
-                    <li><a href="#Ziel">Ziel</a></li>
-                    <li><a href="#App">App</a></li>
-                    <li><a href="#Frontend">Frontend</a></li>
-                    <li><a href="#Backend">Backend</a></li>
-                    <li><a href="#Daten">Daten</a></li>
+                    <li class="main-chapter" data-target="motivation"><a href="#Motivation">Motivation</a></li>
+                    <li class="main-chapter" data-target="app"><a href="#App">App</a></li>
+                    <li class="main-chapter" data-target="frontend"><a href="#Frontend">Frontend</a></li>
+                    <li class="main-chapter" data-target="backend"><a href="#Backend">Backend</a></li>
+                    <li class="main-chapter" data-target="daten"><a href="#Daten">Daten</a></li>
                 </ul>
             </nav>
-
-
         </header>
 
         <section>
-            {{ content }}
+            <!-- Capitoli principali -->
+            <h2 id="Motivation">Motivation</h2>
+            <div class="sub-chapters" id="motivation">
+                <!-- Sottocapitoli -->
+                <h3 id="Header-3">Header 3</h3>
+                <h3 id="Header-4">Header 4</h3>
+                <!-- Altri sottocapitoli -->
+            </div>
+            
+            <h2 id="App">App</h2>
+            <div class="sub-chapters" id="app">
+                <!-- Sottocapitoli -->
+                <h3 id="Header-5">Header 5</h3>
+                <h3 id="Header-6">Header 6</h3>
+                <!-- Altri sottocapitoli -->
+            </div>
+
+            <!-- Altro contenuto -->
         </section>
 
         <footer>
@@ -102,5 +108,23 @@
         </footer>
     </div>
     <script src="{{ "/assets/js/scale.fix.js" | relative_url }}"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const mainChapters = document.querySelectorAll(".main-chapter");
+            mainChapters.forEach(chapter => {
+                chapter.addEventListener("mouseenter", function() {
+                    const targetId = chapter.getAttribute("data-target");
+                    const subChapter = document.getElementById(targetId);
+                    subChapter.style.display = "block";
+                });
+                chapter.addEventListener("mouseleave", function() {
+                    const targetId = chapter.getAttribute("data-target");
+                    const subChapter = document.getElementById(targetId);
+                    subChapter.style.display = "none";
+                });
+            });
+        });
+    </script>
 </body>
 </html>
