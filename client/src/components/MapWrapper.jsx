@@ -8,25 +8,15 @@ import VectorLayer from 'ol/layer/Vector'
 import VectorSource from 'ol/source/Vector'
 import XYZ from 'ol/source/XYZ'
 import { transform } from 'ol/proj'
-import { toStringXY } from 'ol/coordinate';
 import { Fill, Stroke, Circle, Style } from 'ol/style.js';
-import { DragRotateAndZoom, defaults as defaultInteractions } from 'ol/interaction.js';
 import { FullScreen, ScaleLine, defaults as defaultControls } from 'ol/control.js';
-import LayersIcon from '@mui/icons-material/Layers';
-import Landeskarte_farbe from '../Image/Landeskarte_farbe.png';
-import Landeskarte_grau from '../Image/Landeskarte_grau.png';
-import Bild_Luftbild from '../Image/Bild_Luftbild.png';
-import Bild_osm from '../Image/Bild_osm.png'
 import CheckBoxLayers from './Layers'; 
 import BackgroundButton from './backgroundButton';
 
 function MapWrapper(props) {
   const [map, setMap] = useState();
   const [featuresLayer, setFeaturesLayer] = useState();
-  const [selectedCoord, setSelectedCoord] = useState();
   const [backgroundMap, setBackgroundMap] = useState('Landeskarte-farbe'); // Impostazione predefinita della mappa
-  const [menuOpen, setMenuOpen] = useState(false);
-  const [currentView, setCurrentView] = useState(null);
   const desktopMinZoom = 8.3;
   const mobileMinZoom = 7.5;
 
@@ -54,23 +44,17 @@ function MapWrapper(props) {
       controls: defaultControls({
         attributionOptions: { collapsible: false },
       }).extend([]),
-      //interactions: defaultInteractions().extend([new DragRotateAndZoom()])
     });
-
-    initialMap.on('click', handleMapClick);
 
     setMap(initialMap);
     setFeaturesLayer(initialFeaturesLayer);
-
-    // Salva la vista corrente
-    setCurrentView(initialMap.getView().getCenter(), initialMap.getView().getZoom());
 
     return () => initialMap.setTarget("");
   }, []);
 
   const getMinZoom = () => {
     // Imposta il livello di zoom minimo in base al dispositivo
-    if (window.matchMedia('(max-width: 768px)').matches) {
+    if (window.matchMedia('(max-width: 1080px)').matches) {
       return mobileMinZoom;
     } else {
       return desktopMinZoom;
@@ -89,11 +73,6 @@ function MapWrapper(props) {
       });
     }
   }, [props.features, featuresLayer, map]);
-
-  const handleMapClick = (event) => {
-    const clickedCoord = mapRef.current.getCoordinateFromPixel(event.pixel);
-    setSelectedCoord(clickedCoord);
-  };
 
   const getBackgroundLayer = () => {
     if (backgroundMap === 'osm') {
@@ -165,16 +144,13 @@ function MapWrapper(props) {
     <div style={{flex: "100 0 0"}}>
       <CheckBoxLayers />
       <div className="container">
-        <div ref={mapElement} className="map-container"></div>
         <div className="white-overlay"></div>
-        <div className="clicked-coord-label">
-          <p>{selectedCoord ? toStringXY(selectedCoord, 5) : ''}</p>
-        </div>
+        <div ref={mapElement} className="map-container"></div>
+        <BackgroundButton
+          backgroundMap={backgroundMap}
+          handleBackgroundChange={(value) => setBackgroundMap(value)}
+        />
       </div>
-      <BackgroundButton
-        backgroundMap={backgroundMap}
-        handleBackgroundChange={(value) => setBackgroundMap(value)}
-      />
     </div>
   );
 }

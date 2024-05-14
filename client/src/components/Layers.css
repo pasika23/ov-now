@@ -1,7 +1,11 @@
 /* Stili per il componente DropdownChecklist */
 .dropdown-checklist-container {
-  position: relative;
+  position: absolute;
   display: inline-block;
+  z-index: 999;
+  left: 2%;
+  top: 11%
+  
 }
 
 .dropdown-toggle {
