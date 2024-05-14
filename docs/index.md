@@ -124,13 +124,24 @@ The final element.
 
 ## Ziel
 
-## Methoden
+## App
+### Wichtige features
+### Anwendung
 
-## Wichtige features
+## Frontend
+### Programmier sprache
+### Website Konzept
+#### Mainpage
+##### GUI
+##### Farben
+#### Infopage
+##### GUI
+##### Farben
 
-## Anwendung
+## Backend
+### API
+### Server
 
-## API
-
-## Quellen
+## Daten
+### Quellen
 
