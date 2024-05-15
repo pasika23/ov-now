@@ -46,15 +46,15 @@ Wir möchten, dass sich unsere App an den Stil der ffs-App anlehnt, so dass die 
 Unabhängig vom Stil der ffs-App möchten wir, dass unsere App leicht zu lesen und für jeden zugänglich ist.
 
 #### Mainpage {#mainpage}
-![GUI_Desktop_Main](assets/img/GUI_Desktop_Main.png)
+![GUI_Desktop_Main](assets/img/GUI_Desktop_Main.png){: style="display:block; margin: 0 auto;"}
 
-![GUI_Mobile_Main](assets/img/GUI_Mobile_Main.png)
+![GUI_Mobile_Main](assets/img/GUI_Mobile_Main.png){: style="display:block; margin: 0 auto;"}
 
 
 #### Infopage {#infopage}
-![GUI_Desktop_Infopage](assets/img/GUI_Desktop_Infopage.png)
+![GUI_Desktop_Infopage](assets/img/GUI_Desktop_Infopage.png){: style="display:block; margin: 0 auto;"}
 
-![GUI_Mobile_infopage](assets/img/GUI_Mobile_infopage.png)
+![GUI_Mobile_infopage](assets/img/GUI_Mobile_infopage.png){: style="display:block; margin: 0 auto;"}
 
 ## Backend {#backend}
 
