@@ -59,7 +59,7 @@ Unabhängig vom Stil der ffs-App möchten wir, dass unsere App leicht zu lesen u
 ## Backend {#backend}
 
 
-### Datenabfrage {#Datenabfrage}
+### Datenabfrage {#datenabfrage}
 
 #### Datenherkunft
 Zuerst wollten wir intuitiv die Daten von der SBB oder OpenData.ch beziehen. Leider sind alle diese API's etwas anderes als wir benötigen oder / und sie sind nicht zugänglich für nichts zahlende Studenten. So endeten wir bei GeoOps. 
@@ -93,7 +93,7 @@ Da die SBB & OpenData -Spuren beide im Sand verliefen nutzen wir nun die Daten d
 Hierbei hat man 100 Credits pro Monat zur Verfüguung. Wir haben verschiedene Accounts die wir jeweils durchswapen können.
 
 
-### alternative API {#laternative-API}
+### alternative API {#alternative-API}
 
 * allgemeine Zugstörungsinformationen oder alle anderen Daten der SBB auf diesem Portal über die folgenden Links:
 https://data.sbb.ch/explore/dataset/rail-traffic-information/api/
