@@ -11,7 +11,11 @@ function BackgroundButton({ setBackgroundMap, toggleMenu }) {
   const handleBackgroundChange = (event) => {
     const selectedValue = event.target.value;
     setBackgroundMap(selectedValue);
-    toggleMenu();
+    toggleMenu(); // Chiama toggleMenu per chiudere il menu dopo aver selezionato uno sfondo
+  };
+
+  const toggle = () => {
+    setMenuOpen(!menuOpen); // Cambia lo stato di menuOpen quando il pulsante viene cliccato
   };
 
   const backgroundImageSrc = (mapType) => {
@@ -30,8 +34,8 @@ function BackgroundButton({ setBackgroundMap, toggleMenu }) {
   };
 
   return (
-    <div className="background-container" onClick={() => setMenuOpen(!menuOpen)}>
-      <img src={backgroundImageSrc()} width="50" height="50" onClick={() => setMenuOpen(!menuOpen)} />
+    <div className="background-container" onClick={toggle}>
+      <img src={backgroundImageSrc()} width="50" height="50" onClick={toggle} />
       {menuOpen && (
         <div className="background-select">
           <label htmlFor="background-map">Background Map:</label>
