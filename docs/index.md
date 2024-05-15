@@ -93,7 +93,7 @@ Da die SBB & OpenData -Spuren beide im Sand verliefen nutzen wir nun die Daten d
 Hierbei hat man 100 Credits pro Monat zur Verfüguung. Wir haben verschiedene Accounts die wir jeweils durchswapen können.
 
 
-### alternative API {#laternative_API}
+### alternative API {#laternative-API}
 
 * allgemeine Zugstörungsinformationen oder alle anderen Daten der SBB auf diesem Portal über die folgenden Links:
 https://data.sbb.ch/explore/dataset/rail-traffic-information/api/
