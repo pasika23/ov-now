@@ -31,6 +31,18 @@ Wenn Sie mit der Infopage fertig sind, können Sie zur Karte zurückkehren, um n
 
 ### Symbologie {#symbologie}
 Um die Verkehrsmittel und die Strecken, auf denen sie verkehren, zu unterscheiden, wurden Symbole eingeführt.
+![Buslinien](assets/img/Buslinien.png)
+![Bus](assets/img/Bus.png)
+
+![Zuglinien](assets/img/Zuglinien.png)
+![Zug](assets/img/Zug.png)
+
+![Tramlinien](assets/img/Tramlinien.png)
+![Tram](assets/img/Tram.png)
+
+![Schiffelinien](assets/img/Schiffelinien.png)
+![Schiffe](assets/img/Schiffe.png)
+
 
 ### Website Konzept {#website-konzept}
 Wir möchten, dass sich unsere App an den Stil der ffs-App anlehnt, so dass die Menschen bereits an den Stil gewöhnt sind und keine Schwierigkeiten haben, die Informationen zu finden.
