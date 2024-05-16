@@ -31,10 +31,17 @@ Wenn Sie mit der Infopage fertig sind, können Sie zur Karte zurückkehren, um n
 
 ### Symbologie {#symbologie}
 Um die Verkehrsmittel und die Strecken, auf denen sie verkehren, zu unterscheiden, wurden Symbole eingeführt.
-| ![Buslinien](assets/img/Buslinien.png) | ![Zuglinien](assets/img/Zuglinien.png) | ![Tramlinien](assets/img/Tramlinien.png) | ![Schiffelinien](assets/img/Schiffelinien.png) |
-|:---------------------------------------:|:--------------------------------------:|:----------------------------------------:|:-------------------------------------------:|
-|             ![Bus](assets/img/Bus.png) |            ![Zug](assets/img/Zug.png) |             ![Tram](assets/img/Tram.png) |                ![Schiffe](assets/img/Schiffe.png) |
+![Buslinien](assets/img/Buslinien.png){: style="float: left"}
+![Bus](assets/img/Bus.png){: style="float: left"}
 
+![Zuglinien](assets/img/Zuglinien.png){: style="float: left"}
+![Zug](assets/img/Zug.png){: style="float: left"}
+
+![Tramlinien](assets/img/Tramlinien.png){: style="float: left"}
+![Tram](assets/img/Tram.png){: style="float: left"}
+
+![Schiffelinien](assets/img/Schiffelinien.png){: style="float: left"}
+![Schiffe](assets/img/Schiffe.png){: style="float: left"}
 
 
 ### Website Konzept {#website-konzept}
