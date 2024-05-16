@@ -1,158 +1,88 @@
 ---
 layout: default
 ---
-
-Text can be **bold**, _italic_, or ~~strikethrough~~.
-
-[Link to another page](./another-page.html).
-
-There should be whitespace between paragraphs.
-
-There should be whitespace between paragraphs. We recommend including a README, or a file with information about your project.
-
-# Header 1
+# ÖV-Now
 
 This is a normal paragraph following a header. GitHub is a code hosting platform for version control and collaboration. It lets you and others work together on projects from anywhere.
 
 ## Motivation {#motivation}
-
-> This is a blockquote following a header.
->
-> When something is important enough, you do it even if the odds are not in your favor.
-
-### Header 3
-
-```js
-// Javascript code with syntax highlighting.
-var fun = function lang(l) {
-  dateformat.i18n = require('./lang/' + l)
-  return true;
-}
-```
-
-```ruby
-# Ruby code with syntax highlighting
-GitHubPages::Dependencies.gems.each do |gem, version|
-  s.add_dependency(gem, "= #{version}")
-end
-```
-
-#### Header 4
-
-*   This is an unordered list following a header.
-*   This is an unordered list following a header.
-*   This is an unordered list following a header.
-
-##### Header 5
-
-1.  This is an ordered list following a header.
-2.  This is an ordered list following a header.
-3.  This is an ordered list following a header.
-
-###### Header 6
-
-| head1        | head two          | three |
-|:-------------|:------------------|:------|
-| ok           | good swedish fish | nice  |
-| out of stock | good and plenty   | nice  |
-| ok           | good `oreos`      | hmm   |
-| ok           | good `zoute` drop | yumm  |
-
-### There's a horizontal rule below this.
-
-* * *
-
-### Here is an unordered list:
-
-*   Item foo
-*   Item bar
-*   Item baz
-*   Item zip
-
-### And an ordered list:
-
-1.  Item one
-1.  Item two
-1.  Item three
-1.  Item four
-
-### And a nested list:
-
-- level 1 item
-  - level 2 item
-  - level 2 item
-    - level 3 item
-    - level 3 item
-- level 1 item
-  - level 2 item
-  - level 2 item
-  - level 2 item
-- level 1 item
-  - level 2 item
-  - level 2 item
-- level 1 item
-
-### Small image
-
-![Octocat](https://github.githubassets.com/images/icons/emoji/octocat.png)
-
-### Large image
-
-![Branching](https://guides.github.com/activities/hello-world/branching.png)
-
-
-### Definition lists can be used with HTML syntax.
-
-<dl>
-<dt>Name</dt>
-<dd>Godzilla</dd>
-<dt>Born</dt>
-<dd>1952</dd>
-<dt>Birthplace</dt>
-<dd>Japan</dd>
-<dt>Color</dt>
-<dd>Green</dd>
-</dl>
-
-```
-Long, single-line code blocks should not wrap. They should horizontally scroll if they are too long. This line should be long enough to demonstrate this.
-```
-
-```
-The final element.
-```
+Wir haben festgestellt, dass jemand, der sich die Informationen in der SBB-App anschaut, keine visuelle Bestätigung dafür hat, wo sich das öffentliche Verkehrsmittel, mit dem er unterwegs ist, in der Realität befindet. Dies kann zu Schwierigkeiten bei der Auswahl der besten Verbindungen führen, um das Ziel so einfach wie möglich zu erreichen.
 
 ## Ziel {#ziel}
+Das Ziel dieses Projekts ist es, ein Geoportal zu schaffen, das die Visualisierung von Live-Daten aller Verkehrsmittel in der Schweiz ermöglicht. Dies wird die Wahl der Routen erleichtern, um Verspätungen zu vermeiden und mögliche unvorhergesehene Zwischenfälle zu beheben.
 
 ## App {#app}
 ### Wichtige features {#wichtige-features}
+Das Hauptmerkmal der App ist die Anzeige von Live-Daten der Verkehrsmittel.
+Jede Linie oder jedes öffentliche Verkehrsmittel kann angeklickt werden und führt zu einer zweiten Seite, die Informationen über die Reise enthält, wie z. B. Bahnhöfe und geplante Verbindungen von diesem Bahnhof. Diese Seite wird als Infopage bezeichnet.
+Die Infoseite ist mit einer Schaltfläche ausgestattet, über die der Link zur geöffneten Seite geteilt werden kann. Auf diese Weise wird auch die Planung von Gruppenreisen einfach.
+Um das Verkehrsmittel, mit dem Sie reisen, leicht zu finden, können Sie die Suchleiste verwenden.
+Für die Zukunft ist auch eine Standortsuche geplant, um das Auffinden von Verkehrsmitteln noch einfacher zu gestalten.
+
 ### Anwendung {#anwendung}
+<video width="640" height="480" controls>
+  <source src="assets/img/Demo.mp4" type="video/mp4">
+</video>
+
+
+Wir gehen davon aus, dass die App vor allem von Personen genutzt wird, die täglich Verkehrsmittel benutzen, und zwar hauptsächlich auf mobilen Geräten.
+Nachdem man sich in der App angemeldet hat, kann man auf der Karte nach dem gewünschten Verkehrsmittel suchen oder die entsprechenden Attribute in die Suchleiste eingeben.
+Wenn Sie sich in einem Gebiet befinden, in dem die öffentlichen Verkehrsmittel sehr stark frequentiert sind, können Sie das Dropdown-Menü auf der rechten Seite verwenden, um die Ebenen, die Sie anzeigen möchten, ein- oder auszuschalten.
+Wenn Sie die gewünschte Linie oder das gewünschte Verkehrsmittel gefunden haben, können Sie diese anklicken. Sie werden auf eine neue Seite weitergeleitet, auf der Ihnen, ähnlich wie bei der ffs-App, die Daten zur Linie und zum Verkehrsmittel angezeigt werden. Diese Daten können Verspätungen, Streckenänderungen, Zugausfälle und mehr sein.
+Wenn Sie jemanden über Ihre Reise benachrichtigen wollen, vielleicht weil Sie Verspätung haben oder eine Änderung eingetreten ist, können Sie den Link zur Seite mit einer einfachen Schaltfläche teilen.
+Wenn Sie mit der Infopage fertig sind, können Sie zur Karte zurückkehren, um neue Routen anzuzeigen.
 
 ## Frontend {#frontend}
 
-### Programmier sprache {#programmier-sprache}
+### Symbologie {#symbologie}
+Um die Verkehrsmittel und die Strecken, auf denen sie verkehren, zu unterscheiden, wurden Symbole eingeführt.
+![Buslinien](assets/img/Buslinien.png){: style="display:block; margin: 0;"}
+![Bus](assets/img/Bus.png){: style="display:block; margin: 0;"}
+
+![Zuglinien](assets/img/Zuglinien.png){: style="display:block; margin: 0;"}
+![Zug](assets/img/Zug.png){: style="display:block; margin: 0;"}
+
+![Tramlinien](assets/img/Tramlinien.png){: style="display:block; margin: 0;"}
+![Tram](assets/img/Tram.png){: style="display:block; margin: 0;"}
+
+![Schiffelinien](assets/img/Schiffelinien.png){: style="display:block; margin: 0;"}
+![Schiffe](assets/img/Schiffe.png){: style="display:block; margin: 0;"}
+
+
 ### Website Konzept {#website-konzept}
-#### Mainpage {#mainpage}
-##### GUI {#GUI_main}
-![GUI_Desktop_Main](assets/img/GUI_Desktop_Main.png)
+Wir möchten, dass sich unsere App an den Stil der ffs-App anlehnt, so dass die Menschen bereits an den Stil gewöhnt sind und keine Schwierigkeiten haben, die Informationen zu finden.
+Unabhängig vom Stil der ffs-App möchten wir, dass unsere App leicht zu lesen und für jeden zugänglich ist.
 
-![GUI_Mobile_Main](assets/img/GUI_Mobile_Main.png)
+### Mainpage {#mainpage}
+Die Oberfläche der Hauptseite (diejenige, auf die man gelangt, wenn man die App öffnet) hat die Karte in ihrem Zentrum, sie dient als Hintergrund der App, muss aber auch im Mittelpunkt der Aufmerksamkeit des Nutzers stehen.
+Aus diesem Grund wurden alle zusätzlichen Funktionen wie Ebenen und die Suchleiste an den Seiten des Bildschirms angebracht.
+Bei der Anwendung wird zwischen einer Desktop- und einer mobilen Version unterschieden.
 
-##### Farben {#farben_main}
+![GUI_Desktop_Main](assets/img/GUI_Desktop_Main.png){: style="display:block; margin: 0 auto;"}
+In der Desktop-Version wurde versucht, die Komponenten mit eckigen Formen darzustellen, um die Ähnlichkeit mit der Bildschirmform von Laptops oder PCs zu erhalten.
 
-#### Infopage {#infopage}
+![GUI_Mobile_Main](assets/img/GUI_Mobile_Main.png){: style="display:block; margin: 0 auto;"}
+Im Gegensatz dazu haben die Bildschirme von Smartphones in der Regel eine eher runde Form.
 
-##### GUI {#GUI_info}
-![GUI_Desktop_Infopage](assets/img/GUI_Desktop_Infopage.png)
+Hoch über der Karte steht der Name der App auf rotem Hintergrund. Der Hintergrund soll an den Stil der SBB-App erinnern.
+Alles in allem kann man von einer minimalistischen GUI sprechen, die das Lesen für die Nutzer nicht erschwert.
 
-![GUI_Mobile_infopage](assets/img/GUI_Mobile_infopage.png)
+### Infopage {#infopage}
+Auf dieser Seite werden die Daten der gewünschten Route dargestellt, diese Daten müssen im Mittelpunkt stehen.
+Auch auf dieser Seite wurde, wie auf der Hauptseite, die Ähnlichkeit der Komponenten mit der Form des Bildschirms gesucht.
 
-##### Farben {#farben_info}
+![GUI_Desktop_Infopage](assets/img/GUI_Desktop_Infopage.png){: style="display:block; margin: 0 auto;"}
+Oben finden Sie die allgemeinen Daten der Linie, wie z. B. die Liniennummer, die Art des Verkehrsmittels, den Abfahrts- und Ankunftsort.
+
+![GUI_Mobile_infopage](assets/img/GUI_Mobile_infopage.png){: style="display:block; margin: 0 auto;"}
+Im Hauptteil finden Sie ein Liniendiagramm, das alle Bahnhöfe auf der Strecke mit eventuellen Verspätungen anzeigt, außerdem können Sie die Verbindungen für jeden Bahnhof einsehen
+Die Farben Grün und Rot zeigen an, ob das Verkehrsmittel normal oder mit Verspätung verkehrt.
+Vorerst nur eine Idee, es ist auch geplant, die verschiedenen Verkehrsmittel mit einem anderen Hintergrund darzustellen. Dadurch soll der Benutzer auf einen Blick erkennen, um welches Verkehrsmittel es sich handelt.
 
 ## Backend {#backend}
 
 
-### Datenabfrage {#Datenabfrage}
+### Datenabfrage {#datenabfrage}
 
 #### Datenherkunft {#Datenherkunft}
 Zuerst wollten wir intuitiv die Daten von der SBB oder OpenData.ch beziehen. Leider sind alle diese API's etwas anderes als wir benötigen oder / und sie sind nicht zugänglich für nichts zahlende Studenten. So endeten wir bei GeoOps. 
@@ -186,7 +116,7 @@ Da die SBB & OpenData -Spuren beide im Sand verliefen nutzen wir nun die Daten d
 Hierbei hat man 100 Credits pro Monat zur Verfüguung. Wir haben verschiedene Accounts die wir jeweils durchswapen können.
 
 
-### alternative API {#laternative_API}
+### alternative API {#alternative-API}
 
 * allgemeine Zugstörungsinformationen oder alle anderen Daten der SBB auf diesem Portal über die folgenden Links:
 https://data.sbb.ch/explore/dataset/rail-traffic-information/api/

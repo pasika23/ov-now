@@ -19,7 +19,7 @@ function MapWrapper(props) {
   const [backgroundMap, setBackgroundMap] = useState('Landeskarte-farbe'); // Impostazione predefinita della mappa
   const desktopMinZoom = 8.3;
   const mobileMinZoom = 7.5;
-
+  const [toggleMenu, setToggleMenu] = useState(false);
   const mapElement = useRef();
 
   const mapRef = useRef();
@@ -148,7 +148,8 @@ function MapWrapper(props) {
         <div ref={mapElement} className="map-container"></div>
         <BackgroundButton
           backgroundMap={backgroundMap}
-          handleBackgroundChange={(value) => setBackgroundMap(value)}
+          setBackgroundMap={setBackgroundMap}
+          toggleMenu={toggleMenu} // Assicurati di passare toggleMenu come prop
         />
       </div>
     </div>
