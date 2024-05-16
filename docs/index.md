@@ -31,17 +31,17 @@ Wenn Sie mit der Infopage fertig sind, können Sie zur Karte zurückkehren, um n
 
 ### Symbologie {#symbologie}
 Um die Verkehrsmittel und die Strecken, auf denen sie verkehren, zu unterscheiden, wurden Symbole eingeführt.
-![Buslinien](assets/img/Buslinien.png){: style="float: left"}
-![Bus](assets/img/Bus.png){: style="float: left"}
+![Buslinien](assets/img/Buslinien.png){: style="display:block; margin: 0;"}
+![Bus](assets/img/Bus.png){: style="display:block; margin: 0;"}
 
-![Zuglinien](assets/img/Zuglinien.png){: style="float: left"}
-![Zug](assets/img/Zug.png){: style="float: left"}
+![Zuglinien](assets/img/Zuglinien.png){: style="display:block; margin: 0;"}
+![Zug](assets/img/Zug.png){: style="display:block; margin: 0;"}
 
-![Tramlinien](assets/img/Tramlinien.png){: style="float: left"}
-![Tram](assets/img/Tram.png){: style="float: left"}
+![Tramlinien](assets/img/Tramlinien.png){: style="display:block; margin: 0;"}
+![Tram](assets/img/Tram.png){: style="display:block; margin: 0;"}
 
-![Schiffelinien](assets/img/Schiffelinien.png){: style="float: left"}
-![Schiffe](assets/img/Schiffe.png){: style="float: left"}
+![Schiffelinien](assets/img/Schiffelinien.png){: style="display:block; margin: 0;"}
+![Schiffe](assets/img/Schiffe.png){: style="display:block; margin: 0;"}
 
 
 ### Website Konzept {#website-konzept}
