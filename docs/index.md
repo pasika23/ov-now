@@ -53,7 +53,7 @@ Um die Verkehrsmittel und die Strecken, auf denen sie verkehren, zu unterscheide
 Wir möchten, dass sich unsere App an den Stil der ffs-App anlehnt, so dass die Menschen bereits an den Stil gewöhnt sind und keine Schwierigkeiten haben, die Informationen zu finden.
 Unabhängig vom Stil der ffs-App möchten wir, dass unsere App leicht zu lesen und für jeden zugänglich ist.
 
-#### Mainpage {#mainpage}
+### Mainpage {#mainpage}
 Die Oberfläche der Hauptseite (diejenige, auf die man gelangt, wenn man die App öffnet) hat die Karte in ihrem Zentrum, sie dient als Hintergrund der App, muss aber auch im Mittelpunkt der Aufmerksamkeit des Nutzers stehen.
 Aus diesem Grund wurden alle zusätzlichen Funktionen wie Ebenen und die Suchleiste an den Seiten des Bildschirms angebracht.
 Bei der Anwendung wird zwischen einer Desktop- und einer mobilen Version unterschieden.
@@ -67,7 +67,7 @@ Im Gegensatz dazu haben die Bildschirme von Smartphones in der Regel eine eher r
 Hoch über der Karte steht der Name der App auf rotem Hintergrund. Der Hintergrund soll an den Stil der SBB-App erinnern.
 Alles in allem kann man von einer minimalistischen GUI sprechen, die das Lesen für die Nutzer nicht erschwert.
 
-#### Infopage {#infopage}
+### Infopage {#infopage}
 Auf dieser Seite werden die Daten der gewünschten Route dargestellt, diese Daten müssen im Mittelpunkt stehen.
 Auch auf dieser Seite wurde, wie auf der Hauptseite, die Ähnlichkeit der Komponenten mit der Form des Bildschirms gesucht.
 
