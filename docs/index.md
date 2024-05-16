@@ -21,7 +21,7 @@ Für die Zukunft ist auch eine Standortsuche geplant, um das Auffinden von Verke
 
 ### Anwendung {#anwendung}
 
-<video controls>
+<video width="640" height="480" controls>
   <source src="assets/img/Demo.mp4" type="video/mp4">
 </video>
 
