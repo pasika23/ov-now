@@ -1,31 +1,26 @@
 .searchbar-container {
     position: fixed;
-    top: calc(10%+10px);
+    top: 10.8%;
     left: 50%;
     transform: translate(-50%);
-    display: flex;
     align-items: center;
     z-index: 999;
-  }
-  
-  .searchbar-input {
-    flex: 1;
-    padding: 12px;
-    font-size: 24px;
-    border: 1px solid #ccc;
-  }
-  
-  .searchbar-button {
-    margin-left: 10px;
-    padding: 12px 24px;
-    font-size: 16px;
+    padding: 10px;
+}
+
+.searchbar-input {
+    padding: 10px;
+    margin-right: 10px;
+}
+
+.searchbar-button {
     background-color: #007bff;
     color: #fff;
     border: none;
     cursor: pointer;
-  }
-  
-  .searchbar-button:hover {
+}
+
+.searchbar-button:hover {
     background-color: #0056b3;
-  }
-  
+}
+
