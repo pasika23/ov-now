@@ -40,7 +40,6 @@ Die Transportsymbole stammen aus der React-Komponentenbibliothek: Material UI. G
 
 <div style="display: flex; align-items: center; margin-bottom: 10px;">
   <img src="assets/img/Buslinien.png" style="display:block; margin: 0;" alt="Buslinien"/>
-  <span style="margin-left: 10px;">Buslinien</span>
 </div>
 
 <div style="display: flex; align-items: center; margin-bottom: 10px;">
@@ -50,7 +49,6 @@ Die Transportsymbole stammen aus der React-Komponentenbibliothek: Material UI. G
 
 <div style="display: flex; align-items: center; margin-bottom: 10px;">
   <img src="assets/img/Zuglinien.png" style="display:block; margin: 0;" alt="Zuglinien"/>
-  <span style="margin-left: 10px;">Zuglinien</span>
 </div>
 
 <div style="display: flex; align-items: center; margin-bottom: 10px;">
@@ -60,7 +58,6 @@ Die Transportsymbole stammen aus der React-Komponentenbibliothek: Material UI. G
 
 <div style="display: flex; align-items: center; margin-bottom: 10px;">
   <img src="assets/img/Tramlinien.png" style="display:block; margin: 0;" alt="Tramlinien"/>
-  <span style="margin-left: 10px;">Tramlinien</span>
 </div>
 
 <div style="display: flex; align-items: center; margin-bottom: 10px;">
@@ -70,7 +67,6 @@ Die Transportsymbole stammen aus der React-Komponentenbibliothek: Material UI. G
 
 <div style="display: flex; align-items: center; margin-bottom: 10px;">
   <img src="assets/img/Schiffelinien.png" style="display:block; margin: 0;" alt="Schiffelinien"/>
-  <span style="margin-left: 10px;">Schiffelinien</span>
 </div>
 
 <div style="display: flex; align-items: center; margin-bottom: 10px;">
