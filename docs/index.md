@@ -163,4 +163,7 @@ Pascal
 Pascal
 
 ### Bezugssystem {#bezugssystem}
+
+Die bezogenen Daten aus der API stehen im EPSG: 3857 (Web Mercator) zur Verfügung. Die Punktkoordinaten werden ohne Transformation verwendet und auf der Karte abgebildet.
+
 ### Quellen {#quellen}
