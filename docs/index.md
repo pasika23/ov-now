@@ -36,6 +36,8 @@ Wenn Sie mit der Infopage fertig sind, können Sie zur Karte zurückkehren, um n
 
 ### Symbologie {#symbologie}
 Um die Verkehrsmittel und die Strecken, auf denen sie verkehren, zu unterscheiden, wurden Symbole eingeführt.
+Die Transportsymbole stammen aus der React-Komponentenbibliothek: Material UI. Genauer gesagt aus Material Icons.
+
 ![Buslinien](assets/img/Buslinien.png){: style="display:block; margin: 0;"}
 ![Bus](assets/img/Bus.png){: style="display:block; margin: 0;"} Bus
 
