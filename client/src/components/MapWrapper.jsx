@@ -12,6 +12,7 @@ import { Fill, Stroke, Circle, Style } from 'ol/style.js';
 import { FullScreen, ScaleLine, defaults as defaultControls } from 'ol/control.js';
 import CheckBoxLayers from './Layers'; 
 import BackgroundButton from './backgroundButton';
+import Searchbar from './Searchbar'; // Importa il componente Searchbar
 
 function MapWrapper(props) {
   const [map, setMap] = useState();
@@ -140,8 +141,18 @@ function MapWrapper(props) {
     }
   };
 
+  const handleSearch = (searchTerm) => {
+    // Implementa la logica per la ricerca delle stazioni ferroviarie
+    // Utilizzando searchTerm
+    // Aggiorna la mappa con i risultati della ricerca
+    console.log("Ricerca:", searchTerm);
+  };
+
   return (
-    <div style={{flex: "100 0 0"}}>
+    <div style={{ position: 'relative', flex: "100 0 0" }}>
+      <div className="searchbar-container">
+        <Searchbar onSearch={handleSearch} />
+      </div>
       <CheckBoxLayers />
       <div className="container">
         <div className="white-overlay"></div>
@@ -149,7 +160,7 @@ function MapWrapper(props) {
         <BackgroundButton
           backgroundMap={backgroundMap}
           setBackgroundMap={setBackgroundMap}
-          toggleMenu={toggleMenu} // Assicurati di passare toggleMenu come prop
+          toggleMenu={toggleMenu}
         />
       </div>
     </div>
