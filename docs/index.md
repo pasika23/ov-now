@@ -84,10 +84,10 @@ Vorerst nur eine Idee, es ist auch geplant, die verschiedenen Verkehrsmittel mit
 
 ### Datenabfrage {#datenabfrage}
 
-#### Datenherkunft
+#### Datenherkunft {#Datenherkunft}
 Zuerst wollten wir intuitiv die Daten von der SBB oder OpenData.ch beziehen. Leider sind alle diese API's etwas anderes als wir benötigen oder / und sie sind nicht zugänglich für nichts zahlende Studenten. So endeten wir bei GeoOps. 
 
-#### Limitationen in der Genauigkeit
+#### Limitationen in der Genauigkeit {#Limitationen1}
 Die Positionierungsgenauigkeit ist uns nicht bekannt, ebenfalls ist uns nicht bekannt über welche Hard & Software die Positionierung erstellt wird.
 
 Und wurde vom Opendata-Verantworlichen* der SBB bestätigt, was ebenfalls bei GeoOps im kleingedruckten steht: Die Aktuelle Position der Züge gibt es in Westeuropa nicht. Es gibt keinen Datensatz, der unseren Use-case tatsächlich abdeckt. 
@@ -101,7 +101,7 @@ Alle Vorbilder wie folgende sind sommit nicht akkurat. Das heisst die gezeigten 
 
 Wir haben auch keine Angaben zu der Genauigkeit temporalen Auflösung, wir werden jedoch selbst aus im nächsten Kapitel folgenden Gründen darauf beschränken, die Daten in grösseren Zeitlichen Abständen zu beziehen als für eine Produktive App eigentlich notwendig:
 
-#### Limitationen im Zugriff
+#### Limitationen im Zugriff {#Limitationen2}
 Da die SBB & OpenData -Spuren beide im Sand verliefen nutzen wir nun die Daten der [GeoOps-API](https://developer.geops.io/apis/realtime). Diese ist eigentlich eine kostenpflichtige API aber bietet eine gratis Testmöglichkeit nachdem man einen Account erstellt hat. Das Pricing ist in folgender Tabelle ersichtlich:
 
 | SERVICE | UNIT | CREDITS |
