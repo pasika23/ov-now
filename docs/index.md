@@ -38,17 +38,45 @@ Wenn Sie mit der Infopage fertig sind, können Sie zur Karte zurückkehren, um n
 Um die Verkehrsmittel und die Strecken, auf denen sie verkehren, zu unterscheiden, wurden Symbole eingeführt.
 Die Transportsymbole stammen aus der React-Komponentenbibliothek: Material UI. Genauer gesagt aus Material Icons.
 
-![Buslinien](assets/img/Buslinien.png){: style="display:block; margin: 0;"}
-![Bus](assets/img/Bus.png){: style="display:block; margin: 0;"} Bus
+<div style="display: flex; align-items: center; margin-bottom: 10px;">
+  <img src="assets/img/Buslinien.png" style="display:block; margin: 0;" alt="Buslinien"/>
+  <span style="margin-left: 10px;">Buslinien</span>
+</div>
 
-![Zuglinien](assets/img/Zuglinien.png){: style="display:block; margin: 0;"}
-![Zug](assets/img/Zug.png){: style="display:block; margin: 0;"} Zug
+<div style="display: flex; align-items: center; margin-bottom: 10px;">
+  <img src="assets/img/Bus.png" style="display:block; margin: 0;" alt="Bus"/>
+  <span style="margin-left: 10px;">Bus</span>
+</div>
 
-![Tramlinien](assets/img/Tramlinien.png){: style="display:block; margin: 0;"}
-![Tram](assets/img/Tram.png){: style="display:block; margin: 0;"} Tram
+<div style="display: flex; align-items: center; margin-bottom: 10px;">
+  <img src="assets/img/Zuglinien.png" style="display:block; margin: 0;" alt="Zuglinien"/>
+  <span style="margin-left: 10px;">Zuglinien</span>
+</div>
 
-![Schiffelinien](assets/img/Schiffelinien.png){: style="display:block; margin: 0;"}
-![Schiffe](assets/img/Schiffe.png){: style="display:block; margin: 0;"} Schiffe
+<div style="display: flex; align-items: center; margin-bottom: 10px;">
+  <img src="assets/img/Zug.png" style="display:block; margin: 0;" alt="Zug"/>
+  <span style="margin-left: 10px;">Zug</span>
+</div>
+
+<div style="display: flex; align-items: center; margin-bottom: 10px;">
+  <img src="assets/img/Tramlinien.png" style="display:block; margin: 0;" alt="Tramlinien"/>
+  <span style="margin-left: 10px;">Tramlinien</span>
+</div>
+
+<div style="display: flex; align-items: center; margin-bottom: 10px;">
+  <img src="assets/img/Tram.png" style="display:block; margin: 0;" alt="Tram"/>
+  <span style="margin-left: 10px;">Tram</span>
+</div>
+
+<div style="display: flex; align-items: center; margin-bottom: 10px;">
+  <img src="assets/img/Schiffelinien.png" style="display:block; margin: 0;" alt="Schiffelinien"/>
+  <span style="margin-left: 10px;">Schiffelinien</span>
+</div>
+
+<div style="display: flex; align-items: center; margin-bottom: 10px;">
+  <img src="assets/img/Schiffe.png" style="display:block; margin: 0;" alt="Schiffe"/>
+  <span style="margin-left: 10px;">Schiffe</span>
+</div>
 
 
 ### Website Konzept {#website-konzept}
