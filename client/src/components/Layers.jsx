@@ -1,9 +1,13 @@
 import React, { useState } from 'react';
 import './Layers.css';
+import DirectionsBusIcon from '@mui/icons-material/DirectionsBus';
+import TramIcon from '@mui/icons-material/Tram';
+import DirectionsRailwayIcon from '@mui/icons-material/DirectionsRailway';
+import DirectionsBoatIcon from '@mui/icons-material/DirectionsBoat';
 
-function DropdownCheckbox({ label, checked, onChange }) {
+function DropdownCheckbox({ label, checked, onChange, Icon }) {
   return (
-    <div>
+    <div className="dropdown-checkbox">
       <input
         type="checkbox"
         id={label}
@@ -11,6 +15,7 @@ function DropdownCheckbox({ label, checked, onChange }) {
         checked={checked}
         onChange={onChange}
       />
+      {Icon && <Icon className="dropdown-checkbox-icon" />}
       <label htmlFor={label}>{label}</label><br />
     </div>
   );
@@ -60,21 +65,25 @@ function DropdownChecklist() {
             label="zug"
             checked={checkedItems.zug || false}
             onChange={handleChange}
+            Icon={DirectionsRailwayIcon}
           />
           <DropdownCheckbox
             label="bus"
             checked={checkedItems.bus || false}
             onChange={handleChange}
+            Icon={DirectionsBusIcon}
           />
           <DropdownCheckbox
             label="tram"
             checked={checkedItems.tram || false}
             onChange={handleChange}
+            Icon={TramIcon}
           />
           <DropdownCheckbox
             label="schiffe"
             checked={checkedItems.schiffe || false}
             onChange={handleChange}
+            Icon={DirectionsBoatIcon}
           />
         </div>
       )}

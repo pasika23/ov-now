@@ -4,8 +4,7 @@
   display: inline-block;
   z-index: 999;
   left: 2%;
-  top: 11%
-  
+  top: 11%;
 }
 
 .dropdown-toggle {
@@ -28,15 +27,16 @@
   width: 200px;
 }
 
-.dropdown-content div {
+.dropdown-checkbox {
+  display: flex;
+  align-items: center;
   margin-bottom: 5px;
 }
 
-.dropdown-content input[type="checkbox"] {
+.dropdown-checkbox input[type="checkbox"] {
   margin-right: 5px;
 }
 
-.dropdown-content label {
+.dropdown-checkbox-icon {
   margin-right: 10px;
 }
-
