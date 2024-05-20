@@ -38,22 +38,22 @@ function BackgroundButton({ setBackgroundMap, toggleMenu }) {
       <img src={backgroundImageSrc()} width="50" height="50" onClick={toggle} />
       {menuOpen && (
         <div className="background-select">
-          <label htmlFor="background-map">Background Map:</label>
+          {/*<label htmlFor="background-map">Background Map:</label>*/}
           <div>
             <div onClick={() => handleBackgroundChange({ target: { value: 'Landeskarte-farbe' } })}>
-              <p>Landeskarte farben</p>
+              {/*<p>Landeskarte farben</p>*/}
               <img src={Landeskarte_farbe} width="50" height="50" />
             </div>
             <div onClick={() => handleBackgroundChange({ target: { value: 'Landeskarte-grau' } })}>
-              <p>Landeskarte grau</p>
+              {/*<p>Landeskarte grau</p>*/}
               <img src={Landeskarte_grau} width="50" height="50" />
             </div>
             <div onClick={() => handleBackgroundChange({ target: { value: 'Luftbild' } })}>
-              <p>Luftbild</p>
+              {/*<p>Luftbild</p>*/}
               <img src={Bild_Luftbild} width="50" height="50" />
             </div>
             <div onClick={() => handleBackgroundChange({ target: { value: 'osm' } })}>
-              <p>OpenStreetMap</p>
+              {/*<p>OpenStreetMap</p>*/}
               <img src={Bild_osm} width="50" height="50" />
             </div>
           </div>
