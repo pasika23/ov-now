@@ -62,45 +62,45 @@ function DropdownChecklist() {
       <div className="dropdown-toggle" onClick={handleToggle}></div>
       <div className="dropdown-content">
         <DropdownCheckbox
-          label="zuglinien"
+          label="Zuglinien"
           checked={checkedItems.zuglinien || false}
           onChange={handleChange}
         />
         <DropdownCheckbox
-          label="buslinien"
+          label="Buslinien"
           checked={checkedItems.buslinien || false}
           onChange={handleChange}
         />
         <DropdownCheckbox
-          label="tramlinien"
+          label="Tramlinien"
           checked={checkedItems.tramlinien || false}
           onChange={handleChange}
         />
         <DropdownCheckbox
-          label="schiffelinien"
+          label="Schiffelinien"
           checked={checkedItems.schiffelinien || false}
           onChange={handleChange}
         />
         <DropdownCheckbox
-          label="zug"
+          label="Zug"
           checked={checkedItems.zug || false}
           onChange={handleChange}
           Icon={DirectionsRailwayIcon}
         />
         <DropdownCheckbox
-          label="bus"
+          label="Bus"
           checked={checkedItems.bus || false}
           onChange={handleChange}
           Icon={DirectionsBusIcon}
         />
         <DropdownCheckbox
-          label="tram"
+          label="Tram"
           checked={checkedItems.tram || false}
           onChange={handleChange}
           Icon={TramIcon}
         />
         <DropdownCheckbox
-          label="schiffe"
+          label="Schiffe"
           checked={checkedItems.schiffe || false}
           onChange={handleChange}
           Icon={DirectionsBoatIcon}

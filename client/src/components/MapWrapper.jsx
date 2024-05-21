@@ -14,6 +14,9 @@ import CheckBoxLayers from './Layers';
 import BackgroundButton from './backgroundButton';
 import Searchbar from './Searchbar'; // Importa il componente Searchbar
 
+
+
+
 function MapWrapper(props) {
   const [map, setMap] = useState();
   const [featuresLayer, setFeaturesLayer] = useState();
@@ -52,7 +55,7 @@ function MapWrapper(props) {
 
     return () => initialMap.setTarget("");
   }, []);
-
+  
   const getMinZoom = () => {
     // Imposta il livello di zoom minimo in base al dispositivo
     if (window.matchMedia('(max-width: 1080px)').matches) {
@@ -148,23 +151,73 @@ function MapWrapper(props) {
     console.log("Ricerca:", searchTerm);
   };
 
+  // Funzione per gestire il cambio dello sfondo
+  const handleBackgroundChange = (mapType) => {
+    setBackgroundMap(mapType); // Imposta il nuovo tipo di sfondo
+  };
+
+  // Funzione per recuperare i dati geoservizi
+  const fetchGeoData = async (mapType) => {
+  // Recupera i dati geoservizi in base al tipo di mappa
+  try {
+    let geoServiceUrl;
+    
+    // Determina l'URL dei geoservizi in base al tipo di mappa
+    switch (mapType) {
+      case 'Landeskarte-farbe':
+        geoServiceUrl = 'https://wms.geo.admin.ch/?LAYERS=ch.swisstopo.swisstlm3d-wanderwege';
+        break;
+      case 'Landeskarte-grau':
+        geoServiceUrl = 'https://wms.geo.admin.ch/?LAYERS=ch.swisstopo.pixelkarte-grau';
+        break;
+      case 'Luftbild':
+        geoServiceUrl = 'https://wms.geo.admin.ch/?LAYERS=ch.swisstopo.swissimage-product';
+        break;
+      case 'osm':
+        console.log('OpenStreetMap è un servizio basato su vettori. Non è richiesta una chiamata separata per i dati geoservizi.');
+        return;
+      default:
+        // Gestisci il caso di mappa non riconosciuta
+        console.error('Tipo di mappa non riconosciuto:', mapType);
+        return;
+    }
+    
+    // Effettua la chiamata API per recuperare i dati geoservizi
+    const response = await fetch(geoServiceUrl);
+    
+    // Verifica se la risposta è stata ricevuta correttamente
+    if (!response.ok) {
+      // Se la risposta non è ok, gestisci l'errore
+      throw new Error('Errore nel recupero dei dati geoservizi');
+    }
+    
+    console.log("Dati geoservizi recuperati con successo per la mappa:", mapType);
+
+    } catch (error) {
+      // Gestisci gli errori durante il recupero dei dati geoservizi
+      console.error('Errore durante il recupero dei dati geoservizi:', error.message);
+    }
+  };
+
   return (
     <div style={{ position: 'relative', flex: "100 0 0" }}>
       <div className="searchbar-container">
         <Searchbar onSearch={handleSearch} />
       </div>
       <CheckBoxLayers />
-      <div className="container">
-        <div className="white-overlay"></div>
-        <div ref={mapElement} className="map-container"></div>
-        <BackgroundButton
-          backgroundMap={backgroundMap}
-          setBackgroundMap={setBackgroundMap}
-          toggleMenu={toggleMenu}
-        />
-      </div>
+      <div className="container
+      ">
+      <div className="white-overlay"></div>
+      <div ref={mapElement} className="map-container"></div>
+      {/* Renderizza il componente BackgroundButton e passa le funzioni necessarie come props */}
+      <BackgroundButton
+        setBackgroundMap={handleBackgroundChange} // Passa la funzione per cambiare lo sfondo
+        toggleMenu={toggleMenu} // Passa lo stato del menu
+        fetchGeoData={fetchGeoData} // Passa la funzione per recuperare i dati geoservizi
+      />
     </div>
-  );
+  </div>
+);
 }
 
 export default MapWrapper;

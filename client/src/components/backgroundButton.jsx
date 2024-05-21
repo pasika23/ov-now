@@ -3,19 +3,35 @@ import Landeskarte_farbe from '../Image/Landeskarte_farbe.png';
 import Landeskarte_grau from '../Image/Landeskarte_grau.png';
 import Bild_Luftbild from '../Image/Bild_Luftbild.png';
 import Bild_osm from '../Image/Bild_osm.png';
-import './backgroundButton.css'
+import './backgroundButton.css';
+import TileLayer from 'ol/layer/Tile';
 
-function BackgroundButton({ setBackgroundMap, toggleMenu }) {
+
+function BackgroundButton({ setBackgroundMap, fetchGeoData, map }) {
   const [menuOpen, setMenuOpen] = useState(false);
 
-  const handleBackgroundChange = (event) => {
-    const selectedValue = event.target.value;
-    setBackgroundMap(selectedValue);
-    toggleMenu(); // Chiama toggleMenu per chiudere il menu dopo aver selezionato uno sfondo
+  const handleBackgroundChange = async (mapType) => {
+    removeBackgroundLayer(); // Rimuovi il layer di sfondo precedente
+    await setBackgroundMap(mapType); // Imposta lo sfondo sulla mappa
+    setMenuOpen(false); // Chiudi il menu dopo aver selezionato uno sfondo
+    // Chiama la funzione per caricare i dati geoservizi
+    await fetchGeoData(mapType); 
   };
 
-  const toggle = () => {
+  const toggleMenu = () => {
     setMenuOpen(!menuOpen); // Cambia lo stato di menuOpen quando il pulsante viene cliccato
+  };
+
+  const removeBackgroundLayer = () => {
+    // Rimuovi il layer di sfondo precedente
+    if (map) {
+      const layers = map.getLayers();
+      layers.forEach(layer => {
+        if (layer instanceof TileLayer) {
+          map.removeLayer(layer);
+        }
+      });
+    }
   };
 
   const backgroundImageSrc = (mapType) => {
@@ -34,28 +50,21 @@ function BackgroundButton({ setBackgroundMap, toggleMenu }) {
   };
 
   return (
-    <div className="background-container" onClick={toggle}>
-      <img src={backgroundImageSrc()} width="50" height="50" onClick={toggle} />
+    <div className="background-container" onClick={toggleMenu}>
+      <img src={backgroundImageSrc()} width="50" height="50" onClick={toggleMenu} alt="Background" />
       {menuOpen && (
         <div className="background-select">
-          {/*<label htmlFor="background-map">Background Map:</label>*/}
-          <div>
-            <div onClick={() => handleBackgroundChange({ target: { value: 'Landeskarte-farbe' } })}>
-              {/*<p>Landeskarte farben</p>*/}
-              <img src={Landeskarte_farbe} width="50" height="50" />
-            </div>
-            <div onClick={() => handleBackgroundChange({ target: { value: 'Landeskarte-grau' } })}>
-              {/*<p>Landeskarte grau</p>*/}
-              <img src={Landeskarte_grau} width="50" height="50" />
-            </div>
-            <div onClick={() => handleBackgroundChange({ target: { value: 'Luftbild' } })}>
-              {/*<p>Luftbild</p>*/}
-              <img src={Bild_Luftbild} width="50" height="50" />
-            </div>
-            <div onClick={() => handleBackgroundChange({ target: { value: 'osm' } })}>
-              {/*<p>OpenStreetMap</p>*/}
-              <img src={Bild_osm} width="50" height="50" />
-            </div>
+          <div onClick={() => handleBackgroundChange('Landeskarte-farbe')}>
+            <img src={Landeskarte_farbe} width="50" height="50" alt="Landeskarte Farbe" />
+          </div>
+          <div onClick={() => handleBackgroundChange('Landeskarte-grau')}>
+            <img src={Landeskarte_grau} width="50" height="50" alt="Landeskarte Grau" />
+          </div>
+          <div onClick={() => handleBackgroundChange('Luftbild')}>
+            <img src={Bild_Luftbild} width="50" height="50" alt="Luftbild" />
+          </div>
+          <div onClick={() => handleBackgroundChange('osm')}>
+            <img src={Bild_osm} width="50" height="50" alt="OpenStreetMap" />
           </div>
         </div>
       )}
