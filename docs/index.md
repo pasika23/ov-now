@@ -165,6 +165,10 @@ http://localhost:8000/get_info/?train_id=sbb_139707706285552&key=5cc87b12d7c5370
 Im Ordner example_backend_endpoints gibt es für beide Abfragen Beispiele.
 Beachtet dass das ausführen des ersten Endpoints bei grosser Bounding Box mehrere Minuten gehen kann
 
+Der erste Endpoint get_all_journey soll aufgeruft werden sobald die App initialisiert wird. Mit der dargestellten Bounding Box wird das als String mit dem Zoom Level und dem Key an den Endpoint abgegeben, dieser ruft die GeOps-API get_trajectories auf und dann für jeden erhaltenen train_ID noch einmal die get_journey.
+
+Der zweite Endpoint get_info gibt das die GeOps-Abfrage von get_calls zurück.
+
 #### Slicing
 Pascal
 
