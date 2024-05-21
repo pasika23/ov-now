@@ -19,14 +19,14 @@ function App() {
     // Folgende URL nutzen, falls das Server Backend läuft (FastAPI)
     // fetch('http://localhost:8000/points/')cd
     // Test Geojson Datei, falls das Server Backend nicht läuft (FastAPI)
-    fetch('/geojson_points.json')
+    fetch('http://localhost:8000/get_all_journey/')
       .then(response => response.json())
       .then((fetchedFeatures) => {
 
         // parse fetched geojson into OpenLayers features
         // use options to convert feature from EPSG:4326 to EPSG:3857
         const wktOptions = {
-          dataProjection: 'EPSG:4326',
+          dataProjection: 'EPSG:3857',
           featureProjection: 'EPSG:3857'
         }
         const parsedFeatures = new GeoJSON().readFeatures(fetchedFeatures, wktOptions)
