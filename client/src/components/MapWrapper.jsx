@@ -205,8 +205,7 @@ function MapWrapper(props) {
         <Searchbar onSearch={handleSearch} />
       </div>
       <CheckBoxLayers />
-      <div className="container
-      ">
+      <div className="container">
       <div className="white-overlay"></div>
       <div ref={mapElement} className="map-container"></div>
       {/* Renderizza il componente BackgroundButton e passa le funzioni necessarie come props */}
