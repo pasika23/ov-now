@@ -154,7 +154,16 @@ https://data.sbb.ch/explore/?sort=modified
 https://www.geocat.ch/geonetwork/srv/ger/catalog.search#/metadata/841d42ff-8177-4e07-a96b-e8e5455ae048
 
 
-## Daten {#daten}
+## Enpoints {#endpoints}
+
+Das backend.py ist das Backend, dass auf dem Server laufen kann und 2 Enpoints anbietet:
+(Dazu einfach pip install fastAPI und die anderen Bibliotheken)
+Im Code hat es in den Kommentaren Beispiel-Abfragen falls es im Localhost ausgeführt wird: 
+http://localhost:8000/get_all_journey/?bbox=838667,5997631,909982,6036843&key=5cc87b12d7c5370001c1d65576ce5bd4be5a4a349ca401cdd7cac1ff&zoom=12
+http://localhost:8000/get_info/?train_id=sbb_139707706285552&key=5cc87b12d7c5370001c1d65576ce5bd4be5a4a349ca401cdd7cac1ff
+
+Im Ordner example_backend_endpoints gibt es für beide Abfragen Beispiele.
+Beachtet dass das ausführen des ersten Endpoints bei grosser Bounding Box mehrere Minuten gehen kann
 
 #### Slicing
 Pascal
