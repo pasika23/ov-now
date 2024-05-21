@@ -34,59 +34,78 @@ function DropdownChecklist() {
     setMenuOpen(!menuOpen);
   };
 
+  const handleTouchStart = (event) => {
+    if (event.touches.length === 1) {
+      const touch = event.touches[0];
+      window.touchStartX = touch.clientX;
+    }
+  };
+
+  const handleTouchMove = (event) => {
+    if (event.touches.length === 1) {
+      const touch = event.touches[0];
+      const touchEndX = touch.clientX;
+      const deltaX = touchEndX - window.touchStartX;
+
+      if (deltaX > 100) { // Adatta la soglia per determinare quanto scorrere per aprire il menu
+        setMenuOpen(true);
+      }
+    }
+  };
+
   return (
-    <div className="dropdown-checklist-container">
-      <div className="dropdown-toggle" onClick={handleToggle}>
-        Layers
+    <div
+      className={`dropdown-checklist-container ${menuOpen ? 'open' : ''}`}
+      onTouchStart={handleTouchStart}
+      onTouchMove={handleTouchMove}
+    >
+      <div className="dropdown-toggle" onClick={handleToggle}></div>
+      <div className="dropdown-content">
+        <DropdownCheckbox
+          label="zuglinien"
+          checked={checkedItems.zuglinien || false}
+          onChange={handleChange}
+        />
+        <DropdownCheckbox
+          label="buslinien"
+          checked={checkedItems.buslinien || false}
+          onChange={handleChange}
+        />
+        <DropdownCheckbox
+          label="tramlinien"
+          checked={checkedItems.tramlinien || false}
+          onChange={handleChange}
+        />
+        <DropdownCheckbox
+          label="schiffelinien"
+          checked={checkedItems.schiffelinien || false}
+          onChange={handleChange}
+        />
+        <DropdownCheckbox
+          label="zug"
+          checked={checkedItems.zug || false}
+          onChange={handleChange}
+          Icon={DirectionsRailwayIcon}
+        />
+        <DropdownCheckbox
+          label="bus"
+          checked={checkedItems.bus || false}
+          onChange={handleChange}
+          Icon={DirectionsBusIcon}
+        />
+        <DropdownCheckbox
+          label="tram"
+          checked={checkedItems.tram || false}
+          onChange={handleChange}
+          Icon={TramIcon}
+        />
+        <DropdownCheckbox
+          label="schiffe"
+          checked={checkedItems.schiffe || false}
+          onChange={handleChange}
+          Icon={DirectionsBoatIcon}
+        />
       </div>
-      {menuOpen && (
-        <div className="dropdown-content">
-          <DropdownCheckbox
-            label="zuglinien"
-            checked={checkedItems.zuglinien || false}
-            onChange={handleChange}
-          />
-          <DropdownCheckbox
-            label="buslinien"
-            checked={checkedItems.buslinien || false}
-            onChange={handleChange}
-          />
-          <DropdownCheckbox
-            label="tramlinien"
-            checked={checkedItems.tramlinien || false}
-            onChange={handleChange}
-          />
-          <DropdownCheckbox
-            label="schiffelinien"
-            checked={checkedItems.schiffelinien || false}
-            onChange={handleChange}
-          />
-          <DropdownCheckbox
-            label="zug"
-            checked={checkedItems.zug || false}
-            onChange={handleChange}
-            Icon={DirectionsRailwayIcon}
-          />
-          <DropdownCheckbox
-            label="bus"
-            checked={checkedItems.bus || false}
-            onChange={handleChange}
-            Icon={DirectionsBusIcon}
-          />
-          <DropdownCheckbox
-            label="tram"
-            checked={checkedItems.tram || false}
-            onChange={handleChange}
-            Icon={TramIcon}
-          />
-          <DropdownCheckbox
-            label="schiffe"
-            checked={checkedItems.schiffe || false}
-            onChange={handleChange}
-            Icon={DirectionsBoatIcon}
-          />
-        </div>
-      )}
     </div>
   );
 }
