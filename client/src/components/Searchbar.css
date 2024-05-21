@@ -1,0 +1,26 @@
+.searchbar-container {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%);
+    align-items: center;
+    z-index: 999;
+    padding: 10px;
+}
+
+.searchbar-input {
+    padding: 10px;
+    margin-right: 10px;
+}
+
+.searchbar-button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+.searchbar-button:hover {
+    background-color: #0056b3;
+}
+
