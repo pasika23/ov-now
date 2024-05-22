@@ -11,7 +11,7 @@ Das Ziel dieses Projekts ist es, ein Geoportal zu schaffen, das die Visualisieru
 ## Workflow {#workflow}
 
 ## ÖV-Now im konkret {#app}
-### Architectur {#architectur}
+### Architectur {#architektur}
 
 ### Datenbankmodell {#Datenbankmodell}
 
