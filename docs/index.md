@@ -8,13 +8,17 @@ Wir haben festgestellt, dass jemand, der sich die Informationen in der SBB-App a
 ## Ziel {#ziel}
 Das Ziel dieses Projekts ist es, ein Geoportal zu schaffen, das die Visualisierung von Live-Daten aller Verkehrsmittel in der Schweiz ermöglicht. Dies wird die Wahl der Routen erleichtern, um Verspätungen zu vermeiden und mögliche unvorhergesehene Zwischenfälle zu beheben.
 
-## App {#app}
-### Wichtige features {#wichtige-features}
-Das Hauptmerkmal der App ist die Anzeige von Live-Daten der Verkehrsmittel.
-Jede Linie oder jedes öffentliche Verkehrsmittel kann angeklickt werden und führt zu einer zweiten Seite, die Informationen über die Reise enthält, wie z. B. Bahnhöfe und geplante Verbindungen von diesem Bahnhof. Diese Seite wird als Infopage bezeichnet.
-Die Infoseite ist mit einer Schaltfläche ausgestattet, über die der Link zur geöffneten Seite geteilt werden kann. Auf diese Weise wird auch die Planung von Gruppenreisen einfach.
-Um das Verkehrsmittel, mit dem Sie reisen, leicht zu finden, können Sie die Suchleiste verwenden.
-Für die Zukunft ist auch eine Standortsuche geplant, um das Auffinden von Verkehrsmitteln noch einfacher zu gestalten.
+## Workflow {#workflow}
+
+## ÖV-Now im konkret {#app}
+### Architectur {#architectur}
+
+### Datenbankmodell {#Datenbankmodell}
+
+### Programmiersprachen {#Programmiersprachen}
+
+### Bezugssystem {#bezugssystem}
+Die bezogenen Daten aus der API stehen im EPSG: 3857 (Web Mercator) zur Verfügung. Die Punktkoordinaten werden ohne Transformation verwendet und auf der Karte abgebildet.
 
 ### Anwendung {#anwendung}
 <video width="640" height="480" controls>
@@ -102,6 +106,8 @@ Im Hauptteil finden Sie ein Liniendiagramm, das alle Bahnhöfe auf der Strecke m
 Die Farben Grün und Rot zeigen an, ob das Verkehrsmittel normal oder mit Verspätung verkehrt.
 Vorerst nur eine Idee, es ist auch geplant, die verschiedenen Verkehrsmittel mit einem anderen Hintergrund darzustellen. Dadurch soll der Benutzer auf einen Blick erkennen, um welches Verkehrsmittel es sich handelt.
 
+## Von Backend bis Frontend {#Von-Backend-bis-Frontend}
+
 ## Backend {#backend}
 ### Datenherkunft {#Datenherkunft}
 Zuerst wollten wir intuitiv die Daten von der SBB oder OpenData.ch beziehen. Leider sind alle diese API's etwas anderes als wir benötigen oder / und sie sind nicht zugänglich für nichts zahlende Studenten. So endeten wir bei GeoOps. 
@@ -162,14 +168,10 @@ Der erste Endpoint get_all_journey soll aufgeruft werden sobald die App initiali
 
 Der zweite Endpoint get_info gibt das die GeOps-Abfrage von get_calls zurück.
 
-### Slicing
+## Daten {daten}
+### Slicing {#Slicing}
 Pascal
 
-### Weiterverarbeitung
+### Weiterverarbeitung {#Weiterverarbeitung}
 Pascal
 
-### Bezugssystem {#bezugssystem}
-
-Die bezogenen Daten aus der API stehen im EPSG: 3857 (Web Mercator) zur Verfügung. Die Punktkoordinaten werden ohne Transformation verwendet und auf der Karte abgebildet.
-
-### Quellen {#quellen}
