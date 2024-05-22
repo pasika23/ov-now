@@ -2,9 +2,6 @@
 layout: default
 ---
 # ÖV-Now
-
-This is a normal paragraph following a header. GitHub is a code hosting platform for version control and collaboration. It lets you and others work together on projects from anywhere.
-
 ## Motivation {#motivation}
 Wir haben festgestellt, dass jemand, der sich die Informationen in der SBB-App anschaut, keine visuelle Bestätigung dafür hat, wo sich das öffentliche Verkehrsmittel, mit dem er unterwegs ist, in der Realität befindet. Dies kann zu Schwierigkeiten bei der Auswahl der besten Verbindungen führen, um das Ziel so einfach wie möglich zu erreichen.
 
@@ -106,14 +103,10 @@ Die Farben Grün und Rot zeigen an, ob das Verkehrsmittel normal oder mit Versp�
 Vorerst nur eine Idee, es ist auch geplant, die verschiedenen Verkehrsmittel mit einem anderen Hintergrund darzustellen. Dadurch soll der Benutzer auf einen Blick erkennen, um welches Verkehrsmittel es sich handelt.
 
 ## Backend {#backend}
-
-
-### Datenabfrage {#datenabfrage}
-
-#### Datenherkunft {#Datenherkunft}
+### Datenherkunft {#Datenherkunft}
 Zuerst wollten wir intuitiv die Daten von der SBB oder OpenData.ch beziehen. Leider sind alle diese API's etwas anderes als wir benötigen oder / und sie sind nicht zugänglich für nichts zahlende Studenten. So endeten wir bei GeoOps. 
 
-#### Limitationen in der Genauigkeit {#Limitationen1}
+### Limitationen in der Genauigkeit {#Limitationen1}
 Die Positionierungsgenauigkeit ist uns nicht bekannt, ebenfalls ist uns nicht bekannt über welche Hard & Software die Positionierung erstellt wird.
 
 Und wurde vom Opendata-Verantworlichen* der SBB bestätigt, was ebenfalls bei GeoOps im kleingedruckten steht: Die Aktuelle Position der Züge gibt es in Westeuropa nicht. Es gibt keinen Datensatz, der unseren Use-case tatsächlich abdeckt. 
@@ -127,7 +120,7 @@ Alle Vorbilder wie folgende sind sommit nicht akkurat. Das heisst die gezeigten 
 
 Wir haben auch keine Angaben zu der Genauigkeit temporalen Auflösung, wir werden jedoch selbst aus im nächsten Kapitel folgenden Gründen darauf beschränken, die Daten in grösseren Zeitlichen Abständen zu beziehen als für eine Produktive App eigentlich notwendig:
 
-#### Limitationen im Zugriff {#Limitationen2}
+### Limitationen im Zugriff {#Limitationen2}
 Da die SBB & OpenData -Spuren beide im Sand verliefen nutzen wir nun die Daten der [GeoOps-API](https://developer.geops.io/apis/realtime). Diese ist eigentlich eine kostenpflichtige API aber bietet eine gratis Testmöglichkeit nachdem man einen Account erstellt hat. Das Pricing ist in folgender Tabelle ersichtlich:
 
 | SERVICE | UNIT | CREDITS |
@@ -154,7 +147,7 @@ https://data.sbb.ch/explore/?sort=modified
 https://www.geocat.ch/geonetwork/srv/ger/catalog.search#/metadata/841d42ff-8177-4e07-a96b-e8e5455ae048
 
 
-## Enpoints {#endpoints}
+## Endpoints {#endpoints}
 
 Das backend.py ist das Backend, dass auf dem Server laufen kann und 2 Enpoints anbietet:
 (Dazu einfach pip install fastAPI und die anderen Bibliotheken)
@@ -169,10 +162,10 @@ Der erste Endpoint get_all_journey soll aufgeruft werden sobald die App initiali
 
 Der zweite Endpoint get_info gibt das die GeOps-Abfrage von get_calls zurück.
 
-#### Slicing
+### Slicing
 Pascal
 
-#### Weiterverarbeitung
+### Weiterverarbeitung
 Pascal
 
 ### Bezugssystem {#bezugssystem}
