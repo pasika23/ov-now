@@ -21,7 +21,7 @@ Das Ziel dieses Projekts ist es, ein Geoportal zu schaffen, das die Visualisieru
 Die bezogenen Daten aus der API stehen im EPSG: 3857 (Web Mercator) zur Verfügung. Die Punktkoordinaten werden ohne Transformation verwendet und auf der Karte abgebildet.
 
 ### Anwendung {#anwendung}
-<video width="640" height="480" controls>
+<video width="640" height="400" controls>
   <source src="assets/img/Demo.mp4" type="video/mp4">
 </video>
 
