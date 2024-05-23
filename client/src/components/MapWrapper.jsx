@@ -1,23 +1,20 @@
-import React, { useState, useEffect, useRef } from 'react';
-import Map from 'ol/Map'
-import View from 'ol/View'
-import TileLayer from 'ol/layer/Tile'
+import React, { useState, useEffect, useRef, forwardRef, useImperativeHandle } from 'react';
+import Map from 'ol/Map';
+import View from 'ol/View';
+import TileLayer from 'ol/layer/Tile';
 import OSM from 'ol/source/OSM';
 import TileWMS from 'ol/source/TileWMS';
-import VectorLayer from 'ol/layer/Vector'
-import VectorSource from 'ol/source/Vector'
-import XYZ from 'ol/source/XYZ'
-import { transform } from 'ol/proj'
+import VectorLayer from 'ol/layer/Vector';
+import VectorSource from 'ol/source/Vector';
+import XYZ from 'ol/source/XYZ';
+import { transform } from 'ol/proj';
 import { Fill, Stroke, Circle, Style } from 'ol/style.js';
 import { FullScreen, ScaleLine, defaults as defaultControls } from 'ol/control.js';
 import CheckBoxLayers from './Layers'; 
 import BackgroundButton from './backgroundButton';
 import Searchbar from './Searchbar'; // Importa il componente Searchbar
 
-
-
-
-function MapWrapper(props) {
+const MapWrapper = forwardRef((props, ref) => {
   const [map, setMap] = useState();
   const [featuresLayer, setFeaturesLayer] = useState();
   const [backgroundMap, setBackgroundMap] = useState('Landeskarte-farbe'); // Impostazione predefinita della mappa
@@ -77,6 +74,10 @@ function MapWrapper(props) {
       });
     }
   }, [props.features, featuresLayer, map]);
+
+  useImperativeHandle(ref, () => ({
+    getMap: () => mapRef.current
+  }));
 
   const getBackgroundLayer = () => {
     if (backgroundMap === 'osm') {
@@ -158,40 +159,40 @@ function MapWrapper(props) {
 
   // Funzione per recuperare i dati geoservizi
   const fetchGeoData = async (mapType) => {
-  // Recupera i dati geoservizi in base al tipo di mappa
-  try {
-    let geoServiceUrl;
-    
-    // Determina l'URL dei geoservizi in base al tipo di mappa
-    switch (mapType) {
-      case 'Landeskarte-farbe':
-        geoServiceUrl = 'https://wms.geo.admin.ch/?LAYERS=ch.swisstopo.swisstlm3d-wanderwege';
-        break;
-      case 'Landeskarte-grau':
-        geoServiceUrl = 'https://wms.geo.admin.ch/?LAYERS=ch.swisstopo.pixelkarte-grau';
-        break;
-      case 'Luftbild':
-        geoServiceUrl = 'https://wms.geo.admin.ch/?LAYERS=ch.swisstopo.swissimage-product';
-        break;
-      case 'osm':
-        console.log('OpenStreetMap è un servizio basato su vettori. Non è richiesta una chiamata separata per i dati geoservizi.');
-        return;
-      default:
-        // Gestisci il caso di mappa non riconosciuta
-        console.error('Tipo di mappa non riconosciuto:', mapType);
-        return;
-    }
-    
-    // Effettua la chiamata API per recuperare i dati geoservizi
-    const response = await fetch(geoServiceUrl);
-    
-    // Verifica se la risposta è stata ricevuta correttamente
-    if (!response.ok) {
-      // Se la risposta non è ok, gestisci l'errore
-      throw new Error('Errore nel recupero dei dati geoservizi');
-    }
-    
-    console.log("Dati geoservizi recuperati con successo per la mappa:", mapType);
+    // Recupera i dati geoservizi in base al tipo di mappa
+    try {
+      let geoServiceUrl;
+      
+      // Determina l'URL dei geoservizi in base al tipo di mappa
+      switch (mapType) {
+        case 'Landeskarte-farbe':
+          geoServiceUrl = 'https://wms.geo.admin.ch/?LAYERS=ch.swisstopo.swisstlm3d-wanderwege';
+          break;
+        case 'Landeskarte-grau':
+          geoServiceUrl = 'https://wms.geo.admin.ch/?LAYERS=ch.swisstopo.pixelkarte-grau';
+          break;
+        case 'Luftbild':
+          geoServiceUrl = 'https://wms.geo.admin.ch/?LAYERS=ch.swisstopo.swissimage-product';
+          break;
+        case 'osm':
+          console.log('OpenStreetMap è un servizio basato su vettori. Non è richiesta una chiamata separata per i dati geoservizi.');
+          return;
+        default:
+          // Gestisci il caso di mappa non riconosciuta
+          console.error('Tipo di mappa non riconosciuto:', mapType);
+          return;
+      }
+      
+      // Effettua la chiamata API per recuperare i dati geoservizi
+      const response = await fetch(geoServiceUrl);
+      
+      // Verifica se la risposta è stata ricevuta correttamente
+      if (!response.ok) {
+        // Se la risposta non è ok, gestisci l'errore
+        throw new Error('Errore nel recupero dei dati geoservizi');
+      }
+      
+      console.log("Dati geoservizi recuperati con successo per la mappa:", mapType);
 
     } catch (error) {
       // Gestisci gli errori durante il recupero dei dati geoservizi
@@ -206,17 +207,17 @@ function MapWrapper(props) {
       </div>
       <CheckBoxLayers />
       <div className="container">
-      <div className="white-overlay"></div>
-      <div ref={mapElement} className="map-container"></div>
-      {/* Renderizza il componente BackgroundButton e passa le funzioni necessarie come props */}
-      <BackgroundButton
-        setBackgroundMap={handleBackgroundChange} // Passa la funzione per cambiare lo sfondo
-        toggleMenu={toggleMenu} // Passa lo stato del menu
-        fetchGeoData={fetchGeoData} // Passa la funzione per recuperare i dati geoservizi
-      />
+        <div className="white-overlay"></div>
+        <div ref={mapElement} className="map-container"></div>
+        {/* Renderizza il componente BackgroundButton e passa le funzioni necessarie come props */}
+        <BackgroundButton
+          setBackgroundMap={handleBackgroundChange} // Passa la funzione per cambiare lo sfondo
+          toggleMenu={toggleMenu} // Passa lo stato del menu
+          fetchGeoData={fetchGeoData} // Passa la funzione per recuperare i dati geoservizi
+        />
+      </div>
     </div>
-  </div>
-);
-}
+  );
+});
 
 export default MapWrapper;

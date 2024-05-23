@@ -1,8 +1,17 @@
 from fastapi import FastAPI, Query, HTTPException
 import requests
 from functools import lru_cache
+from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:3000"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 # Define the API key
 key = "5cc87b12d7c5370001c1d65576ce5bd4be5a4a349ca401cdd7cac1ff"
@@ -27,8 +36,6 @@ def fetch_journeys_for_train_id(train_id, key):
     return fetch_geojson_from_external_api(api_url)
 
 # Endpoint to get trajectories and journeys based on bounding box
-# Example URL:
-#http://localhost:8000/get_all_journey/?bbox=838667,5997631,909982,6036843&key=5cc87b12d7c5370001c1d65576ce5bd4be5a4a349ca401cdd7cac1ff&zoom=12
 @app.get("/get_all_journey/")
 async def get_all_journey(
     bbox: str = Query(..., description="Bounding box coordinates in format easting,northing,easting,northing"),
@@ -42,19 +49,26 @@ async def get_all_journey(
     # Fetch GeoJSON data from external API
     trajectories_geojson = fetch_geojson_from_external_api(api_url)
 
+    # Ensure we have a valid FeatureCollection
+    if trajectories_geojson.get("type") != "FeatureCollection" or not isinstance(trajectories_geojson.get("features"), list):
+        raise HTTPException(status_code=500, detail="Invalid GeoJSON data received from external API")
+
     # Get journeys for each train ID in trajectories_geojson
     for feature in trajectories_geojson["features"]:
-        train_id = feature["properties"]["train_id"]
-        journeys_geojson = fetch_journeys_for_train_id(train_id, key)
-        # Merge journeys_geojson into trajectories_geojson
-        feature["properties"]["journeys"] = journeys_geojson["features"]
+        properties = feature.get("properties", {})
+        train_id = properties.get("train_id")
+        train_type = properties.get("type")
+    
+    # Skip fetch if the type is "gondola"
+        if train_id and train_type != "gondola":
+            journeys_geojson = fetch_journeys_for_train_id(train_id, key)
+            properties["journeys"] = journeys_geojson.get("features", [])
+
 
     # Return fetched GeoJSON data
     return trajectories_geojson
 
 # Endpoint to get calls based on train ID
-# Example URL:
-# http://localhost:8000/get_info/?train_id=sbb_139707706285552&key=5cc87b12d7c5370001c1d65576ce5bd4be5a4a349ca401cdd7cac1ff
 @app.get("/get_info/")
 async def get_info(train_id: str = Query(..., description="Train ID"), key: str = Query(..., description="API key")):
     # Construct API URL with provided train ID and API key
