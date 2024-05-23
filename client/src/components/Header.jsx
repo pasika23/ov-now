@@ -10,10 +10,7 @@ function Header() {
           <nav>
             <ul>
               <li>
-                <Link to="/">Karte</Link>
-              </li>
-              <li>
-                <Link to="/InfoPage">Info Page</Link>
+                <Link to="/">Züruck zum Karte</Link>
               </li>
             </ul>
           </nav>

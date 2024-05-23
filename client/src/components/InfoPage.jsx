@@ -1,13 +1,16 @@
 import React from 'react';
-import CopyUrlButton from './Sharelink';
+import { useParams } from 'react-router-dom';
 
-function InfoPage() {
+const InfoPage = () => {
+  const { featureId } = useParams();
+
   return (
-    <div className="InfoPage">
+    <div>
       <h1>Info Page</h1>
-      <CopyUrlButton />
+      <p>Feature ID: {featureId}</p>
+      {/* Add more details based on the featureId */}
     </div>
   );
-}
+};
 
 export default InfoPage;
