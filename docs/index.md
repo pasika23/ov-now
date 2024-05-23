@@ -5,27 +5,33 @@ layout: default
 ## Motivation {#motivation}
 Wir haben festgestellt, dass jemand, der sich die Informationen in der SBB-App anschaut, keine visuelle Bestätigung dafür hat, wo sich das öffentliche Verkehrsmittel, mit dem er unterwegs ist, in der Realität befindet. Dies kann zu Schwierigkeiten bei der Auswahl der besten Verbindungen führen, um das Ziel so einfach wie möglich zu erreichen.
 
+
 ## Ziel {#ziel}
 Das Ziel dieses Projekts ist es, ein Geoportal zu schaffen, das die Visualisierung von Live-Daten aller Verkehrsmittel in der Schweiz ermöglicht. Dies wird die Wahl der Routen erleichtern, um Verspätungen zu vermeiden und mögliche unvorhergesehene Zwischenfälle zu beheben.
 
+
 ## Workflow {#workflow}
+
 
 ## ÖV-Now im konkret {#app}
 ### Architectur {#architektur}
 
+
 ### Datenbankmodell {#Datenbankmodell}
+
 
 ### Programmiersprachen {#Programmiersprachen}
 
+
 ### Bezugssystem {#bezugssystem}
 Die bezogenen Daten aus der API stehen im EPSG: 3857 (Web Mercator) zur Verfügung. Die Punktkoordinaten werden ohne Transformation verwendet und auf der Karte abgebildet.
+
 
 ### Anwendung {#anwendung}
 <video width="640" height="400" controls>
   <source src="assets/img/Demo.mp4" type="video/mp4">
 </video>
-
-     
+ 
 Wir gehen davon aus, dass die App vor allem von Personen genutzt wird, die täglich Verkehrsmittel benutzen, und zwar hauptsächlich auf mobilen Geräten.
 Nachdem man sich in der App angemeldet hat, kann man auf der Karte nach dem gewünschten Verkehrsmittel suchen oder die entsprechenden Attribute in die Suchleiste eingeben.
 Wenn Sie sich in einem Gebiet befinden, in dem die öffentlichen Verkehrsmittel sehr stark frequentiert sind, können Sie das Dropdown-Menü auf der rechten Seite verwenden, um die Ebenen, die Sie anzeigen möchten, ein- oder auszuschalten.
@@ -33,7 +39,9 @@ Wenn Sie die gewünschte Linie oder das gewünschte Verkehrsmittel gefunden habe
 Wenn Sie jemanden über Ihre Reise benachrichtigen wollen, vielleicht weil Sie Verspätung haben oder eine Änderung eingetreten ist, können Sie den Link zur Seite mit einer einfachen Schaltfläche teilen.
 Wenn Sie mit der Infopage fertig sind, können Sie zur Karte zurückkehren, um neue Routen anzuzeigen.
 
+
 ## Frontend {#frontend}
+
 
 ### Symbologie {#symbologie}
 Um die Verkehrsmittel und die Strecken, auf denen sie verkehren, zu unterscheiden, wurden Symbole eingeführt.
@@ -80,6 +88,7 @@ Die Transportsymbole stammen aus der React-Komponentenbibliothek: Material UI. G
 Wir möchten, dass sich unsere App an den Stil der ffs-App anlehnt, so dass die Menschen bereits an den Stil gewöhnt sind und keine Schwierigkeiten haben, die Informationen zu finden.
 Unabhängig vom Stil der ffs-App möchten wir, dass unsere App leicht zu lesen und für jeden zugänglich ist.
 
+
 ### Mainpage {#mainpage}
 Die Oberfläche der Hauptseite (diejenige, auf die man gelangt, wenn man die App öffnet) hat die Karte in ihrem Zentrum, sie dient als Hintergrund der App, muss aber auch im Mittelpunkt der Aufmerksamkeit des Nutzers stehen.
 Aus diesem Grund wurden alle zusätzlichen Funktionen wie Ebenen und die Suchleiste an den Seiten des Bildschirms angebracht.
@@ -94,6 +103,7 @@ Im Gegensatz dazu haben die Bildschirme von Smartphones in der Regel eine eher r
 Hoch über der Karte steht der Name der App auf rotem Hintergrund. Der Hintergrund soll an den Stil der SBB-App erinnern.
 Alles in allem kann man von einer minimalistischen GUI sprechen, die das Lesen für die Nutzer nicht erschwert.
 
+
 ### Infopage {#infopage}
 Auf dieser Seite werden die Daten der gewünschten Route dargestellt, diese Daten müssen im Mittelpunkt stehen.
 Auch auf dieser Seite wurde, wie auf der Hauptseite, die Ähnlichkeit der Komponenten mit der Form des Bildschirms gesucht.
@@ -106,11 +116,14 @@ Im Hauptteil finden Sie ein Liniendiagramm, das alle Bahnhöfe auf der Strecke m
 Die Farben Grün und Rot zeigen an, ob das Verkehrsmittel normal oder mit Verspätung verkehrt.
 Vorerst nur eine Idee, es ist auch geplant, die verschiedenen Verkehrsmittel mit einem anderen Hintergrund darzustellen. Dadurch soll der Benutzer auf einen Blick erkennen, um welches Verkehrsmittel es sich handelt.
 
+
 ## Von Backend bis Frontend {#Von-Backend-bis-Frontend}
+
 
 ## Backend {#backend}
 ### Datenherkunft {#Datenherkunft}
 Zuerst wollten wir intuitiv die Daten von der SBB oder OpenData.ch beziehen. Leider sind alle diese API's etwas anderes als wir benötigen oder / und sie sind nicht zugänglich für nichts zahlende Studenten. So endeten wir bei GeoOps. 
+
 
 ### Limitationen in der Genauigkeit {#Limitationen1}
 Die Positionierungsgenauigkeit ist uns nicht bekannt, ebenfalls ist uns nicht bekannt über welche Hard & Software die Positionierung erstellt wird.
@@ -125,6 +138,7 @@ Alle Vorbilder wie folgende sind sommit nicht akkurat. Das heisst die gezeigten 
 [https://mobility.portal.geops.io/](https://mobility.portal.geops.io/world.geops.transit?layers=paerke,strassennamen,haltekanten,haltestellen,pois,tramlinien,world.geops.traviclive&x=941076.59&y=5983545.01&z=9.18)
 
 Wir haben auch keine Angaben zu der Genauigkeit temporalen Auflösung, wir werden jedoch selbst aus im nächsten Kapitel folgenden Gründen darauf beschränken, die Daten in grösseren Zeitlichen Abständen zu beziehen als für eine Produktive App eigentlich notwendig:
+
 
 ### Limitationen im Zugriff {#Limitationen2}
 Da die SBB & OpenData -Spuren beide im Sand verliefen nutzen wir nun die Daten der [GeoOps-API](https://developer.geops.io/apis/realtime). Diese ist eigentlich eine kostenpflichtige API aber bietet eine gratis Testmöglichkeit nachdem man einen Account erstellt hat. Das Pricing ist in folgender Tabelle ersichtlich:
@@ -168,9 +182,11 @@ Der erste Endpoint get_all_journey soll aufgeruft werden sobald die App initiali
 
 Der zweite Endpoint get_info gibt das die GeOps-Abfrage von get_calls zurück.
 
+
 ## Daten {#daten}
 ### Slicing {#Slicing}
 Pascal
+
 
 ### Weiterverarbeitung {#Weiterverarbeitung}
 Pascal
