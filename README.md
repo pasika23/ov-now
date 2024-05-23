@@ -73,7 +73,7 @@ gibt IP zurück falls nicht vorhanden zum Copy Pasten
 
 51.)  "http://192.168.126.44:8000/get_all_journey/?bbox=838667,5997631,909982,6036843&key=5cc87b12d7c5370001c1d65576ce5bd4be5a4a349ca401cdd7cac1ff&zoom=12"
 
-52.)  "http://192.168.126.44:8000/get_info/?train_id=sbb_139707706285552&key=5cc87b12d7c5370001c1d65576ce5bd4be5a4a349ca401cdd7cac1ff"
+52.)  "http://192.168.126.44:8000/get_info/?train_id=sbb_140523419689984&key=5cc87b12d7c5370001c1d65576ce5bd4be5a4a349ca401cdd7cac1ff"
 
 
 
