@@ -125,7 +125,11 @@ const MapWrapper = forwardRef((props, ref) => {
     setMap(initialMap);
     setFeaturesLayer(initialFeaturesLayer);
 
-    return () => initialMap.setTarget("");
+    return () => {
+      if (initialMap) {
+        initialMap.setTarget(null);
+      }
+    };
   }, []);
 
   const getMinZoom = () => {
@@ -229,6 +233,14 @@ const MapWrapper = forwardRef((props, ref) => {
       console.error('Errore durante il recupero dei dati geoservizi:', error.message);
     }
   };
+
+  useEffect(() => {
+    if (map) {
+      const layers = map.getLayers().getArray();
+      layers[0] = getBackgroundLayer();
+      map.render();
+    }
+  }, [backgroundMap, map]);
 
   return (
     <div style={{ position: 'relative', flex: "100 0 0" }}>
