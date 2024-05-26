@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './Searchbar.css';
 import SearchIcon from '@mui/icons-material/Search';
 
-const Searchbar = ({ searchLine }) => {
+const Searchbar = ({ onSearch }) => {
     const [inputValue, setInputValue] = useState('');
 
     const handleInputChange = (event) => {
@@ -11,7 +11,7 @@ const Searchbar = ({ searchLine }) => {
 
     const handleSearch = () => {
         if (inputValue.trim()) {
-            searchLine('line_name', inputValue);
+            onSearch(inputValue);
         }
     };
 
@@ -26,7 +26,7 @@ const Searchbar = ({ searchLine }) => {
             <input
                 type="text"
                 id="search-input"
-                placeholder="Ricerca di indirizzi, parcelle o mappe"
+                placeholder="Enter search term"
                 value={inputValue}
                 onChange={handleInputChange}
                 onKeyDown={handleKeyDown}

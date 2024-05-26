@@ -44,7 +44,7 @@ function App() {
         <button onClick={fetchFeatures}>Fetch Features</button>
         <Routes>
           <Route path="/" element={<MapWrapper ref={mapRef} features={features} />} />
-          <Route path="/InfoPage/:featureId" element={<InfoPage />} />
+          <Route path="/InfoPage/:name_line" element={<InfoPage />} />
         </Routes>
       </Router>
     </div>

@@ -195,16 +195,16 @@ const MapWrapper = forwardRef((props, ref) => {
         return [506943.5, 5652213.5, 1301728.5, 6191092];
     };
 
-    const handleSearch = (property, searchTerm) => {
-        const features = featuresLayer.getSource().getFeatures();
-        const matchingFeature = features.find(feature => feature.get(property) === searchTerm);
-        if (matchingFeature) {
-            const extent = matchingFeature.getGeometry().getExtent();
-            map.getView().fit(extent, { duration: 1000 });
-        } else {
-            alert('Feature not found.');
-        }
-    };
+    const handleSearch = (searchTerm) => {
+      const features = featuresLayer.getSource().getFeatures();
+      const matchingFeature = features.find(feature => feature.get('line_name') === searchTerm);
+      if (matchingFeature) {
+          const extent = matchingFeature.getGeometry().getExtent();
+          map.getView().fit(extent, { duration: 1000 });
+      } else {
+          alert('Feature not found.');
+      }
+  };
 
     const handleBackgroundChange = (mapType) => {
         setBackgroundMap(mapType);
@@ -251,8 +251,8 @@ const MapWrapper = forwardRef((props, ref) => {
     }, [backgroundMap, map]);
 
     return (
-        <div style={{ position: 'relative', flex: "80 0 0" }}>
-            <Searchbar searchLine={handleSearch} />
+        <div style={{ position: 'relative', flex: "100 0 0" }}>
+            <Searchbar onSearch={handleSearch} />
             <CheckBoxLayers />
             <div className="container">
                 <div className="white-overlay" style={{ zIndex: 1, backgroundColor: 'rgba(255, 255, 255, 0.2)', pointerEvents: 'none' }}></div>
