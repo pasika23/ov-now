@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
 const InfoPage = () => {
-  const { trainId } = useParams();
+  const { trainId, name_line } = useParams();
   const [stations, setStations] = useState([]);
   const [startStation, setStartStation] = useState('');
   const [endStation, setEndStation] = useState('');
@@ -11,7 +11,7 @@ const InfoPage = () => {
     fetch(`http://localhost:8000/get_info/?train_id=${trainId}&key=5cc87b12d7c5370001c1d65576ce5bd4be5a4a349ca401cdd7cac1ff`)
       .then(response => response.json())
       .then(data => {
-        console.log(data); // Protokollieren Sie die erhaltenen Daten
+        console.log(data); // Log received data
         if (data.length > 0) {
           const stations = data[0].stations || [];
           setStations(stations);
@@ -133,6 +133,9 @@ const InfoPage = () => {
 
   return (
     <div>
+      <h1>Info Page</h1>
+      <p>Feature Name: {name_line}</p>
+      {/* Add more details based on the feature name */}
       <h1>Fahrinformationen</h1>
       <p>{startStation} - {endStation}</p>
       <div id="station-container">
