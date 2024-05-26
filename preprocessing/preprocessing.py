@@ -5,8 +5,8 @@ import matplotlib.pyplot as plt
 import json
 
 # JSON-Daten aus einer Datei importieren
-# with open('preprocessing\get_trajectories.json', 'r') as f:
-#     traj = json.load(f)
+with open('preprocessing\get_trajectories.json', 'r') as f:
+    traj = json.load(f)
 
 with open('preprocessing\get_journey.json', 'r') as f:
     journey = json.load(f)
@@ -21,10 +21,10 @@ with open('preprocessing\get_journey.json', 'r') as f:
 # request_traj = f"https://api.geops.io/tracker-http/v1/trajectories/sbb/?bbox={bb}&key={API_KEY}&zoom=12"
 # response_traj = requests.get(request_traj)
 
-# for i in traj['features']:
-#     if i["properties"]["type"] != 'gondola':
-#         train_id = i["properties"]["type"]
-#         print(train_id)
+for i in traj['features']:
+    if i["properties"]["type"] != 'gondola':
+        train_id = i["properties"]["type"]
+        print(train_id)
 
 # if response.status_code == 200:
 #     daten = response_traj.json()
