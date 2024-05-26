@@ -116,12 +116,12 @@ const MapWrapper = forwardRef((props, ref) => {
             }).extend([]),
         });
 
-        initialMap.on('click', (event) => {
-            initialMap.forEachFeatureAtPixel(event.pixel, (feature) => {
-                const type = feature.getId();
-                navigate(`/InfoPage/${type}`);
-            });
-        });
+    initialMap.on('click', (event) => {
+      initialMap.forEachFeatureAtPixel(event.pixel, (feature) => {
+        const trainId = feature.get('train_id'); // Assuming the feature has a property train_id
+        navigate(`/InfoPage/${trainId}`);
+      });
+    });
 
         setMap(initialMap);
         setFeaturesLayer(initialFeaturesLayer);

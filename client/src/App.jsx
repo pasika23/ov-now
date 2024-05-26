@@ -41,10 +41,10 @@ function App() {
     <div className="App">
       <Router>
         <Header />
-        <button onClick={fetchFeatures}>Fetch Features</button>
+        <button onClick={fetchFeatures}>Nach aktuellen Verkehrsmitteln suchen</button>
         <Routes>
           <Route path="/" element={<MapWrapper ref={mapRef} features={features} />} />
-          <Route path="/InfoPage/:featureId" element={<InfoPage />} />
+          <Route path="/InfoPage/:trainId" element={<InfoPage />} />
         </Routes>
       </Router>
     </div>
