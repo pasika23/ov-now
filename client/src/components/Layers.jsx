@@ -78,7 +78,7 @@ function DropdownChecklist({ onLayerVisibilityChange }) {
           checked={checkedItems.ship}
           onChange={handleChange}
           imageSrc={Schiffelinien}
-          displayLabel="Schiffelinien"
+          displayLabel="Schifflinien"
         />
       </div>
     </div>
