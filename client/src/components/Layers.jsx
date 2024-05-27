@@ -5,6 +5,10 @@ import Zuglinien from '../Image/Zuglinien.png';
 import Buslinien from '../Image/Buslinien.png';
 import Tramlinien from '../Image/Tramlinien.png';
 import Schiffelinien from '../Image/Schiffelinien.png';
+import DirectionsBusIcon from '@mui/icons-material/DirectionsBus';
+import TramIcon from '@mui/icons-material/Tram';
+import DirectionsRailwayIcon from '@mui/icons-material/DirectionsRailway';
+import DirectionsBoatIcon from '@mui/icons-material/DirectionsBoat';
 
 function DropdownChecklist({ onLayerVisibilityChange }) {
   const [checkedItems, setCheckedItems] = useState({
@@ -80,30 +84,34 @@ function DropdownChecklist({ onLayerVisibilityChange }) {
           imageSrc={Schiffelinien}
           displayLabel="Schifflinien"
         />
-        {/*<DropdownCheckbox
+        <DropdownCheckbox
           label="Zug"
-          checked={checkedItems.rail}
+          checked={checkedItems}
           onChange={handleChange}
           Icon={DirectionsRailwayIcon}
+          displayLabel="Zug"
         />
         <DropdownCheckbox
           label="Bus"
-          checked={checkedItems.bus}
+          checked={checkedItems}
           onChange={handleChange}
           Icon={DirectionsBusIcon}
+          displayLabel="Bus"          
         />
         <DropdownCheckbox
           label="Tram"
-          checked={checkedItems.tram}
+          checked={checkedItems}
           onChange={handleChange}
           Icon={TramIcon}
+          displayLabel="Tram"
         />
         <DropdownCheckbox
           label="Schiffe"
-          checked={checkedItems.ship}
+          checked={checkedItems}
           onChange={handleChange}
           Icon={DirectionsBoatIcon}
-        />*/}
+          displayLabel="Schiffe"
+        />
       </div>
     </div>
   );
