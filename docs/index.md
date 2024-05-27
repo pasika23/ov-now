@@ -45,6 +45,10 @@ In der letzten Phase des Projekts wurden die Daten vom Backend mit dem Frontend 
 
 ### Programmiersprachen {#Programmiersprachen}
 
+Hauptsächlich wurden 2 Programmiersprachen verwendet.
+Die erste ist Javascript mit der Unterstützung von React. Diese Programmiersprache ermöglicht es, eine interaktive und dynamische Benutzeroberfläche für Desktop und Mobile zu erstellen. Dies ermöglichte es, auf dem hypothetischen Gerät, auf dem der Benutzer die App verwenden kann, flexibel zu bleiben.
+Die zweite verwendete Programmiersprache ist Python. Sie ermöglichte die Erstellung der Skripte, aus denen das Backend besteht.
+
 
 ### Bezugssystem {#bezugssystem}
 Die bezogenen Daten aus der API stehen im EPSG: 3857 (Web Mercator) zur Verfügung. Die Punktkoordinaten werden ohne Transformation verwendet und auf der Karte abgebildet.
