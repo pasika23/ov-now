@@ -139,7 +139,7 @@ Im Hauptteil finden Sie ein Liniendiagramm, das alle Bahnhöfe auf der Strecke m
 Die Farben Grün und Rot zeigen an, ob das Verkehrsmittel normal oder mit Verspätung verkehrt.
 Vorerst nur eine Idee, es ist auch geplant, die verschiedenen Verkehrsmittel mit einem anderen Hintergrund darzustellen. Dadurch soll der Benutzer auf einen Blick erkennen, um welches Verkehrsmittel es sich handelt.
 
-### Features {#features}
+### Features {#feature}
 
 **BackgroundButton-Komponente**
 
