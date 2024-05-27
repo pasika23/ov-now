@@ -79,7 +79,7 @@ function DropdownChecklist({ onLayerVisibilityChange }) {
           displayLabel="Tramlinien"
         />
         <DropdownCheckbox
-          label="ship"
+          label="ferry"
           checked={checkedItems.ferry}
           onChange={handleChange}
           imageSrc={Schiffelinien}
