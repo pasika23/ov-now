@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { useParams } from 'react-router-dom';
 import ShareLink from './Sharelink';
 import { Link, useLocation } from 'react-router-dom';
@@ -10,6 +10,7 @@ const InfoPage = () => {
   const [endStation, setEndStation] = useState('');
   const location = useLocation();
   const isInfoPage = location.pathname === '/InfoPage';
+  const stationRefs = useRef([]);
 
   useEffect(() => {
     fetch(`http://localhost:8000/get_info/?train_id=${trainId}&key=5cc87b12d7c5370001c1d65576ce5bd4be5a4a349ca401cdd7cac1ff`)
@@ -29,6 +30,17 @@ const InfoPage = () => {
       })
       .catch(error => console.error('Error fetching train data:', error));
   }, [trainId]);
+
+  useEffect(() => {
+    if (stations.length > 0) {
+      const currentIndex = getCurrentStationIndex(stations);
+      if (currentIndex !== -1) {
+        setTimeout(() => {
+          stationRefs.current[currentIndex]?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }, 500);
+      }
+    }
+  }, [stations]);
 
   const formatTime = (dateString) => {
     const date = new Date(dateString);
@@ -83,7 +95,9 @@ const InfoPage = () => {
       return <p>Keine Haltestelleninformationen verfügbar.</p>;
     }
 
+    const now = new Date();
     const currentPosition = getCurrentPosition(stations);
+
     return (
       <div style={{ position: 'relative', marginLeft: '20px' }}>
         <div style={{
@@ -95,26 +109,39 @@ const InfoPage = () => {
           backgroundColor: 'black',
           zIndex: '0'
         }}></div>
-        {stations.map((station, index) => (
-          <div key={index} style={{ position: 'relative', padding: '10px 0', display: 'flex', alignItems: 'center' }}>
-            <div style={{
-              width: '10px',
-              height: '10px',
-              backgroundColor: 'black',
-              borderRadius: '50%',
-              position: 'absolute',
-              left: '-6px', // Adjust to center the point on the line
-              zIndex: '1'
-            }}></div>
-            <div style={{ marginLeft: '20px' }}>
-              <h3>{station.stationName}</h3>
-              <p>
-                Ankunft: {formatTime(station.arrivalTime)} {getDelay(station.aimedArrivalTime, station.arrivalTime)}<br />
-                Abfahrt: {formatTime(station.departureTime)} {getDelay(station.aimedDepartureTime, station.departureTime)}
-              </p>
+        {stations.map((station, index) => {
+          const stationPassed = new Date(station.departureTime) < now;
+          return (
+            <div
+              key={index}
+              ref={el => stationRefs.current[index] = el}
+              style={{
+                position: 'relative',
+                padding: '10px 0',
+                display: 'flex',
+                alignItems: 'center',
+                color: stationPassed ? 'grey' : 'black'
+              }}
+            >
+              <div style={{
+                width: '10px',
+                height: '10px',
+                backgroundColor: stationPassed ? 'grey' : 'black',
+                borderRadius: '50%',
+                position: 'absolute',
+                left: '-6px', // Adjust to center the point on the line
+                zIndex: '1'
+              }}></div>
+              <div style={{ marginLeft: '20px' }}>
+                <h3>{station.stationName}</h3>
+                <p>
+                  Ankunft: {formatTime(station.arrivalTime)} {getDelay(station.aimedArrivalTime, station.arrivalTime)}<br />
+                  Abfahrt: {formatTime(station.departureTime)} {getDelay(station.aimedDepartureTime, station.departureTime)}
+                </p>
+              </div>
             </div>
-          </div>
-        ))}
+          );
+        })}
         {currentPosition !== -1 && (
           <div style={{
             position: 'absolute',
