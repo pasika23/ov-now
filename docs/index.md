@@ -205,6 +205,7 @@ Diese React-Komponente, `DropdownChecklist`, ist dafür ausgelegt, die Sichtbark
 
 
 **Sharelink**
+
 Mit dieser Komponente kann die Seitenurl an eine andere Person über Whatsapp gesendet werden.
 Die Komponente wurde mit der react-share-Bibliothek erstellt, die bereits verschiedene Schaltflächen zum Teilen in sozialen Netzwerken bereitstellt.
 
