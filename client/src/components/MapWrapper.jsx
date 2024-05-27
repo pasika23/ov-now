@@ -18,7 +18,12 @@ const MapWrapper = forwardRef((props, ref) => {
     const [map, setMap] = useState();
     const [featuresLayer, setFeaturesLayer] = useState();
     const [backgroundMap, setBackgroundMap] = useState('Landeskarte-farbe');
-    const [importedGeometries, setImportedGeometries] = useState({});
+    const [layerVisibility, setLayerVisibility] = useState({
+        rail: false,
+        bus: false,
+        tram: false,
+        ship: false,
+    });
     const desktopMinZoom = 8.3;
     const mobileMinZoom = 7.5;
     const [toggleMenu, setToggleMenu] = useState(false);
@@ -28,73 +33,73 @@ const MapWrapper = forwardRef((props, ref) => {
     const navigate = useNavigate();
 
     const featureStyle = (feature) => {
-      const type = feature.get('type');
-      let mainStrokeStyle;
-      let secondaryStrokeStyle;
-      let haloStrokeStyle = new Stroke({
-          color: 'rgba(255, 255, 255, 0.5)', // Transparent halo color
-          width: 10, // Width of the halo
-      });
-  
-      switch (type) {
-          case 'rail':
-              mainStrokeStyle = new Stroke({
-                  color: 'black',
-                  width: 3,
-              });
-              break;
-          case 'bus':
-              mainStrokeStyle = new Stroke({
-                  color: 'black',
-                  width: 3,
-                  lineDash: [5, 15], // Dashed line
-              });
-              break;
-          case 'tram':
-              mainStrokeStyle = new Stroke({
-                  color: 'black',
-                  width: 4,
-                  lineCap: 'butt', // Square ends
-              });
-  
-              secondaryStrokeStyle = new Stroke({
-                  color: 'white',
-                  width: 2,
-                  lineCap: 'butt', // Square ends
-              });
-  
-              return [
-                  new Style({
-                      stroke: haloStrokeStyle,
-                      zIndex: 2, // Ensure halo is underneath feature but above overlay
-                  }),
-                  new Style({
-                      stroke: mainStrokeStyle,
-                      zIndex: 3, // Feature layer
-                  }),
-                  new Style({
-                      stroke: secondaryStrokeStyle,
-                      zIndex: 4, // Overlay secondary style on top
-                  })
-              ];
-          default:
-              mainStrokeStyle = new Stroke({
-                  color: 'black',
-                  width: 3,
-              });
-      }
-  
-      return [
-          new Style({
-              stroke: haloStrokeStyle,
-              zIndex: 2,
-          }),
-          new Style({
-              stroke: mainStrokeStyle,
-              zIndex: 3,
-          })
-      ];
-  };
+        const type = feature.get('type');
+        let mainStrokeStyle;
+        let secondaryStrokeStyle;
+        let haloStrokeStyle = new Stroke({
+            color: 'rgba(255, 255, 255, 0.5)', // Transparent halo color
+            width: 10, // Width of the halo
+        });
+
+        switch (type) {
+            case 'rail':
+                mainStrokeStyle = new Stroke({
+                    color: 'black',
+                    width: 3,
+                });
+                break;
+            case 'bus':
+                mainStrokeStyle = new Stroke({
+                    color: 'black',
+                    width: 3,
+                    lineDash: [5, 15], // Dashed line
+                });
+                break;
+            case 'tram':
+                mainStrokeStyle = new Stroke({
+                    color: 'black',
+                    width: 4,
+                    lineCap: 'butt', // Square ends
+                });
+
+                secondaryStrokeStyle = new Stroke({
+                    color: 'white',
+                    width: 2,
+                    lineCap: 'butt', // Square ends
+                });
+
+                return [
+                    new Style({
+                        stroke: haloStrokeStyle,
+                        zIndex: 2, // Ensure halo is underneath feature but above overlay
+                    }),
+                    new Style({
+                        stroke: mainStrokeStyle,
+                        zIndex: 3, // Feature layer
+                    }),
+                    new Style({
+                        stroke: secondaryStrokeStyle,
+                        zIndex: 4, // Overlay secondary style on top
+                    })
+                ];
+            default:
+                mainStrokeStyle = new Stroke({
+                    color: 'black',
+                    width: 3,
+                });
+        }
+
+        return [
+            new Style({
+                stroke: haloStrokeStyle,
+                zIndex: 2,
+            }),
+            new Style({
+                stroke: mainStrokeStyle,
+                zIndex: 3,
+            })
+        ];
+    };
 
     useEffect(() => {
         const initialFeaturesLayer = new VectorLayer({
@@ -118,14 +123,14 @@ const MapWrapper = forwardRef((props, ref) => {
             }).extend([]),
         });
 
-    initialMap.on('click', (event) => {
-      initialMap.forEachFeatureAtPixel(event.pixel, (feature) => {
-        const trainId = feature.get('train_id'); // Assuming the feature has a property train_id
-        const line_name = feature.get('line_name')
-        const type = feature.get('type')
-        navigate(`/InfoPage/${trainId}/${line_name}/${type}`);
-      });
-    });
+        initialMap.on('click', (event) => {
+            initialMap.forEachFeatureAtPixel(event.pixel, (feature) => {
+                const trainId = feature.get('train_id'); // Assuming the feature has a property train_id
+                const line_name = feature.get('line_name');
+                const type = feature.get('type');
+                navigate(`/InfoPage/${trainId}/${line_name}/${type}`);
+            });
+        });
 
         setMap(initialMap);
         setFeaturesLayer(initialFeaturesLayer);
@@ -142,17 +147,39 @@ const MapWrapper = forwardRef((props, ref) => {
     };
 
     useEffect(() => {
-        if (featuresLayer && props.features.length) {
-            featuresLayer.setSource(
-                new VectorSource({
-                    features: props.features
-                })
-            );
-            map.getView().fit(featuresLayer.getSource().getExtent(), {
-                padding: [100, 100, 100, 100]
+        fetchFeatures();
+    }, [layerVisibility]);
+
+    const fetchFeatures = () => {
+        if (featuresLayer) {
+            const currentMap = mapRef.current;
+            const view = currentMap.getView();
+            const extent = view.calculateExtent(currentMap.getSize());
+            const newBbox = extent.map(coord => Math.round(coord)).join(',');
+            const newZoom = Math.round(view.getZoom());
+
+            Object.keys(layerVisibility).forEach((layerType) => {
+                if (layerVisibility[layerType]) {
+                    fetch(`http://localhost:8000/get_all_journey/?bbox=${newBbox}&key=5cc87b12d7c5370001c1d65576ce5bd4be5a4a349ca401cdd7cac1ff&zoom=${newZoom}&type=${layerType}`)
+                        .then(response => response.json())
+                        .then((fetchedFeatures) => {
+                            const wktOptions = {
+                                dataProjection: 'EPSG:3857',
+                                featureProjection: 'EPSG:3857'
+                            };
+                            const parsedFeatures = new GeoJSON().readFeatures(fetchedFeatures, wktOptions);
+                            const source = featuresLayer.getSource();
+                            source.addFeatures(parsedFeatures.filter(feature => feature.get('type') === layerType));
+                        })
+                        .catch(error => console.error('Error fetching data:', error));
+                } else {
+                    const source = featuresLayer.getSource();
+                    const featuresToRemove = source.getFeatures().filter(feature => feature.get('type') === layerType);
+                    featuresToRemove.forEach(feature => source.removeFeature(feature));
+                }
             });
         }
-    }, [props.features, featuresLayer, map]);
+    };
 
     useImperativeHandle(ref, () => ({
         getMap: () => mapRef.current
@@ -200,15 +227,15 @@ const MapWrapper = forwardRef((props, ref) => {
     };
 
     const handleSearch = (searchTerm) => {
-      const features = featuresLayer.getSource().getFeatures();
-      const matchingFeature = features.find(feature => feature.get('line_name') === searchTerm);
-      if (matchingFeature) {
-          const extent = matchingFeature.getGeometry().getExtent();
-          map.getView().fit(extent, { duration: 1000 });
-      } else {
-          alert('Feature not found.');
-      }
-  };
+        const features = featuresLayer.getSource().getFeatures();
+        const matchingFeature = features.find(feature => feature.get('line_name') === searchTerm);
+        if (matchingFeature) {
+            const extent = matchingFeature.getGeometry().getExtent();
+            map.getView().fit(extent, { duration: 1000 });
+        } else {
+            alert('Feature not found.');
+        }
+    };
 
     const handleBackgroundChange = (mapType) => {
         setBackgroundMap(mapType);
@@ -254,10 +281,27 @@ const MapWrapper = forwardRef((props, ref) => {
         }
     }, [backgroundMap, map]);
 
+    useEffect(() => {
+        if (featuresLayer) {
+            const features = featuresLayer.getSource().getFeatures();
+            features.forEach(feature => {
+                const type = feature.get('type');
+                feature.setStyle(layerVisibility[type] ? featureStyle(feature) : null);
+            });
+        }
+    }, [layerVisibility, featuresLayer]);
+
+    const handleLayerVisibilityChange = (layerType, isVisible) => {
+        setLayerVisibility(prevState => ({
+            ...prevState,
+            [layerType]: isVisible
+        }));
+    };
+
     return (
         <div style={{ position: 'relative', flex: "100 0 0" }}>
             <Searchbar onSearch={handleSearch} />
-            <CheckBoxLayers />
+            <CheckBoxLayers onLayerVisibilityChange={handleLayerVisibilityChange} />
             <div className="container">
                 <div className="white-overlay" style={{ zIndex: 1, backgroundColor: 'rgba(255, 255, 255, 0.2)', pointerEvents: 'none' }}></div>
                 <div ref={mapElement} className="map-container"></div>

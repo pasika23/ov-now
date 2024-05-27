@@ -105,3 +105,9 @@
     margin-right: 15px;
   }
 }
+
+.dropdown-checkbox .dropdown-checkbox-image {
+  width: 20px;
+  height: auto;
+  margin-right: 8px;
+}
