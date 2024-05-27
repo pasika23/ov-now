@@ -1,25 +1,10 @@
 import React, { useState } from 'react';
 import './Layers.css';
+import DropdownCheckbox from './DropdownCheckbox';
 import Zuglinien from '../Image/Zuglinien.png';
 import Buslinien from '../Image/Buslinien.png';
 import Tramlinien from '../Image/Tramlinien.png';
 import Schiffelinien from '../Image/Schiffelinien.png';
-
-function DropdownCheckbox({ label, checked, onChange, imageSrc }) {
-  return (
-    <div className="dropdown-checkbox">
-      <input
-        type="checkbox"
-        id={label}
-        name={label}
-        checked={checked}
-        onChange={onChange}
-      />
-      {imageSrc && <img src={imageSrc} alt={label} className="dropdown-checkbox-image" />}
-      <label htmlFor={label}>{label}</label><br />
-    </div>
-  );
-}
 
 function DropdownChecklist({ onLayerVisibilityChange }) {
   const [checkedItems, setCheckedItems] = useState({
@@ -72,24 +57,28 @@ function DropdownChecklist({ onLayerVisibilityChange }) {
           checked={checkedItems.rail}
           onChange={handleChange}
           imageSrc={Zuglinien}
+          displayLabel="Zuglinien"
         />
         <DropdownCheckbox
           label="bus"
           checked={checkedItems.bus}
           onChange={handleChange}
           imageSrc={Buslinien}
+          displayLabel="Buslinien"
         />
         <DropdownCheckbox
           label="tram"
           checked={checkedItems.tram}
           onChange={handleChange}
           imageSrc={Tramlinien}
+          displayLabel="Tramlinien"
         />
         <DropdownCheckbox
           label="ship"
           checked={checkedItems.ship}
           onChange={handleChange}
           imageSrc={Schiffelinien}
+          displayLabel="Schiffelinien"
         />
       </div>
     </div>
