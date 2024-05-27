@@ -203,6 +203,11 @@ Diese React-Komponente, `DropdownChecklist`, ist dafür ausgelegt, die Sichtbark
   <source src="assets/img/Layers.mp4" type="video/mp4">
 </video>
 
+**Sharelink**
+Mit dieser Komponente kann die Seitenurl an eine andere Person über Whatsapp gesendet werden.
+Die Komponente wurde mit der react-share-Bibliothek erstellt, die bereits verschiedene Schaltflächen zum Teilen in sozialen Netzwerken bereitstellt.
+
+![Sharebutton](assets/img/Sharebutton.png){: style="display:block; margin: 0 auto;"}
 
 
 ## Von Backend bis Frontend {#Von-Backend-bis-Frontend}
