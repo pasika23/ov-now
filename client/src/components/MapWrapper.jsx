@@ -160,6 +160,7 @@ const MapWrapper = forwardRef((props, ref) => {
 
             Object.keys(layerVisibility).forEach((layerType) => {
                 if (layerVisibility[layerType]) {
+                    console.log(`Fetching data for layer: ${layerType}`);
                     fetch(`http://localhost:8000/get_all_journey/?bbox=${newBbox}&key=5cc87b12d7c5370001c1d65576ce5bd4be5a4a349ca401cdd7cac1ff&zoom=${newZoom}&type=${layerType}`)
                         .then(response => response.json())
                         .then((fetchedFeatures) => {
@@ -169,12 +170,14 @@ const MapWrapper = forwardRef((props, ref) => {
                             };
                             const parsedFeatures = new GeoJSON().readFeatures(fetchedFeatures, wktOptions);
                             const source = featuresLayer.getSource();
+                            console.log(`Adding features for layer: ${layerType}`, parsedFeatures);
                             source.addFeatures(parsedFeatures.filter(feature => feature.get('type') === layerType));
                         })
                         .catch(error => console.error('Error fetching data:', error));
                 } else {
                     const source = featuresLayer.getSource();
                     const featuresToRemove = source.getFeatures().filter(feature => feature.get('type') === layerType);
+                    console.log(`Removing features for layer: ${layerType}`, featuresToRemove);
                     featuresToRemove.forEach(feature => source.removeFeature(feature));
                 }
             });

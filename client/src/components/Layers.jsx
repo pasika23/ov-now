@@ -1,15 +1,11 @@
 import React, { useState } from 'react';
 import './Layers.css';
-import DirectionsBusIcon from '@mui/icons-material/DirectionsBus';
-import TramIcon from '@mui/icons-material/Tram';
-import DirectionsRailwayIcon from '@mui/icons-material/DirectionsRailway';
-import DirectionsBoatIcon from '@mui/icons-material/DirectionsBoat';
 import Zuglinien from '../Image/Zuglinien.png';
 import Buslinien from '../Image/Buslinien.png';
 import Tramlinien from '../Image/Tramlinien.png';
 import Schiffelinien from '../Image/Schiffelinien.png';
 
-function DropdownCheckbox({ label, checked, onChange, Icon, imageSrc }) {
+function DropdownCheckbox({ label, checked, onChange, imageSrc }) {
   return (
     <div className="dropdown-checkbox">
       <input
@@ -20,7 +16,6 @@ function DropdownCheckbox({ label, checked, onChange, Icon, imageSrc }) {
         onChange={onChange}
       />
       {imageSrc && <img src={imageSrc} alt={label} className="dropdown-checkbox-image" />}
-      {Icon && <Icon className="dropdown-checkbox-icon" />}
       <label htmlFor={label}>{label}</label><br />
     </div>
   );
@@ -37,7 +32,7 @@ function DropdownChecklist({ onLayerVisibilityChange }) {
 
   const handleChange = (event) => {
     const { name, checked } = event.target;
-    setCheckedItems({ ...checkedItems, [name]: checked });
+    setCheckedItems(prevState => ({ ...prevState, [name]: checked }));
     onLayerVisibilityChange(name, checked);
   };
 
@@ -58,7 +53,7 @@ function DropdownChecklist({ onLayerVisibilityChange }) {
       const touchEndX = touch.clientX;
       const deltaX = touchEndX - window.touchStartX;
 
-      if (deltaX > 100) { // Adatta la soglia per determinare quanto scorrere per aprire il menu
+      if (deltaX > 100) {
         setMenuOpen(true);
       }
     }
@@ -73,53 +68,29 @@ function DropdownChecklist({ onLayerVisibilityChange }) {
       <div className="dropdown-toggle" onClick={handleToggle}></div>
       <div className="dropdown-content">
         <DropdownCheckbox
-          label="Zuglinien"
+          label="rail"
           checked={checkedItems.rail}
           onChange={handleChange}
           imageSrc={Zuglinien}
         />
         <DropdownCheckbox
-          label="buBuslinien"
+          label="bus"
           checked={checkedItems.bus}
           onChange={handleChange}
           imageSrc={Buslinien}
         />
         <DropdownCheckbox
-          label="Tramlinien"
+          label="tram"
           checked={checkedItems.tram}
           onChange={handleChange}
           imageSrc={Tramlinien}
         />
         <DropdownCheckbox
-          label="Schiffelinien"
+          label="ship"
           checked={checkedItems.ship}
           onChange={handleChange}
           imageSrc={Schiffelinien}
         />
-        {/*<DropdownCheckbox
-          label="Zug"
-          checked={checkedItems.rail}
-          onChange={handleChange}
-          Icon={DirectionsRailwayIcon}
-        />
-        <DropdownCheckbox
-          label="Bus"
-          checked={checkedItems.bus}
-          onChange={handleChange}
-          Icon={DirectionsBusIcon}
-        />
-        <DropdownCheckbox
-          label="Tram"
-          checked={checkedItems.tram}
-          onChange={handleChange}
-          Icon={TramIcon}
-        />
-        <DropdownCheckbox
-          label="Schiffe"
-          checked={checkedItems.ship}
-          onChange={handleChange}
-          Icon={DirectionsBoatIcon}
-  />*/}
       </div>
     </div>
   );
