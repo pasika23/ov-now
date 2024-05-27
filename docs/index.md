@@ -143,29 +143,34 @@ Für die ersten drei werden die von Swisstopo bereitgestellten wms verwendet.
 </video>
 
 
-**Dropdown Checklist Component**
 
-This React component, `DropdownChecklist`, is designed to manage the visibility of different transportation layers on a map interface. It includes a dropdown menu with checkboxes for rail, bus, tram, and ferry layers, each associated with an image.
+**Dropdown Checklist-Komponente**
 
-**Features**
+Diese React-Komponente, `DropdownChecklist`, ist dafür ausgelegt, die Sichtbarkeit verschiedener Verkehrsebenen auf einer Kartenoberfläche zu verwalten. Sie enthält ein Dropdown-Menü mit Kontrollkästchen für Zug-, Bus-, Tram- und Fährenlinien, die jeweils mit einem Bild verknüpft sind.
 
-- **Layer Visibility Control**: Users can toggle the visibility of transportation layers (rail, bus, tram, ferry) through checkboxes.
-- **Touch Support**: The dropdown menu supports touch events, allowing users to open the menu with a right swipe gesture.
-- **Dynamic State Management**: The component uses React's `useState` hook to manage the state of the checked items and the menu's open/close state.
+**Merkmale**
 
-**Component Structure**
+- **Layer-Sichtbarkeitssteuerung**: Benutzer können die Sichtbarkeit der Verkehrsebenen (Zug, Bus, Tram, Fähre) über Kontrollkästchen umschalten.
+- **Touch-Unterstützung**: Das Dropdown-Menü unterstützt Touch-Ereignisse, sodass Benutzer das Menü mit einer Rechtswischgeste öffnen können.
+- **Dynamische Zustandsverwaltung**: Die Komponente verwendet den `useState`-Hook von React, um den Zustand der ausgewählten Elemente und den Öffnungs-/Schließzustand des Menüs zu verwalten.
 
-- **State Management**: `checkedItems` and `menuOpen` are managed using React's `useState` hook.
-- **Event Handlers**:
-  - `handleChange`: Updates the state when a checkbox is toggled and notifies the parent component via `onLayerVisibilityChange`.
-  - `handleToggle`: Toggles the dropdown menu open/close state.
-  - `handleTouchStart` and `handleTouchMove`: Handle touch events to open the menu with a swipe gesture.
+**Komponentenstruktur**
+
+- **Zustandsverwaltung**: `checkedItems` und `menuOpen` werden mit dem `useState`-Hook von React verwaltet.
+- **Ereignis-Handler**:
+  - `handleChange`: Aktualisiert den Zustand, wenn ein Kontrollkästchen umgeschaltet wird, und benachrichtigt die übergeordnete Komponente über `onLayerVisibilityChange`.
+  - `handleToggle`: Schaltet den Öffnungs-/Schließzustand des Dropdown-Menüs um.
+  - `handleTouchStart` und `handleTouchMove`: Behandeln Touch-Ereignisse, um das Menü mit einer Wischgeste zu öffnen.
   
-- **DropdownCheckbox Component**: Each transportation layer is represented by a `DropdownCheckbox` component, which includes:
-  - A label
-  - A checkbox input
-  - An image representing the transportation type
-  - A display label for the transportation type
+- **DropdownCheckbox-Komponente**: Jede Verkehrsebene wird durch eine `DropdownCheckbox`-Komponente dargestellt, die Folgendes umfasst:
+  - Ein Label
+  - Ein Kontrollkästchen
+  - Ein Bild, das den Verkehrstyp repräsentiert
+  - Ein Anzeigetext für den Verkehrstyp
+
+<video width="500" height="auto" controls>
+  <source src="assets/img/Demo.mp4" type="video/mp4">
+</video>
 
 ## Von Backend bis Frontend {#Von-Backend-bis-Frontend}
 
