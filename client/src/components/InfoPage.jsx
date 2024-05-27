@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef } from 'react';
 import { useParams } from 'react-router-dom';
 import ShareLink from './Sharelink';
 import { Link, useLocation } from 'react-router-dom';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
 const InfoPage = () => {
   const { trainId, name } = useParams();
@@ -171,12 +172,14 @@ const InfoPage = () => {
       </div>
       <nav>
         <ul className="no-bullets">
-          <li style={{ position: 'absolute', right: '10px', top: '13%' }}>
-            <Link to="/" style={{ color: 'black' }}>Zurück zur Karte</Link>
+          <li style={{ position: 'absolute', right: '10px', top: '10px', fontSize: 10 }}>
+            <Link to="/" style={{ color: 'black' }}>
+              <ArrowBackIcon size={20} />
+            </Link>
           </li>
         </ul>
       </nav>
-      <div style={{ position: 'absolute', top: '12%', left: '10px' }}>
+      <div style={{ position: 'absolute', top: '10%', right: '10px' }}>
         <ShareLink url={window.location.href} />
       </div>
     </div>

@@ -162,7 +162,7 @@ Die `BackgroundButton`-Komponente ist ein vielseitiges und interaktives Element,
 Mit dieser Komponente können Sie aus 4 Arten von Hintergründen wählen. Zur Auswahl stehen: die nationale Farbkarte, die schwarz-weiße Karte, Luftbilder und die Openstreetmap-Basiskarte.
 Für die ersten drei werden die von Swisstopo bereitgestellten wms verwendet.
 <video width="500" height="auto" controls>
-  <source src="assets/img/Demo.mp4" type="video/mp4">
+  <source src="assets/img/Sfondo.mp4" type="video/mp4">
 </video>
 
 
@@ -192,7 +192,7 @@ Diese React-Komponente, `DropdownChecklist`, ist dafür ausgelegt, die Sichtbark
   - Ein Anzeigetext für den Verkehrstyp
 
 <video width="500" height="auto" controls>
-  <source src="assets/img/Demo.mp4" type="video/mp4">
+  <source src="assets/img/Layers.mp4" type="video/mp4">
 </video>
 
 
