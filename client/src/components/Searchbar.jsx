@@ -26,7 +26,7 @@ const Searchbar = ({ onSearch }) => {
             <input
                 type="text"
                 id="search-input"
-                placeholder="Enter search term"
+                placeholder="Suchbegriff eingeben"
                 value={inputValue}
                 onChange={handleInputChange}
                 onKeyDown={handleKeyDown}

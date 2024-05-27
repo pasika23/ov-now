@@ -28,71 +28,73 @@ const MapWrapper = forwardRef((props, ref) => {
     const navigate = useNavigate();
 
     const featureStyle = (feature) => {
-        const type = feature.get('type');
-        let mainStrokeStyle;
-        let haloStrokeStyle = new Stroke({
-            color: 'rgba(255, 255, 255, 0.5)', // Transparent halo color
-            width: 10, // Width of the halo
-        });
-
-        switch (type) {
-            case 'rail':
-                mainStrokeStyle = new Stroke({
-                    color: 'black',
-                    width: 3,
-                });
-                break;
-            case 'bus':
-                mainStrokeStyle = new Stroke({
-                    color: 'black',
-                    width: 3,
-                    lineDash: [5, 15], // Dashed line
-                });
-                break;
-            case 'tram':
-                mainStrokeStyle = new Stroke({
-                    color: 'black',
-                    width: 6,
-                    lineCap: 'butt', // Square ends
-                });
-                return [
-                    new Style({
-                        stroke: haloStrokeStyle,
-                        zIndex: 2, // Ensure halo is underneath feature but above overlay
-                    }),
-                    new Style({
-                        stroke: mainStrokeStyle,
-                        zIndex: 3, // Feature layer
-                    }),
-                    new Style({
-                        geometry: feature.getGeometry().clone().translate(2, 0), // Create the second line slightly shifted
-                        stroke: haloStrokeStyle,
-                        zIndex: 2,
-                    }),
-                    new Style({
-                        geometry: feature.getGeometry().clone().translate(2, 0),
-                        stroke: mainStrokeStyle,
-                        zIndex: 3,
-                    })
-                ];
-            default:
-                mainStrokeStyle = new Stroke({
-                    color: 'black',
-                    width: 3,
-                });
-        }
-
-        return [
-            new Style({
-                stroke: haloStrokeStyle,
-                zIndex: 2,
-            }),
-            new Style({
-                stroke: mainStrokeStyle,
-                zIndex: 3,
-            })
-        ];
-    };
+      const type = feature.get('type');
+      let mainStrokeStyle;
+      let secondaryStrokeStyle;
+      let haloStrokeStyle = new Stroke({
+          color: 'rgba(255, 255, 255, 0.5)', // Transparent halo color
+          width: 10, // Width of the halo
+      });
+  
+      switch (type) {
+          case 'rail':
+              mainStrokeStyle = new Stroke({
+                  color: 'black',
+                  width: 3,
+              });
+              break;
+          case 'bus':
+              mainStrokeStyle = new Stroke({
+                  color: 'black',
+                  width: 3,
+                  lineDash: [5, 15], // Dashed line
+              });
+              break;
+          case 'tram':
+              mainStrokeStyle = new Stroke({
+                  color: 'black',
+                  width: 4,
+                  lineCap: 'butt', // Square ends
+              });
+  
+              secondaryStrokeStyle = new Stroke({
+                  color: 'white',
+                  width: 2,
+                  lineCap: 'butt', // Square ends
+              });
+  
+              return [
+                  new Style({
+                      stroke: haloStrokeStyle,
+                      zIndex: 2, // Ensure halo is underneath feature but above overlay
+                  }),
+                  new Style({
+                      stroke: mainStrokeStyle,
+                      zIndex: 3, // Feature layer
+                  }),
+                  new Style({
+                      stroke: secondaryStrokeStyle,
+                      zIndex: 4, // Overlay secondary style on top
+                  })
+              ];
+          default:
+              mainStrokeStyle = new Stroke({
+                  color: 'black',
+                  width: 3,
+              });
+      }
+  
+      return [
+          new Style({
+              stroke: haloStrokeStyle,
+              zIndex: 2,
+          }),
+          new Style({
+              stroke: mainStrokeStyle,
+              zIndex: 3,
+          })
+      ];
+  };
 
     useEffect(() => {
         const initialFeaturesLayer = new VectorLayer({
@@ -119,7 +121,9 @@ const MapWrapper = forwardRef((props, ref) => {
     initialMap.on('click', (event) => {
       initialMap.forEachFeatureAtPixel(event.pixel, (feature) => {
         const trainId = feature.get('train_id'); // Assuming the feature has a property train_id
-        navigate(`/InfoPage/${trainId}`);
+        const line_name = feature.get('line_name')
+        const type = feature.get('type')
+        navigate(`/InfoPage/${trainId}/${line_name}/${type}`);
       });
     });
 

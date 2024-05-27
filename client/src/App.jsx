@@ -44,7 +44,7 @@ function App() {
         <button onClick={fetchFeatures}>Nach aktuellen Verkehrsmitteln suchen</button>
         <Routes>
           <Route path="/" element={<MapWrapper ref={mapRef} features={features} />} />
-          <Route path="/InfoPage/:trainId" element={<InfoPage />} />
+          <Route path="/InfoPage/:trainId/:line_name/:type" element={<InfoPage />} />
         </Routes>
       </Router>
     </div>

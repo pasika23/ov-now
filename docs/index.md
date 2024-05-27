@@ -116,6 +116,26 @@ Im Hauptteil finden Sie ein Liniendiagramm, das alle Bahnhöfe auf der Strecke m
 Die Farben Grün und Rot zeigen an, ob das Verkehrsmittel normal oder mit Verspätung verkehrt.
 Vorerst nur eine Idee, es ist auch geplant, die verschiedenen Verkehrsmittel mit einem anderen Hintergrund darzustellen. Dadurch soll der Benutzer auf einen Blick erkennen, um welches Verkehrsmittel es sich handelt.
 
+### Features {#features}
+
+**BackgroundButton-Komponente**
+
+Die `BackgroundButton`-Komponente ist ein vielseitiges und interaktives Element, das die Benutzererfahrung verbessert, indem es dynamische Hintergrundänderungen auf einer Karte ermöglicht. Diese Komponente ist mit React erstellt und integriert sich nahtlos mit OpenLayers zur Kartendarstellung.
+
+**Hauptfunktionen**
+
+- **Dynamisches Hintergrundwechseln**: Benutzer können zwischen verschiedenen Hintergrundkarten wechseln, einschließlich farbiger und grauer Karten, Luftbilder und OpenStreetMap.
+- **Reaktionsfähiges Menü**: Die Komponente enthält ein reaktionsfähiges Dropdown-Menü, das verschiedene Hintergrundoptionen als klickbare Bilder anzeigt.
+- **Effizientes Layer-Management**: Es wird sichergestellt, dass der vorherige Hintergrund-Layer entfernt wird, bevor ein neuer hinzugefügt wird, um die optimale Kartenleistung zu erhalten.
+- **GeoData-Abruf**: Nach dem Ändern des Hintergrunds ruft die Komponente die relevanten Geodaten für den ausgewählten Hintergrundtyp ab und aktualisiert sie.
+
+**Detaillierte Beschreibung**
+
+1. **State-Management**: Verwendet React's `useState`, um den Zustand des Dropdown-Menüs (`menuOpen`) zu verwalten.
+2. **Ereignisbehandlung**: Die Funktion `toggleMenu` schaltet die Sichtbarkeit des Dropdown-Menüs um, während `handleBackgroundChange` den Hintergrundwechsel und den Datenabruf verwaltet.
+3. **Layer-Entfernung**: Die Funktion `removeBackgroundLayer` stellt sicher, dass der vorherige Hintergrund-Layer entfernt wird, um Stapelung und Leistungsprobleme zu vermeiden.
+4. **Hintergrundbild-Quelle**: Die Funktion `backgroundImageSrc` gibt basierend auf dem ausgewählten Kartentyp die entsprechende Bildquelle zurück.
+
 
 ## Von Backend bis Frontend {#Von-Backend-bis-Frontend}
 

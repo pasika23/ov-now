@@ -41,3 +41,16 @@ body, html {
     pointer-events: none;
     font-size: 24px;
 }
+
+@media (max-width: 400px) {
+    #search-input {
+        font-size: 14px;
+        padding: 10px 14px;
+        border-radius: 30px;
+    }
+    
+    .searchbar-container {
+        max-width: 70%;
+        border-radius: 30px;
+    }
+}

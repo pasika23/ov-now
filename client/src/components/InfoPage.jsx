@@ -1,11 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import ShareLink from './Sharelink';
+import { Link, useLocation } from 'react-router-dom';
 
 const InfoPage = () => {
-  const { trainId, name_line } = useParams();
+  const { trainId, name } = useParams();
   const [stations, setStations] = useState([]);
   const [startStation, setStartStation] = useState('');
   const [endStation, setEndStation] = useState('');
+  const location = useLocation();
+  const isInfoPage = location.pathname === '/InfoPage';
 
   useEffect(() => {
     fetch(`http://localhost:8000/get_info/?train_id=${trainId}&key=5cc87b12d7c5370001c1d65576ce5bd4be5a4a349ca401cdd7cac1ff`)
@@ -133,13 +137,20 @@ const InfoPage = () => {
 
   return (
     <div>
-      <h1>Info Page</h1>
-      <p>Feature Name: {featureId}</p>
-      {/* Add more details based on the feature name */}
       <h1>Fahrinformationen</h1>
       <p>{startStation} - {endStation}</p>
       <div id="station-container">
         {renderStations(stations)}
+      </div>
+      <nav>
+        <ul className="no-bullets">
+          <li style={{ position: 'absolute', right: '10px', top: '13%' }}>
+            <Link to="/" style={{ color: 'black' }}>Zurück zur Karte</Link>
+          </li>
+        </ul>
+      </nav>
+      <div style={{ position: 'absolute', top: '12%', left: '10px' }}>
+        <ShareLink url={window.location.href} />
       </div>
     </div>
   );
