@@ -71,7 +71,7 @@ Um die Verkehrsmittel und die Strecken, auf denen sie verkehren, zu unterscheide
 Die Transportsymbole stammen aus der React-Komponentenbibliothek: Material UI. Genauer gesagt aus Material Icons.
 
 <div style="display: flex; align-items: center; margin-bottom: 10px;">
-  <img src="assets/img/Buslinien.png" style="display:block; margin: 0;" alt="Buslinien"/>
+  <img src="assets/img/Buslinien_.png" style="display:block; margin: 0;" alt="Buslinien"/>
   <span style="margin-left: 10px;">Buslinien</span>
 </div>
 
@@ -81,7 +81,7 @@ Die Transportsymbole stammen aus der React-Komponentenbibliothek: Material UI. G
 </div>
 
 <div style="display: flex; align-items: center; margin-bottom: 10px;">
-  <img src="assets/img/Zuglinien.png" style="display:block; margin: 0;" alt="Zuglinien"/>
+  <img src="assets/img/Zuglinien_.png" style="display:block; margin: 0;" alt="Zuglinien"/>
   <span style="margin-left: 10px;">Zuglinien</span>
 </div>
 
@@ -91,7 +91,7 @@ Die Transportsymbole stammen aus der React-Komponentenbibliothek: Material UI. G
 </div>
 
 <div style="display: flex; align-items: center; margin-bottom: 10px;">
-  <img src="assets/img/Tramlinien.png" style="display:block; margin: 0;" alt="Tramlinien"/>
+  <img src="assets/img/Tramlinien_.png" style="display:block; margin: 0;" alt="Tramlinien"/>
   <span style="margin-left: 10px;">Tramlinien</span>
 </div>
 
@@ -101,7 +101,7 @@ Die Transportsymbole stammen aus der React-Komponentenbibliothek: Material UI. G
 </div>
 
 <div style="display: flex; align-items: center; margin-bottom: 10px;">
-  <img src="assets/img/Schiffelinien.png" style="display:block; margin: 0;" alt="Schiffelinien"/>
+  <img src="assets/img/Schiffelinien_.png" style="display:block; margin: 0;" alt="Schiffelinien"/>
   <span style="margin-left: 10px;">Schiffelinien</span>
 </div>
 
