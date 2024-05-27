@@ -136,6 +136,36 @@ Die `BackgroundButton`-Komponente ist ein vielseitiges und interaktives Element,
 3. **Layer-Entfernung**: Die Funktion `removeBackgroundLayer` stellt sicher, dass der vorherige Hintergrund-Layer entfernt wird, um Stapelung und Leistungsprobleme zu vermeiden.
 4. **Hintergrundbild-Quelle**: Die Funktion `backgroundImageSrc` gibt basierend auf dem ausgewählten Kartentyp die entsprechende Bildquelle zurück.
 
+Mit dieser Komponente können Sie aus 4 Arten von Hintergründen wählen. Zur Auswahl stehen: die nationale Farbkarte, die schwarz-weiße Karte, Luftbilder und die Openstreetmap-Basiskarte.
+Für die ersten drei werden die von Swisstopo bereitgestellten wms verwendet.
+<video width="500" height="auto" controls>
+  <source src="assets/img/Demo.mp4" type="video/mp4">
+</video>
+
+
+**Dropdown Checklist Component**
+
+This React component, `DropdownChecklist`, is designed to manage the visibility of different transportation layers on a map interface. It includes a dropdown menu with checkboxes for rail, bus, tram, and ferry layers, each associated with an image.
+
+**Features**
+
+- **Layer Visibility Control**: Users can toggle the visibility of transportation layers (rail, bus, tram, ferry) through checkboxes.
+- **Touch Support**: The dropdown menu supports touch events, allowing users to open the menu with a right swipe gesture.
+- **Dynamic State Management**: The component uses React's `useState` hook to manage the state of the checked items and the menu's open/close state.
+
+**Component Structure**
+
+- **State Management**: `checkedItems` and `menuOpen` are managed using React's `useState` hook.
+- **Event Handlers**:
+  - `handleChange`: Updates the state when a checkbox is toggled and notifies the parent component via `onLayerVisibilityChange`.
+  - `handleToggle`: Toggles the dropdown menu open/close state.
+  - `handleTouchStart` and `handleTouchMove`: Handle touch events to open the menu with a swipe gesture.
+  
+- **DropdownCheckbox Component**: Each transportation layer is represented by a `DropdownCheckbox` component, which includes:
+  - A label
+  - A checkbox input
+  - An image representing the transportation type
+  - A display label for the transportation type
 
 ## Von Backend bis Frontend {#Von-Backend-bis-Frontend}
 

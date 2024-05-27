@@ -11,7 +11,7 @@ function DropdownChecklist({ onLayerVisibilityChange }) {
     rail: false,
     bus: false,
     tram: false,
-    ship: false,
+    ferry: false,
   });
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -75,11 +75,35 @@ function DropdownChecklist({ onLayerVisibilityChange }) {
         />
         <DropdownCheckbox
           label="ship"
-          checked={checkedItems.ship}
+          checked={checkedItems.ferry}
           onChange={handleChange}
           imageSrc={Schiffelinien}
           displayLabel="Schiffelinien"
         />
+        {/*<DropdownCheckbox
+          label="Zug"
+          checked={checkedItems.rail}
+          onChange={handleChange}
+          Icon={DirectionsRailwayIcon}
+        />
+        <DropdownCheckbox
+          label="Bus"
+          checked={checkedItems.bus}
+          onChange={handleChange}
+          Icon={DirectionsBusIcon}
+        />
+        <DropdownCheckbox
+          label="Tram"
+          checked={checkedItems.tram}
+          onChange={handleChange}
+          Icon={TramIcon}
+        />
+        <DropdownCheckbox
+          label="Schiffe"
+          checked={checkedItems.ship}
+          onChange={handleChange}
+          Icon={DirectionsBoatIcon}
+        />*/}
       </div>
     </div>
   );

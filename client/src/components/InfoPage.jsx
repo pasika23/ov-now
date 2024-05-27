@@ -137,9 +137,9 @@ const InfoPage = () => {
 
   return (
     <div>
-      <h1>Fahrinformationen</h1>
+      <h2>Fahrinformationen</h2>
       <p>{startStation} - {endStation}</p>
-      <div id="station-container">
+      <div id="station-container" style={{position: 'absolute', alignItems: 'center'}}>
         {renderStations(stations)}
       </div>
       <nav>
