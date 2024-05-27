@@ -3,14 +3,37 @@ layout: default
 ---
 # ÖV-Now
 ## Motivation {#motivation}
+
 Wir haben festgestellt, dass jemand, der sich die Informationen in der SBB-App anschaut, keine visuelle Bestätigung dafür hat, wo sich das öffentliche Verkehrsmittel, mit dem er unterwegs ist, in der Realität befindet. Dies kann zu Schwierigkeiten bei der Auswahl der besten Verbindungen führen, um das Ziel so einfach wie möglich zu erreichen.
 
 
 ## Ziel {#ziel}
+
 Das Ziel dieses Projekts ist es, ein Geoportal zu schaffen, das die Visualisierung von Live-Daten aller Verkehrsmittel in der Schweiz ermöglicht. Dies wird die Wahl der Routen erleichtern, um Verspätungen zu vermeiden und mögliche unvorhergesehene Zwischenfälle zu beheben.
 
 
 ## Workflow {#workflow}
+
+Für die Umsetzung der App wurde beschlossen, das Projekt in drei große Untergruppen aufzuteilen, eine für jedes Teammitglied:
+- **Frontend**
+- **Backend**
+- **Verbindung zwischen Frontend und Backend**
+
+**Planung und Konzeptentwicklung**
+
+Nachdem die Aufgaben festgelegt wurden, begann die eigentliche Projektplanung mit einem Zeitplan und der Ausarbeitung eines Konzepts. In dieser Anfangsphase des Projekts wurde eine erste Idee entwickelt, wie die App aussehen sollte, einschließlich eines ersten GUI-Designs, möglicher Benutzer, der groben Struktur der gesamten App und der Entscheidung, welche Programmiersprachen verwendet werden sollen.
+
+Parallel dazu wurden alle notwendigen Daten und Geodaten für das Gelingen des Projekts recherchiert.
+
+**Umsetzung der App**
+
+Nach Abschluss der Vorbereitungsphase wurde mit der eigentlichen Erstellung der App begonnen. Ausgehend von einem Basisprojekt von OpenLayers wurden die verschiedenen visuellen Komponenten und die gesamte Struktur entwickelt, die das Funktionieren der App ermöglicht.
+
+Darüber hinaus wurden die Daten so aufbereitet, dass sie innerhalb der App verwendet werden können.
+
+**Abschlussphase und Tests**
+
+In der letzten Phase des Projekts wurden die Daten vom Backend mit dem Frontend verbunden und die App wurde getestet, um sicherzustellen, dass alles wie gewünscht funktioniert.
 
 
 ## ÖV-Now im konkret {#app}
