@@ -39,6 +39,7 @@ In der letzten Phase des Projekts wurden die Daten vom Backend mit dem Frontend 
 ## ÖV-Now im konkret {#app}
 ### Architectur {#architektur}
 
+![backend_frontend_architektur](assets/img/backend_frontend_architektur.png){: style="display:block; margin: 0 auto;"}
 
 ### Datenbankmodell {#Datenbankmodell}
 
