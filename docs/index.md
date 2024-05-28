@@ -58,7 +58,7 @@ Die bezogenen Daten aus der API stehen im EPSG: 3857 (Web Mercator) zur Verfügu
 
 ### Anwendung {#anwendung}
 <video width="500" height="auto" controls>
-  <source src="assets/img/Demo.mp4" type="video/mp4">
+  <source src="assets/img/mobile_anwendung.mp4" type="video/mp4">
 </video>
  
 Wir gehen davon aus, dass die App vor allem von Personen genutzt wird, die täglich Verkehrsmittel benutzen, und zwar hauptsächlich auf mobilen Geräten.
