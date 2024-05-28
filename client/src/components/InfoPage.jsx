@@ -4,6 +4,8 @@ import ShareLink from './Sharelink';
 import { Link, useLocation } from 'react-router-dom';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
+const key = "5cc87b12d7c5370001c1d6559e7fd9aab7a44ca1b7692b2adfeb2602"
+
 const InfoPage = () => {
   const { trainId, name } = useParams();
   const [stations, setStations] = useState([]);
@@ -14,7 +16,7 @@ const InfoPage = () => {
   const stationRefs = useRef([]);
 
   useEffect(() => {
-    fetch(`http://10.175.23.153:8000/get_info/?train_id=${trainId}&key=5cc87b12d7c5370001c1d65576ce5bd4be5a4a349ca401cdd7cac1ff`)
+    fetch(`http://10.175.23.153:8000/get_info/?train_id=${trainId}&key=${key}`)
       .then(response => response.json())
       .then(data => {
         console.log(data); // Log received data
