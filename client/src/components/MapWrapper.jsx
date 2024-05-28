@@ -23,7 +23,7 @@ const MapWrapper = forwardRef((props, ref) => {
         rail: false,
         bus: false,
         tram: false,
-        ship: false,
+        ferry: false,
     });
     const desktopMinZoom = 8.3;
     const mobileMinZoom = 7.5;
@@ -67,6 +67,13 @@ const MapWrapper = forwardRef((props, ref) => {
                     color: 'white',
                     width: 2,
                     lineCap: 'butt', // Square ends
+                });
+
+            case 'ferry':
+                mainStrokeStyle = new Stroke({
+                    color: 'black',
+                    width: 4,
+                    lineDash: [2, 10], // Square ends
                 });
 
                 return [
