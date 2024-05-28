@@ -1,23 +1,41 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Searchbar.css';
 import SearchIcon from '@mui/icons-material/Search';
 
 const Searchbar = ({ onSearch }) => {
     const [inputValue, setInputValue] = useState('');
+    const [stops, setStops] = useState([]);
+    const [filteredStops, setFilteredStops] = useState([]);
+
+    useEffect(() => {
+        fetch('/stops')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok ' + response.statusText);
+                }
+                return response.json();
+            })
+            .then(data => setStops(data))
+            .catch(error => console.error('Error fetching stops:', error));
+    }, []);
 
     const handleInputChange = (event) => {
-        setInputValue(event.target.value);
+        const value = event.target.value;
+        setInputValue(value);
+        setFilteredStops(
+            stops.filter(stop => stop.name.toLowerCase().includes(value.toLowerCase()))
+        );
     };
 
-    const handleSearch = () => {
-        if (inputValue.trim()) {
-            onSearch(inputValue);
+    const handleSearch = (stop) => {
+        if (stop) {
+            onSearch(stop);
         }
     };
 
     const handleKeyDown = (event) => {
-        if (event.key === 'Enter') {
-            handleSearch();
+        if (event.key === 'Enter' && filteredStops.length > 0) {
+            handleSearch(filteredStops[0]);
         }
     };
 
@@ -32,6 +50,15 @@ const Searchbar = ({ onSearch }) => {
                 onKeyDown={handleKeyDown}
             />
             <SearchIcon className="search-icon" />
+            {filteredStops.length > 0 && (
+                <ul className="autocomplete-dropdown">
+                    {filteredStops.map((stop, index) => (
+                        <li key={index} onClick={() => handleSearch(stop)}>
+                            {stop.name}
+                        </li>
+                    ))}
+                </ul>
+            )}
         </div>
     );
 };

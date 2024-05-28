@@ -42,6 +42,8 @@ In der letzten Phase des Projekts wurden die Daten vom Backend mit dem Frontend 
 
 ### Datenbankmodell {#Datenbankmodell}
 
+Die wichtigsten Daten des Projekts (die Trajektorien der Fahrzeuge) werden direkt von den Bienen abgerufen. 
+Stattdessen wurde PG Admin 4 für die Erstellung einer Datenbank verwendet, die die für den Betrieb der Suchleiste benötigten Daten enthält. Zurzeit ist nur eine Tabelle mit Daten aus swisstlm3D enthalten, nämlich der Punkte-Layer mit Informationen zu allen Haltenstellen in der Schweiz.
 
 ### Programmiersprachen {#Programmiersprachen}
 
@@ -149,7 +151,7 @@ Vorerst nur eine Idee, es ist auch geplant, die verschiedenen Verkehrsmittel mit
 
 ### Features {#feature}
 
-**BackgroundButton-Komponente**
+**Hintergrundkarte**
 
 Die `BackgroundButton`-Komponente ist ein vielseitiges und interaktives Element, das die Benutzererfahrung verbessert, indem es dynamische Hintergrundänderungen auf einer Karte ermöglicht. Diese Komponente ist mit React erstellt und integriert sich nahtlos mit OpenLayers zur Kartendarstellung.
 
@@ -175,7 +177,7 @@ Für die ersten drei werden die von Swisstopo bereitgestellten wms verwendet.
 
 
 
-**Dropdown Checklist-Komponente**
+**Layers**
 
 Diese React-Komponente, `DropdownChecklist`, ist dafür ausgelegt, die Sichtbarkeit verschiedener Verkehrsebenen auf einer Kartenoberfläche zu verwalten. Sie enthält ein Dropdown-Menü mit Kontrollkästchen für Zug-, Bus-, Tram- und Fährenlinien, die jeweils mit einem Bild verknüpft sind.
 
@@ -211,6 +213,18 @@ Die Komponente wurde mit der react-share-Bibliothek erstellt, die bereits versch
 
 ![Sharebutton](assets/img/Sharebutton.png){: style="display:block; margin: 0 auto;"}
 
+**Suchleiste**
+
+Es handelt sich um die neueste Funktion, an der derzeit gearbeitet wird und die noch nicht funktionsfähig ist.
+Mit Hilfe eines Python-Skripts werden Daten aus der PG Admin-Datenbank importiert, die dann mit der Logik der Suchleiste verknüpft werden.
+Wenn ein Benutzer den Namen einer Haltestelle eingibt, wird er gefragt, ob ein gleicher Wert im Attributfeld "Name" existiert. Wenn dies der Fall ist, wird der Punkt in der Karte zentriert. Wenn keine Merkmale gefunden werden, erscheint ein Popup mit der Meldung, dass keine Merkmale gefunden wurden. 
+Ebenen
+Interaktion mit Daten
+Schaltfläche "Teilen
+Mit dieser Komponente kann die URL der Seite per Whatsapp an eine andere Person gesendet werden.
+Die Komponente wurde mit der React-Share-Bibliothek erstellt, die bereits verschiedene Schaltflächen zum Teilen auf sozialen Netzwerken bereitstellt.
+
+![Searchbar](assets/img/Searchbar.png){: style="display:block; margin: 0 auto;"}
 
 ## Von Backend bis Frontend {#Von-Backend-bis-Frontend}
 

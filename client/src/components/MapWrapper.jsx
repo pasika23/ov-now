@@ -13,6 +13,7 @@ import GeoJSON from 'ol/format/GeoJSON';
 import CheckBoxLayers from './Layers';
 import BackgroundButton from './backgroundButton';
 import Searchbar from './Searchbar';
+import * as olProj from 'ol/proj';
 
 const MapWrapper = forwardRef((props, ref) => {
     const [map, setMap] = useState();
@@ -229,14 +230,15 @@ const MapWrapper = forwardRef((props, ref) => {
         return [506943.5, 5652213.5, 1301728.5, 6191092];
     };
 
-    const handleSearch = (searchTerm) => {
-        const features = featuresLayer.getSource().getFeatures();
-        const matchingFeature = features.find(feature => feature.get('line_name') === searchTerm);
-        if (matchingFeature) {
-            const extent = matchingFeature.getGeometry().getExtent();
-            map.getView().fit(extent, { duration: 1000 });
+    const handleSearch = (stop) => {
+        if (stop) {
+            const view = map.getView();
+            const lonLat = [stop.lon, stop.lat];
+            const transformedCoords = olProj.fromLonLat(lonLat, 'EPSG:3857');
+            view.setCenter(transformedCoords);
+            view.setZoom(16);
         } else {
-            alert('Feature not found.');
+            alert('Stop not found.');
         }
     };
 
