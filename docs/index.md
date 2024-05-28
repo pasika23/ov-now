@@ -57,8 +57,8 @@ Die bezogenen Daten aus der API stehen im EPSG: 3857 (Web Mercator) zur Verfügu
 
 
 ### Anwendung {#anwendung}
-<video width="500" height="auto" controls>
-  <source src="assets/img/Demo.mp4" type="video/mp4">
+<video width="250" height="auto" controls align-items: center>
+  <source src="assets/img/mobile_anwendung.mp4" type="video/mp4">
 </video>
  
 Wir gehen davon aus, dass die App vor allem von Personen genutzt wird, die täglich Verkehrsmittel benutzen, und zwar hauptsächlich auf mobilen Geräten.
@@ -171,8 +171,8 @@ Die `BackgroundButton`-Komponente ist ein vielseitiges und interaktives Element,
 
 Mit dieser Komponente können Sie aus 4 Arten von Hintergründen wählen. Zur Auswahl stehen: die nationale Farbkarte, die schwarz-weiße Karte, Luftbilder und die Openstreetmap-Basiskarte.
 Für die ersten drei werden die von Swisstopo bereitgestellten wms verwendet.
-<video width="500" height="auto" controls>
-  <source src="assets/img/Sfondo.mp4" type="video/mp4">
+<video width="250" height="auto" controls>
+  <source src="assets/img/Sfondo_1.mp4" type="video/mp4">
 </video>
 
 
@@ -201,8 +201,8 @@ Diese React-Komponente, `DropdownChecklist`, ist dafür ausgelegt, die Sichtbark
   - Ein Bild, das den Verkehrstyp repräsentiert
   - Ein Anzeigetext für den Verkehrstyp
 
-<video width="500" height="auto" controls>
-  <source src="assets/img/Layers.mp4" type="video/mp4">
+<video width="250" height="auto" controls>
+  <source src="assets/img/Layers_1.mp4" type="video/mp4">
 </video>
 
 
