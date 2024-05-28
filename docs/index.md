@@ -57,7 +57,7 @@ Die bezogenen Daten aus der API stehen im EPSG: 3857 (Web Mercator) zur Verfügu
 
 
 ### Anwendung {#anwendung}
-<video width="250" height="auto" controls align-items: center>
+<video width="250" height="auto" controls >
   <source src="assets/img/mobile_anwendung.mp4" type="video/mp4">
 </video>
  
