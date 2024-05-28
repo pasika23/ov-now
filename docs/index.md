@@ -35,15 +35,15 @@ Darüber hinaus wurden die Daten so aufbereitet, dass sie innerhalb der App verw
 In der letzten Phase des Projekts wurden die Daten vom Backend mit dem Frontend verbunden und die App wurde getestet, um sicherzustellen, dass alles wie gewünscht funktioniert.
 
 
-## ÖV-Now im konkret {#app}
+## ÖV-Now im Konkreten {#app}
 ### Architectur {#architektur}
 
 ![backend_frontend_architektur](assets/img/backend_frontend_architektur.png){: style="display:block; margin: 0 auto;"}
 
 ### Datenbankmodell {#Datenbankmodell}
 
-Die wichtigsten Daten des Projekts (die Trajektorien der Fahrzeuge) werden direkt von den Bienen abgerufen. 
-Stattdessen wurde PG Admin 4 für die Erstellung einer Datenbank verwendet, die die für den Betrieb der Suchleiste benötigten Daten enthält. Zurzeit ist nur eine Tabelle mit Daten aus swisstlm3D enthalten, nämlich der Punkte-Layer mit Informationen zu allen Haltenstellen in der Schweiz.
+Die wichtigsten Daten des Projekts (die Trajektorien der Verkehrsmittel) werden direkt geOps via API abgerufen. 
+Währenddessen wurde PG Admin 4 für die Erstellung einer Datenbank verwendet, die die für den Betrieb der Suchleiste benötigten Daten enthält. Zurzeit ist nur eine Tabelle mit Daten aus swisstlm3D enthalten, nämlich der Punkte-Layer mit Informationen zu allen Haltenstellen in der Schweiz.
 
 ### Programmiersprachen {#Programmiersprachen}
 
@@ -296,6 +296,8 @@ Der zweite Endpoint get_info gibt das die GeOps-Abfrage von get_calls zurück.
 
 ### Weiterverarbeitung {#Weiterverarbeitung}
 Bei der Journeyabfrage werden alle Journey in der Bounding Box mit der Train_id abgefragt. Jenach Verkehrsmittel (type) werden nur die passenden Journey ausgewählt und anschliessend mit dem dazugehörigen Liniensymbol entlang der Koordinaten dargestellt.
+
+Auf der InfoPage, welche durch einen Klick auf eine Linie erfolgt, werden die Daten des get_calls dargestellt. Diese Abfrage gibt für eine Train_id alle Haltestellen inklusiv Ankunfts- und Abfahrtszeiten an. Der Fahrtverlauf des Verkehrsmittels wird mit einer vertikalen Linie mit je einem Punkt für jede Haltestelle dargestellt. Für die aktuelle Position des Verkehrsmittels werden die Haltestellenzeiten mit der aktuellen Zeit verglichen und auf der Linie mit einem roten Punkt visualisiert. Haltestellen, deren Abfahrtszeit bereits vorbei ist, werden grau dargestellt.
 
 
 
