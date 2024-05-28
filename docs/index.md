@@ -276,7 +276,7 @@ https://data.sbb.ch/explore/?sort=modified
 https://www.geocat.ch/geonetwork/srv/ger/catalog.search#/metadata/841d42ff-8177-4e07-a96b-e8e5455ae048
 
 
-## Endpoints {#endpoints}
+### Endpoints {#endpoints}
 
 Das backend.py ist das Backend, dass auf dem Server laufen kann und 2 Enpoints anbietet:
 (Dazu einfach pip install fastAPI und die anderen Bibliotheken)
