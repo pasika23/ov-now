@@ -46,13 +46,13 @@ const MapWrapper = forwardRef((props, ref) => {
             case 'rail':
                 mainStrokeStyle = new Stroke({
                     color: 'black',
-                    width: 3,
+                    width: 2,
                 });
                 break;
             case 'bus':
                 mainStrokeStyle = new Stroke({
                     color: 'black',
-                    width: 3,
+                    width: 2,
                     lineDash: [5, 15], // Dashed line
                 });
                 break;
@@ -115,7 +115,7 @@ const MapWrapper = forwardRef((props, ref) => {
                 projection: 'EPSG:3857',
                 center: [919705.97978, 5923388.48616],
                 zoom: 1,
-                maxZoom: 16,
+                maxZoom: 20,
                 minZoom: getMinZoom(),
                 extent: getBackgroundExtent(),
             }),
