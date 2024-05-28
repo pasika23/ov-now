@@ -61,8 +61,8 @@ Die bezogenen Daten aus der API stehen im EPSG: 3857 (Web Mercator) zur Verfügu
  
 Wir gehen davon aus, dass die App vor allem von Personen genutzt wird, die täglich Verkehrsmittel benutzen, und zwar hauptsächlich auf mobilen Geräten.
 Nachdem man sich in der App angemeldet hat, kann man auf der Karte nach dem gewünschten Verkehrsmittel suchen oder die entsprechenden Attribute in die Suchleiste eingeben.
-Wenn Sie sich in einem Gebiet befinden, in dem die öffentlichen Verkehrsmittel sehr stark frequentiert sind, können Sie das Dropdown-Menü auf der rechten Seite verwenden, um die Ebenen, die Sie anzeigen möchten, ein- oder auszuschalten.
-Wenn Sie die gewünschte Linie oder das gewünschte Verkehrsmittel gefunden haben, können Sie diese anklicken. Sie werden auf eine neue Seite weitergeleitet, auf der Ihnen, ähnlich wie bei der ffs-App, die Daten zur Linie und zum Verkehrsmittel angezeigt werden. Diese Daten können Verspätungen, Streckenänderungen, Zugausfälle und mehr sein.
+Wenn Sie sich in einem Gebiet befinden, in dem die öffentlichen Verkehrsmittel sehr stark frequentiert sind, können Sie das Dropdown-Menü auf der linken Seite verwenden, um die Ebenen, die Sie anzeigen möchten, ein- oder auszuschalten.
+Wenn Sie die gewünschte Linie oder das gewünschte Verkehrsmittel gefunden haben, können Sie diese anklicken. Sie werden auf eine neue Seite weitergeleitet, auf der Ihnen, ähnlich wie bei der SBB-App, die Daten zur Linie und zum Verkehrsmittel angezeigt werden. Diese Daten können Verspätungen, Streckenänderungen, Zugausfälle und mehr sein.
 Wenn Sie jemanden über Ihre Reise benachrichtigen wollen, vielleicht weil Sie Verspätung haben oder eine Änderung eingetreten ist, können Sie den Link zur Seite mit einer einfachen Schaltfläche teilen.
 Wenn Sie mit der Infopage fertig sind, können Sie zur Karte zurückkehren, um neue Routen anzuzeigen.
 
@@ -116,8 +116,8 @@ Die Transportsymbole stammen aus der React-Komponentenbibliothek: Material UI. G
 
 
 ### Website Konzept {#website-konzept}
-Wir möchten, dass sich unsere App an den Stil der ffs-App anlehnt, so dass die Menschen bereits an den Stil gewöhnt sind und keine Schwierigkeiten haben, die Informationen zu finden.
-Unabhängig vom Stil der ffs-App möchten wir, dass unsere App leicht zu lesen und für jeden zugänglich ist.
+Wir möchten, dass sich unsere App an den Stil der SBB-App anlehnt, so dass die Menschen bereits an den Stil gewöhnt sind und keine Schwierigkeiten haben, die Informationen zu finden.
+Unabhängig vom Stil der SBB-App möchten wir, dass unsere App leicht zu lesen und für jeden zugänglich ist.
 
 
 ### Mainpage {#mainpage}
@@ -132,7 +132,7 @@ In der Desktop-Version wurde versucht, die Komponenten mit eckigen Formen darzus
 Im Gegensatz dazu haben die Bildschirme von Smartphones in der Regel eine eher runde Form.
 
 Hoch über der Karte steht der Name der App auf rotem Hintergrund. Der Hintergrund soll an den Stil der SBB-App erinnern.
-Alles in allem kann man von einer minimalistischen GUI sprechen, die das Lesen für die Nutzer nicht erschwert.
+Alles in allem kann man von einem minimalistischen GUI sprechen, die das Lesen für die Nutzer nicht erschwert.
 
 
 ### Infopage {#infopage}
@@ -143,7 +143,7 @@ Auch auf dieser Seite wurde, wie auf der Hauptseite, die Ähnlichkeit der Kompon
 Oben finden Sie die allgemeinen Daten der Linie, wie z. B. die Liniennummer, die Art des Verkehrsmittels, den Abfahrts- und Ankunftsort.
 
 ![GUI_Mobile_infopage](assets/img/GUI_Mobile_infopage.png){: style="display:block; margin: 0 auto;"}
-Im Hauptteil finden Sie ein Liniendiagramm, das alle Bahnhöfe auf der Strecke mit eventuellen Verspätungen anzeigt, außerdem können Sie die Verbindungen für jeden Bahnhof einsehen
+Im Hauptteil finden Sie ein Liniendiagramm, das alle Bahnhöfe auf der Strecke mit eventuellen Verspätungen anzeigt, ausserdem können Sie die Verbindungen für jeden Bahnhof einsehen.
 Die Farben Grün und Rot zeigen an, ob das Verkehrsmittel normal oder mit Verspätung verkehrt.
 Vorerst nur eine Idee, es ist auch geplant, die verschiedenen Verkehrsmittel mit einem anderen Hintergrund darzustellen. Dadurch soll der Benutzer auf einen Blick erkennen, um welches Verkehrsmittel es sich handelt.
 
@@ -155,7 +155,7 @@ Die `BackgroundButton`-Komponente ist ein vielseitiges und interaktives Element,
 
 **Hauptfunktionen**
 
-- **Dynamisches Hintergrundwechseln**: Benutzer können zwischen verschiedenen Hintergrundkarten wechseln, einschließlich farbiger und grauer Karten, Luftbilder und OpenStreetMap.
+- **Dynamisches Hintergrundwechseln**: Benutzer können zwischen verschiedenen Hintergrundkarten wechseln, einschliesslich farbiger und grauer Karten, Luftbilder und OpenStreetMap.
 - **Reaktionsfähiges Menü**: Die Komponente enthält ein reaktionsfähiges Dropdown-Menü, das verschiedene Hintergrundoptionen als klickbare Bilder anzeigt.
 - **Effizientes Layer-Management**: Es wird sichergestellt, dass der vorherige Hintergrund-Layer entfernt wird, bevor ein neuer hinzugefügt wird, um die optimale Kartenleistung zu erhalten.
 - **GeoData-Abruf**: Nach dem Ändern des Hintergrunds ruft die Komponente die relevanten Geodaten für den ausgewählten Hintergrundtyp ab und aktualisiert sie.
@@ -279,10 +279,9 @@ Der zweite Endpoint get_info gibt das die GeOps-Abfrage von get_calls zurück.
 
 
 ## Daten {#daten}
-### Slicing {#Slicing}
-Pascal
-
 
 ### Weiterverarbeitung {#Weiterverarbeitung}
-Pascal
+Bei der Journeyabfrage werden alle Journey in der Bounding Box mit der Train_id abgefragt. Jenach Verkehrsmittel (type) werden nur die passenden Journey ausgewählt und anschliessend mit dem dazugehörigen Liniensymbol entlang der Koordinaten dargestellt.
+
+
 
