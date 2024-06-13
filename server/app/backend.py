@@ -14,7 +14,7 @@ app.add_middleware(
 )
 
 # Define the API key
-key = "5cc87b12d7c5370001c1d6559e7fd9aab7a44ca1b7692b2adfeb2602"
+key = "yourkey"
 
 # Function to fetch GeoJSON data from the provided API link
 @lru_cache(maxsize=128)
