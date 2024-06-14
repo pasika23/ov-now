@@ -300,4 +300,8 @@ Bei der Journeyabfrage werden alle Journey in der Bounding Box mit der Train_id 
 Auf der InfoPage, welche durch einen Klick auf eine Linie erfolgt, werden die Daten des get_calls dargestellt. Diese Abfrage gibt für eine Train_id alle Haltestellen inklusiv Ankunfts- und Abfahrtszeiten an. Der Fahrtverlauf des Verkehrsmittels wird mit einer vertikalen Linie mit je einem Punkt für jede Haltestelle dargestellt. Für die aktuelle Position des Verkehrsmittels werden die Haltestellenzeiten mit der aktuellen Zeit verglichen und auf der Linie mit einem roten Punkt visualisiert. Haltestellen, deren Abfahrtszeit bereits vorbei ist, werden grau dargestellt.
 
 
+## Quellen {#quellen}
+
+ChatGPT (sowohl GPT-4o als auch GPT-3.5) wurde zur Untersuchung von Themen und für verschiedene Fehlerbehebungen verwendet.
+Für die Übersetzung einiger Texte vom Italienischen ins Deutsche wurde die deepl-Desktop-Version verwendet.
 
