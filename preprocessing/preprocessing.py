@@ -14,7 +14,7 @@ with open('preprocessing\get_journey.json', 'r') as f:
 # with open('preprocessing\get_calls.json', 'r') as f:
 #     calls = json.load(f)
 
-# API_KEY = "o"
+# API_KEY = "yourkey"
 
 # bb = "838667,5997631,909982,6036843"
 
