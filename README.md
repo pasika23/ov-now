@@ -85,7 +85,4 @@ gibt IP zurück falls nicht vorhanden zum Copy Pasten
 
 ## Verwendung
 1. Öffne deinen Browser und gehe zu `http://localhost:3000`.
-2. 
-3. 
-4. 
 
