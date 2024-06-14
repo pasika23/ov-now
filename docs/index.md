@@ -61,12 +61,7 @@ Die bezogenen Daten aus der API stehen im EPSG: 3857 (Web Mercator) zur Verfügu
   <source src="assets/img/mobile_anwendung.mp4" type="video/mp4">
 </video>
  
-Wir gehen davon aus, dass die App vor allem von Personen genutzt wird, die täglich Verkehrsmittel benutzen, und zwar hauptsächlich auf mobilen Geräten.
-Nachdem man sich in der App angemeldet hat, kann man auf der Karte nach dem gewünschten Verkehrsmittel suchen oder die entsprechenden Attribute in die Suchleiste eingeben.
-Wenn Sie sich in einem Gebiet befinden, in dem die öffentlichen Verkehrsmittel sehr stark frequentiert sind, können Sie das Dropdown-Menü auf der linken Seite verwenden, um die Ebenen, die Sie anzeigen möchten, ein- oder auszuschalten.
-Wenn Sie die gewünschte Linie oder das gewünschte Verkehrsmittel gefunden haben, können Sie diese anklicken. Sie werden auf eine neue Seite weitergeleitet, auf der Ihnen, ähnlich wie bei der SBB-App, die Daten zur Linie und zum Verkehrsmittel angezeigt werden. Diese Daten können Verspätungen, Streckenänderungen, Zugausfälle und mehr sein.
-Wenn Sie jemanden über Ihre Reise benachrichtigen wollen, vielleicht weil Sie Verspätung haben oder eine Änderung eingetreten ist, können Sie den Link zur Seite mit einer einfachen Schaltfläche teilen.
-Wenn Sie mit der Infopage fertig sind, können Sie zur Karte zurückkehren, um neue Routen anzuzeigen.
+Wir gehen davon aus, dass die App vor allem von Menschen genutzt wird, die täglich Verkehrsmittel nutzen, insbesondere auf mobilen Geräten. Sobald Sie in der App angemeldet sind, können Sie auf der Karte nach dem gewünschten Verkehrsmittel suchen oder die entsprechenden Attribute in die Suchleiste eingeben. Wenn Sie sich in einem Gebiet befinden, in dem die öffentlichen Verkehrsmittel stark frequentiert sind, können Sie über das Dropdown-Menü auf der linken Seite die anzuzeigenden Stufen aktivieren oder deaktivieren. Wenn Sie die gewünschte Linie oder das gewünschte Verkehrsmittel gefunden haben, können Sie darauf klicken. Sie werden auf eine neue Seite weitergeleitet, auf der Ihnen, wie in der SBB App, Daten zur Linie und zum Verkehrsmittel angezeigt werden. Diese Daten können Verspätungen, Streckenänderungen, Zugausfälle und vieles mehr beinhalten. Wenn Sie jemanden über Ihre Reise informieren möchten, z.B. weil eine Verspätung oder Änderung eingetreten ist, können Sie den Link zur Seite mit einem einfachen Button teilen. Sobald Sie die Informationsseite beendet haben, können Sie zur Karte zurückkehren, um sich die neuen Strecken anzusehen.
 
 
 ## Frontend {#frontend}
