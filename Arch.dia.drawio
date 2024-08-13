@@ -1,0 +1,79 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36" version="24.7.7">
+  <diagram name="Seite-1" id="a2VWi4efX5BYDk5JD5vk">
+    <mxGraphModel dx="765" dy="370" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="30ZeFN75-0qRtVtuABKo-1" value="" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="134" y="350" width="560" height="430" as="geometry" />
+        </mxCell>
+        <mxCell id="30ZeFN75-0qRtVtuABKo-2" value="Externe Quelle" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="534" y="455" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="30ZeFN75-0qRtVtuABKo-3" value="GeoServer" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="534" y="535" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="30ZeFN75-0qRtVtuABKo-4" value="Frontend" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="534" y="690" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="30ZeFN75-0qRtVtuABKo-5" value="Backend" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="534" y="610" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="30ZeFN75-0qRtVtuABKo-6" value="WMS: ch.swisstopo" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="384" y="440" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="30ZeFN75-0qRtVtuABKo-7" value="get wms&lt;span style=&quot;color: rgba(0, 0, 0, 0); font-family: monospace; font-size: 0px; text-align: start; text-wrap: nowrap;&quot;&gt;%3CmxGraphModel%3E%3Croot%3E%3CmxCell%20id%3D%220%22%2F%3E%3CmxCell%20id%3D%221%22%20parent%3D%220%22%2F%3E%3CmxCell%20id%3D%222%22%20value%3D%22GeoServer%22%20style%3D%22rounded%3D1%3BwhiteSpace%3Dwrap%3Bhtml%3D1%3B%22%20vertex%3D%221%22%20parent%3D%221%22%3E%3CmxGeometry%20x%3D%22170%22%20y%3D%2270%22%20width%3D%22140%22%20height%3D%2230%22%20as%3D%22geometry%22%2F%3E%3C%2FmxCell%3E%3C%2Froot%3E%3C%2FmxGraphModel%3E&lt;/span&gt;&lt;span style=&quot;color: rgba(0, 0, 0, 0); font-family: monospace; font-size: 0px; text-align: start; text-wrap: nowrap;&quot;&gt;%3CmxGraphModel%3E%3Croot%3E%3CmxCell%20id%3D%220%22%2F%3E%3CmxCell%20id%3D%221%22%20parent%3D%220%22%2F%3E%3CmxCell%20id%3D%222%22%20value%3D%22GeoServer%22%20style%3D%22rounded%3D1%3BwhiteSpace%3Dwrap%3Bhtml%3D1%3B%22%20vertex%3D%221%22%20parent%3D%221%22%3E%3CmxGeometry%20x%3D%22170%22%20y%3D%2270%22%20width%3D%22140%22%20height%3D%2230%22%20as%3D%22geometry%22%2F%3E%3C%2FmxCell%3E%3C%2Froot%3E%3C%2FmxGraphModel%3E&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="384" y="595" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="30ZeFN75-0qRtVtuABKo-8" value="get wfs&lt;span style=&quot;color: rgba(0, 0, 0, 0); font-family: monospace; font-size: 0px; text-align: start; text-wrap: nowrap;&quot;&gt;%3CmxGraphModel%3E%3Croot%3E%3CmxCell%20id%3D%220%22%2F%3E%3CmxCell%20id%3D%221%22%20parent%3D%220%22%2F%3E%3CmxCell%20id%3D%222%22%20value%3D%22GeoServer%22%20style%3D%22rounded%3D1%3BwhiteSpace%3Dwrap%3Bhtml%3D1%3B%22%20vertex%3D%221%22%20parent%3D%221%22%3E%3CmxGeometry%20x%3D%22170%22%20y%3D%2270%22%20width%3D%22140%22%20height%3D%2230%22%20as%3D%22geometry%22%2F%3E%3C%2FmxCell%3E%3C%2Froot%3E%3C%2FmxGraphModel%3E&lt;/span&gt;&lt;span style=&quot;color: rgba(0, 0, 0, 0); font-family: monospace; font-size: 0px; text-align: start; text-wrap: nowrap;&quot;&gt;%3CmxGraphModel%3E%3Croot%3E%3CmxCell%20id%3D%220%22%2F%3E%3CmxCell%20id%3D%221%22%20parent%3D%220%22%2F%3E%3CmxCell%20id%3D%222%22%20value%3D%22GeoServer%22%20style%3D%22rounded%3D1%3BwhiteSpace%3Dwrap%3Bhtml%3D1%3B%22%20vertex%3D%221%22%20parent%3D%221%22%3E%3CmxGeometry%20x%3D%22170%22%20y%3D%2270%22%20width%3D%22140%22%20height%3D%2230%22%20as%3D%22geometry%22%2F%3E%3C%2FmxCell%3E%3C%2Froot%3E%3C%2FmxGraphModel%fs&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="184" y="595" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="30ZeFN75-0qRtVtuABKo-9" value="Eisenbahnlinien Schweiz (WFS)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="184" y="675" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="30ZeFN75-0qRtVtuABKo-10" value="Landeskarte 1:10000 (WMS)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="384" y="675" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="30ZeFN75-0qRtVtuABKo-11" value="ov-now:&lt;div&gt;ch.swisstopo.landeskarte-farbe-10&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="374" y="520" width="140" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="30ZeFN75-0qRtVtuABKo-12" value="&lt;font face=&quot;Tahoma, Lucida Sans Unicode, Lucida Grande, Verdana, sans-serif&quot; color=&quot;#262523&quot;&gt;&lt;span style=&quot;background-color: rgb(244, 249, 235);&quot;&gt;ov-now&lt;/span&gt;&lt;/font&gt;&lt;span style=&quot;background-color: rgb(244, 249, 235); color: rgb(38, 37, 35); font-family: Tahoma, &amp;quot;Lucida Sans Unicode&amp;quot;, &amp;quot;Lucida Grande&amp;quot;, Verdana, sans-serif;&quot;&gt;:&lt;/span&gt;&lt;div&gt;&lt;span style=&quot;background-color: rgb(244, 249, 235); color: rgb(38, 37, 35); font-family: Tahoma, &amp;quot;Lucida Sans Unicode&amp;quot;, &amp;quot;Lucida Grande&amp;quot;, Verdana, sans-serif;&quot;&gt;magosm_railways_line&lt;/span&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="184" y="520" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="30ZeFN75-0qRtVtuABKo-13" value="WFS: CH-OMS" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="184" y="440" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="30ZeFN75-0qRtVtuABKo-14" value="&lt;b&gt;&lt;font style=&quot;font-size: 22px;&quot;&gt;Architekturdiagramm&lt;/font&gt;&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="184" y="360" width="320" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="30ZeFN75-0qRtVtuABKo-16" value="" style="endArrow=classic;html=1;rounded=0;entryX=0.429;entryY=0.256;entryDx=0;entryDy=0;entryPerimeter=0;shape=flexArrow;fillColor=#dae8fc;strokeColor=#6c8ebf;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="363.16631578947374" y="714.9200000000001" as="sourcePoint" />
+            <mxPoint x="363.40999999999997" y="455" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="30ZeFN75-0qRtVtuABKo-18" value="" style="endArrow=classic;html=1;rounded=0;shape=arrow;fillColor=#f8cecc;strokeColor=#b85450;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="323.16999999999996" y="455" as="sourcePoint" />
+            <mxPoint x="323.16999999999996" y="715" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="30ZeFN75-0qRtVtuABKo-20" value="" style="endArrow=classic;html=1;rounded=0;fillColor=#f8cecc;strokeColor=#b85450;shape=flexArrow;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="520" y="380" as="sourcePoint" />
+            <mxPoint x="576" y="380" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="30ZeFN75-0qRtVtuABKo-21" value="" style="endArrow=classic;html=1;rounded=0;fillColor=#dae8fc;strokeColor=#6c8ebf;shape=flexArrow;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="580" y="409.57" as="sourcePoint" />
+            <mxPoint x="520" y="409.57" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="30ZeFN75-0qRtVtuABKo-25" value="Datenlieferung&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Abfrage&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="600" y="360" width="70" height="60" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
