@@ -2,13 +2,14 @@
 
 # Layersuche
 Für WMS, also für die Hintergrundkarte, wurde die Datenbank von swisstopo verwendet.
-Für WFS wurde der Dienst ch-oms verwendet([text](https://ch-osm.geodatasolutions.ch/de/diensten/))
+Für WFS wurde der Dienst ch-oms verwendet([https://ch-osm.geodatasolutions.ch/de/diensten/](https://ch-osm.geodatasolutions.ch/de/diensten/))
 
 Es wurden folgende Layer ausgewählt:
 - Landeskarte 1:10'000 (farbig)
 - Eisenbahnlinien
 
 Die beiden Layer wurden in QGIS eingebunden und getestet.
+
 ![QGIS](QGIS-Visualisierung.png)
 
 # Geoserver
@@ -17,16 +18,15 @@ Zuerst wurde ein neuer Arbeitsbereich ov-now erstellt. Anschliessend wurden die 
 Danach wurde die Verbindung getestet. Die Layervorschau wurden geöffnet.
 
 
-Über eine Beispielabfrage [text](http://localhost:8080/geoserver/wms?service=WMS&version=1.1.0&request=GetMap&layers=ov-now:ch.swisstopo.landeskarte-farbe-10&bbox=909906.3847,5934112.2539,950876.6319,5964839.9393&width=800&height=600&srs=EPSG:3857&format=image/png) konnte nachgewiesen werden, dass Einbindung der Layer funktioniert.
+Über eine Beispielabfrage [http://localhost:8080/geoserver/wms?service=WMS&version=1.1.0&request=GetMap&layers=ov-now:ch.swisstopo.landeskarte-farbe-10&bbox=909906.3847,5934112.2539,950876.6319,5964839.9393&width=800&height=600&srs=EPSG:3857&format=image/png](http://localhost:8080/geoserver/wms?service=WMS&version=1.1.0&request=GetMap&layers=ov-now:ch.swisstopo.landeskarte-farbe-10&bbox=909906.3847,5934112.2539,950876.6319,5964839.9393&width=800&height=600&srs=EPSG:3857&format=image/png) konnte nachgewiesen werden, dass Einbindung der Layer funktioniert.
 
 
 # Backend
  Das Repository wurde geclont, jedoch wurde die Dateien backend.py und mapwrapper.jsx neu aufgesetzt. Dabei wurden für beide Typen eine Funktion erstellt.
 
 # Datenflussdiagramm
-![alt](docs/assets/img/backend_frontend_architektur.png)
-![neu](Arch.dia.drawio.png)
-
+![alt](docs/assets/img/backend_frontend_architektur.png)![neu](Arch.dia.drawio.png)
+Vorher vs. nachher
 
 
 
