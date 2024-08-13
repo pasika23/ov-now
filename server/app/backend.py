@@ -1,85 +1,114 @@
-from fastapi import FastAPI, Query, HTTPException
+from fastapi import FastAPI, Query, HTTPException, Request, Response
 import requests
-from functools import lru_cache
+import logging
 from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
 
+# Erlaubte Ursprünge (z.B. dein React-Frontend)
+origins = [
+    "http://localhost:3000",  
+]
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000"],
+    allow_origins=origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
-# Define the API key
-key = "yourkey"
 
-# Function to fetch GeoJSON data from the provided API link
-@lru_cache(maxsize=128)
-def fetch_geojson_from_external_api(api_url):
-    try:
-        print(f"Fetching GeoJSON data from URL: {api_url}")  # Log the URL
-        response = requests.get(api_url)
-        response.raise_for_status()  # Raise an HTTPError for bad responses
-        return response.json()
-    except requests.exceptions.RequestException as e:
-        print(f"Failed to fetch GeoJSON data: {e}")  # Log the error
-        # Return an empty GeoJSON structure on error
-        return {"type": "FeatureCollection", "features": []}
+# Configure logging
+logging.basicConfig(level=logging.INFO)
 
-# Function to fetch Journeys data for a given train ID
-@lru_cache(maxsize=128)
-def fetch_journeys_for_train_id(train_id, key):
-    api_url = f"https://api.geops.io/tracker-http/v1/journeys/{train_id}/?key={key}"
-    return fetch_geojson_from_external_api(api_url)
+# GeoServer WMS endpoint
+GEOSERVER_WMS_URL = "http://localhost:8080/geoserver/wms"
+GEOSERVER_WFS_URL = "http://localhost:8080/geoserver/wfs"
 
-# Endpoint to get trajectories and journeys based on bounding box
-@app.get("/get_all_journey/")
-async def get_all_journey(
-    bbox: str = Query(..., description="Bounding box coordinates in format easting,northing,easting,northing"),
-    key: str = Query(..., description="API key"),
-    zoom: int = Query(12, description="Zoom level")
+@app.get("/wms")
+async def get_wms_service(
+    layers: str = Query(..., alias="LAYERS"),
+    bbox: str = Query(..., alias="BBOX"),
+    width: int = Query(..., alias="WIDTH"),
+    height: int = Query(..., alias="HEIGHT"),
+    srs: str = Query("EPSG:3857", alias="SRS"),
+    format: str = Query("image/png", alias="FORMAT")
 ):
-    # Construct API URL with dynamic bounding box and provided API key
-    api_url = f"https://api.geops.io/tracker-http/v1/trajectories/sbb/?bbox={bbox}&key={key}&zoom={zoom}"
-    print(f"Constructed API URL: {api_url}")  # Log the constructed URL
+    # Construct query parameters for GeoServer WMS request
+    query_params = {
+        "service": "WMS",
+        "version": "1.1.1",
+        "request": "GetMap",
+        "layers": layers,
+        "bbox": bbox,
+        "width": width,
+        "height": height,
+        "srs": srs,
+        "format": format,
+    }
 
-    # Fetch GeoJSON data from external API
-    trajectories_geojson = fetch_geojson_from_external_api(api_url)
+    # Log the request details
+    logging.info(f"Forwarding request to GeoServer with params: {query_params}")
 
-    # Ensure we have a valid FeatureCollection
-    if trajectories_geojson.get("type") != "FeatureCollection" or not isinstance(trajectories_geojson.get("features"), list):
-        raise HTTPException(status_code=500, detail="Invalid GeoJSON data received from external API")
+    try:
+        # Forward the request to GeoServer
+        response = requests.get(GEOSERVER_WMS_URL, params=query_params)
 
-    # Get journeys for each train ID in trajectories_geojson
-    for feature in trajectories_geojson["features"]:
-        properties = feature.get("properties", {})
-        train_id = properties.get("train_id")
-        train_type = properties.get("type")
-    
-    # Skip fetch if the type is "gondola"
-        if train_id and train_type != "gondola":
-            journeys_geojson = fetch_journeys_for_train_id(train_id, key)
-            properties["journeys"] = journeys_geojson.get("features", [])
+        # Log GeoServer's response status
+        logging.info(f"GeoServer response status: {response.status_code}")
+
+        # If the response is successful, return the image content
+        if response.status_code == 200:
+            return Response(content=response.content, media_type="image/png")
+        else:
+            # Log the error details if the request failed
+            logging.error(f"GeoServer returned an error: {response.status_code}, details: {response.text}")
+            raise HTTPException(status_code=response.status_code, detail=f"Error retrieving data from GeoServer: {response.text}")
+
+    except requests.RequestException as e:
+        # Log the exception and raise an HTTPException if the request fails
+        logging.error(f"GeoServer request failed: {str(e)}")
+        raise HTTPException(status_code=500, detail=f"GeoServer request failed: {str(e)}")
 
 
-    # Return fetched GeoJSON data
-    return trajectories_geojson
+@app.get("/wfs")
+async def get_wfs_service(
+    typename: str = Query(..., description=""),
+    bbox: str = Query(None, description=""),
+    srsname: str = Query("EPSG:3857", description=""),
+    output_format: str = Query("application/json", description="")
+):
+    query_params = {
+        "service": "WFS",
+        "version": "1.0.0",
+        "request": "GetFeature",
+        "typename": typename,
+        "srsname": srsname,
+        "outputFormat": output_format,
+    }
 
-# Endpoint to get calls based on train ID
-@app.get("/get_info/")
-async def get_info(train_id: str = Query(..., description="Train ID"), key: str = Query(..., description="API key")):
-    # Construct API URL with provided train ID and API key
-    api_url = f"https://api.geops.io/tracker-http/v1/calls/{train_id}/?key={key}"
-    print(f"Constructed API URL for get_info: {api_url}")  # Log the constructed URL
+    if bbox:
+        query_params["bbox"] = bbox
 
-    # Fetch GeoJSON data from external API
-    calls_geojson = fetch_geojson_from_external_api(api_url)
+    logging.info(f"Forwarding WFS request to GeoServer with params: {query_params}")
 
-    # Return fetched GeoJSON data
-    return calls_geojson
+    try:
+        # Forward the request to GeoServer
+        response = requests.get(GEOSERVER_WFS_URL, params=query_params)
+
+        if response.status_code == 200:
+            logging.info("GeoServer returned a successful WFS response.")
+            return response.json()
+        else:
+            logging.error(f"GeoServer WFS returned an error: {response.status_code} - {response.text}")
+            raise HTTPException(status_code=response.status_code, detail="Error retrieving data from GeoServer")
+
+    except requests.RequestException as e:
+        logging.error(f"GeoServer WFS request failed: {str(e)}")
+        raise HTTPException(status_code=500, detail=f"GeoServer request failed: {str(e)}")
+
+
 
 if __name__ == "__main__":
     import uvicorn
