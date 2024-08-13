@@ -1,6 +1,6 @@
 # Dokumentation
 
-# Layersuche
+## Layersuche
 Für WMS, also für die Hintergrundkarte, wurde die Datenbank von swisstopo verwendet.
 Für WFS wurde der Dienst ch-oms verwendet([https://ch-osm.geodatasolutions.ch/de/diensten/](https://ch-osm.geodatasolutions.ch/de/diensten/))
 
@@ -12,23 +12,48 @@ Die beiden Layer wurden in QGIS eingebunden und getestet.
 
 ![QGIS](QGIS-Visualisierung.png)
 
-# Geoserver
+## Geoserver
 Zuerst wurde ein neuer Arbeitsbereich ov-now erstellt. Anschliessend wurden die beiden Layer über Datenquelle hinzufügen in Geoserver ergänzt.
 
 Danach wurde die Verbindung getestet. Die Layervorschau wurden geöffnet.
-
+![alt text](<Layervorschau WMS.png>)
 
 Über eine Beispielabfrage [http://localhost:8080/geoserver/wms?service=WMS&version=1.1.0&request=GetMap&layers=ov-now:ch.swisstopo.landeskarte-farbe-10&bbox=909906.3847,5934112.2539,950876.6319,5964839.9393&width=800&height=600&srs=EPSG:3857&format=image/png](http://localhost:8080/geoserver/wms?service=WMS&version=1.1.0&request=GetMap&layers=ov-now:ch.swisstopo.landeskarte-farbe-10&bbox=909906.3847,5934112.2539,950876.6319,5964839.9393&width=800&height=600&srs=EPSG:3857&format=image/png) konnte nachgewiesen werden, dass Einbindung der Layer funktioniert.
 
 
-# Backend
- Das Repository wurde geclont, jedoch wurde die Dateien backend.py und mapwrapper.jsx neu aufgesetzt. Dabei wurden für beide Typen eine Funktion erstellt.
+## Backend
+ Das Repository wurde geclont, jedoch wurde die Dateien backend.py und mapwrapper.jsx neu aufgesetzt. Dabei wurden für beide Typen im Backend eine Funktion erstellt.
 
-# Datenflussdiagramm
-![alt](docs/assets/img/backend_frontend_architektur.png)![neu](Arch.dia.drawio.png)
-Vorher vs. nachher
+ Anschliessend wurde die korrekte Einbindung getestet über eine Beispielabfrage im Browser.
+ http://localhost:8000/wms?layers=ov-now:ch.swisstopo.landeskarte-farbe-10&bbox=909906.3847,5934112.2539,950876.6319,5964839.9393&width=800&height=600&srs=EPSG:3857&format=image/png
+
+## Frontend
+Durch geeignete Funktionen im mapwrapper.jsx kann das Frontend auf die Dienste zugreifen. 
+
+Für den WMS-Layer wurde eine Checkbox erstellt, welche durch Aktivierung die OMS-Basiskarte überdeckt. Diese Funktion funktionierte lange nicht. Durch Ergänzen des Parameters alias konnte bei Abfragen auch Parameterschreibweisen hinzugezügt werden. Ausserdem musste wegen CORS-Problemen Dateien im Geoserver-Ordner angepasst werden. 
+
+Beim WFS-Layer wurden zwei Buttons implementiert, um die Abfrage der Linien zu steuern. Dies wurde umgesetzt, da zuvor stehts eine Abfrage durchgeführt und weil dansch leicht herausgezoomt wurde, startete wieder eine Abfrage.
 
 
+## Datenflussdiagramm
+Vorher
+
+![alt](docs/assets/img/backend_frontend_architektur.png)
+
+Nachher
+
+![neu](Arch.dia.drawio.png)
+
+## Reflexion
+Bei der Umsetzung lag der Fokus auf der Einbindung des GeoServers. Dadurch wurden die Funktionalitäten der App vernachlässigt.
+
+Im Vergleich zum ursprünglichen Projekt hat die Integration von GeoServer viele Verbesserungen gebracht. Vorher waren Karten und geographische Daten statisch eingebunden, was wenig Flexibilität bot. Durch GeoServer kann man nun diese Daten nun dynamisch anzeigen und in Echtzeit aktualisieren. Das bedeutet, dass die Karten immer aktuell sind und genaue Informationen liefern.
+
+Die Verwaltung der Geodaten ist nun viel effizienter. Mit GeoServer kann man die Daten besser organisieren und leichter aktualisieren. Dadurch werden Projekte insgesamt anpassbarer und skalierbarer. Wenn später weitere Geodienste hinzukommen, können diese ohne grosse Änderungen eingebunden werden.
+
+Natürlich gab es bei der Einführung von GeoServer auch Herausforderungen, etwa bei der korrekten Handhabung der BBOX-Parameter. Zudem gab es Probleme bezüglich CORS, welche welche durch Ergänzung von Filtern im Web.xml-File behoben wurden. Die anderen Schwierigkeiten wurden durch gezielte Anpassungen im Frontend und Backend gelöst. Das Ergebnis ist eine deutlich verbesserte Sichtbarkeit und Darstellung der Geodaten.
+
+Insgesamt hat GeoServer das Projekt von einer starren zu einem dynamischen und interaktiven Geodatenportel weiterentwickelt. Diese Veränderungen machen das Projekt nicht nur flexibler, sondern auch zukunftssicherer, da es nun auf eine robustere Basis gestellt ist, die leicht erweitert und angepasst werden kann.
 
 
 
